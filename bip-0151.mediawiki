@@ -4,7 +4,7 @@
   Title: Peer-to-Peer Communication Encryption
   Author: Jonas Schnelli <dev@jonasschnelli.ch>
   Comments-Summary: Controversial; some recommendation, and some discouragement
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0151
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0151
   Status: Withdrawn
   Type: Standards Track
   Created: 2016-03-23
@@ -18,9 +18,9 @@ This BIP describes an alternative way that a peer can encrypt their communicatio
 == Motivation ==
 
 
-The Bitcoin network does not encrypt communication between peers today. This opens up security issues (eg: traffic manipulation by others) and allows for mass surveillance / analysis of bitcoin users. Mostly this is negligible because of the nature of Bitcoin's trust model, however, for SPV nodes this can have significant privacy impacts [1] and could reduce the censorship-resistance of a peer.
+The BitRub network does not encrypt communication between peers today. This opens up security issues (eg: traffic manipulation by others) and allows for mass surveillance / analysis of bitrub users. Mostly this is negligible because of the nature of BitRub's trust model, however, for SPV nodes this can have significant privacy impacts [1] and could reduce the censorship-resistance of a peer.
 
-Encrypting peer traffic will make analysis and specific user targeting much more difficult than it currently is. Today it's trivial for a network provider or any other men-in-the-middle to identify a Bitcoin user and its controlled addresses/keys (and link with his Google profile, etc.). Just created and broadcasted transactions will reveal the amount and the payee to the network provider.
+Encrypting peer traffic will make analysis and specific user targeting much more difficult than it currently is. Today it's trivial for a network provider or any other men-in-the-middle to identify a BitRub user and its controlled addresses/keys (and link with his Google profile, etc.). Just created and broadcasted transactions will reveal the amount and the payee to the network provider.
 
 This BIP also describes a way that data manipulation (blocking commands by a intercepting TCP/IP node) would be identifiable by the communicating peers.
 
@@ -43,19 +43,19 @@ Encryption initialization must happen before sending any other messages to the r
 The symmetric encryption cipher keys will be calculated with ECDH/HKDF by sharing the pubkeys of an ephemeral key. Once the ECDH secret is calculated on each side, the symmetric encryption cipher keys must be derived with HKDF [2] after the following specification:
 
 1. HKDF extraction
-<code>PRK = HKDF_EXTRACT(hash=SHA256, salt="bitcoinecdh", ikm=ecdh_secret|cipher-type)</code>.
+<code>PRK = HKDF_EXTRACT(hash=SHA256, salt="bitrubecdh", ikm=ecdh_secret|cipher-type)</code>.
 
 2. Derive Key1
-<code>K_1 = HKDF_EXPAND(prk=PRK, hash=SHA256, info="BitcoinK1", L=32)</code>
+<code>K_1 = HKDF_EXPAND(prk=PRK, hash=SHA256, info="BitRubK1", L=32)</code>
 
 3. Derive Key2
-<code>K_2 = HKDF_EXPAND(prk=PRK, hash=SHA256, info="BitcoinK2", L=32)</code>
+<code>K_2 = HKDF_EXPAND(prk=PRK, hash=SHA256, info="BitRubK2", L=32)</code>
 
 It is important to include the cipher-type into the symmetric cipher key derivation to avoid weak-cipher-attacks.
 
 === Session ID ===
 
-Both sides must also calculate the 256bit session-id using <code>SID = HKDF_EXPAND(prk=PRK, hash=SHA256, info="BitcoinSessionID", L=32)</code>. The session-id can be used for linking the encryption-session to an identity check.
+Both sides must also calculate the 256bit session-id using <code>SID = HKDF_EXPAND(prk=PRK, hash=SHA256, info="BitRubSessionID", L=32)</code>. The session-id can be used for linking the encryption-session to an identity check.
 
 === The <code>encinit</code> message type ===
 

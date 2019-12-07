@@ -7,9 +7,9 @@ RECENT CHANGES:
   BIP: 47
   Layer: Applications
   Title: Reusable Payment Codes for Hierarchical Deterministic Wallets
-  Author: Justus Ranvier <justus@openbitcoinprivacyproject.org>
+  Author: Justus Ranvier <justus@openbitrubprivacyproject.org>
   Comments-Summary: Unanimously Discourage for implementation
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0047
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0047
   Status: Draft
   Type: Informational
   Created: 2015-04-24
@@ -133,7 +133,7 @@ When a payment code is presented to the user, it SHOULD be presented encoded in 
 
 ===Protocol===
 
-In the following examples, Alice and Bob are identities with a corresponding payment codes. Alice initiates a Bitcoin transaction, and Bob is the recipient of the transaction.
+In the following examples, Alice and Bob are identities with a corresponding payment codes. Alice initiates a BitRub transaction, and Bob is the recipient of the transaction.
 
 It is assumed that Alice can easily obtain Bob's payment code via a suitable method outside the scope of the payment code protocol.
 
@@ -152,7 +152,7 @@ Prior to the first time Alice initiates a transaction to Bob, Alice MUST inform 
 
 Note: this procedure is used if Bob uses a version 1 payment code (regardless of the the version of Alice's payment code). If Bob's payment code is not version 1, see the appropriate section in this specification.
 
-# Alice constructs a transaction which sends a small quantity of bitcoins to Bob's notification address (notification transaction)
+# Alice constructs a transaction which sends a small quantity of bitrubs to Bob's notification address (notification transaction)
 ## The inputs selected for this transaction MUST NOT be easily associated with Alice's notification address
 # Alice derives a unique shared secret using ECDH:
 ## Alice selects the private key corresponding to the designated pubkey: <pre>a</pre>
@@ -187,7 +187,7 @@ Now that Bob's client has received Alice's payment code, it is possible for Alic
 
 Alice will never again need to send a notification transaction to Bob.
 
-Bitcoins received via notification transactions require special handling in order to avoid privacy leaks:
+BitRubs received via notification transactions require special handling in order to avoid privacy leaks:
 
 # The value of outputs received to notification addresses MUST NOT be displayed to the user as part of their spendable balance.
 # Outputs received to notification addresses MUST NOT be used as inputs for any transaction that involve ECDH calculations using any of the user's payment codes.
@@ -328,7 +328,7 @@ The sender uses this information to construct a valid notification Bitmessage ad
 
 The sender transmits their payment code in base58 form to the calculated Bitmessage address.
 
-In order to use Bitmessage notification, the recipient must have a Bitmessage client which listens at the address which the senders will derive and is capable of relaying received payment codes to the Bitcoin wallet.
+In order to use Bitmessage notification, the recipient must have a Bitmessage client which listens at the address which the senders will derive and is capable of relaying received payment codes to the BitRub wallet.
 
 ==Version 2==
 
@@ -374,8 +374,8 @@ Alice's wallet should spend the notification change output at the next appropria
 * [[bip-0032.mediawiki|BIP32 - Hierarchical Deterministic Wallets]]
 * [[bip-0043.mediawiki|BIP43 - Purpose Field for Deterministic Wallets]]
 * [[bip-0044.mediawiki|BIP44 - Multi-Account Hierarchy for Deterministic Wallets]]
-* [[https://bitcoin.org/en/developer-reference#outpoint|Outpoint]]
+* [[https://bitrub.org/en/developer-reference#outpoint|Outpoint]]
 * [[https://github.com/petertodd/dust-b-gone|dust-b-gone]]
-* [[https://en.bitcoin.it/wiki/Base58Check_encoding|Base58Check encoding]]
+* [[https://en.bitrub.it/wiki/Base58Check_encoding|Base58Check encoding]]
 * [[https://bitmessage.org/bitmessage.pdf|Bitmessage]]
-* [[https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-April/007812.html|Mailing list discussion]]
+* [[https://lists.linuxfoundation.org/pipermail/bitrub-dev/2015-April/007812.html|Mailing list discussion]]

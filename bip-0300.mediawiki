@@ -5,31 +5,31 @@
   Author: Paul Sztorc <truthcoin@gmail.com>
           CryptAxe <cryptaxe@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0300
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0300
   Status: Draft
   Type: Standards Track
   Created: 2017-08-14
   License: BSD-2-Clause
-  Post-History: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-May/014364.html
+  Post-History: https://lists.linuxfoundation.org/pipermail/bitrub-dev/2017-May/014364.html
 </pre>
 
 ==Abstract==
 
 A "Hashrate Escrow" is a clearer term for the concept of "locked to an SPV Proof", which is itself a restatement of the phrase "within a sidechain" as described in [https://blockstream.com/sidechains.pdf the 2014 Blockstream whitepaper].
 
-A Hashrate Escrow resembles a 2-of-3 multisig escrow, where the 3rd party (who will arbitrate any disputes) is a decentralized group of people: the dynamic-membership set of Bitcoin Miners. However, the 3rd party does not sign escrow-withdrawal transactions with a private key. Instead, these are "signed" by the accumulation of hashpower over time.
+A Hashrate Escrow resembles a 2-of-3 multisig escrow, where the 3rd party (who will arbitrate any disputes) is a decentralized group of people: the dynamic-membership set of BitRub Miners. However, the 3rd party does not sign escrow-withdrawal transactions with a private key. Instead, these are "signed" by the accumulation of hashpower over time.
 
 This project has [http://www.drivechain.info/ a website] which includes [http://www.drivechain.info/faq/index.html an FAQ].
 
 
 ==Motivation==
 
-In practice these escrows are likely to be "asymmetric sidechains" of Bitcoin (such as [http://www.rsk.co/ Rootstock]) or "virtual chains" within Bitcoin (such as [https://github.com/blockstack/virtualchain proposed by Blockstack] in mid-2016).
+In practice these escrows are likely to be "asymmetric sidechains" of BitRub (such as [http://www.rsk.co/ Rootstock]) or "virtual chains" within BitRub (such as [https://github.com/blockstack/virtualchain proposed by Blockstack] in mid-2016).
 
 Sidechains have many potential benefits, including:
 
-# Protect Bitcoin from competition from altcoins and spinoffs.
-# Protect Bitcoin from hard fork campaigns. (Such campaigns represent an existential threat to Bitcoin, as well as an avenue for developer corruption.)
+# Protect BitRub from competition from altcoins and spinoffs.
+# Protect BitRub from hard fork campaigns. (Such campaigns represent an existential threat to BitRub, as well as an avenue for developer corruption.)
 # Help with review, by making it much easier for reviewers to ignore bad ideas.
 # Provide an avenue for good-but-confusing ideas to prove their value safely.
 
@@ -54,8 +54,8 @@ Please note that these structures (D1 and D2) will not literally exist anywhere 
 * M2. "ACK Escrow Proposal"
 * M3. "Propose Withdrawal"
 * M4. (implied) "ACK Withdrawal"
-* M5. "Execute Deposit"   -- a transfer of BTC from-main-to-side
-* M6. "Execute Withdrawal" -- a transfer of BTC from-side-to-main
+* M5. "Execute Deposit"   -- a transfer of BTR from-main-to-side
+* M6. "Execute Withdrawal" -- a transfer of BTR from-side-to-main
 
 
 
@@ -123,7 +123,7 @@ The table below enumerates the new database fields, their size in bytes, and the
 
 D1 is updated via M1 and M2.
 
-( The following messages were modeled on SegWit -- see [https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#commitment-structure here] and [https://github.com/DriveNetTESTDRIVE/DriveNet/blob/564516653c1d876429382971a011f5f6119f7eb4/src/validation.cpp#L3348-L3375 here]. )
+( The following messages were modeled on SegWit -- see [https://github.com/bitrub/bips/blob/master/bip-0141.mediawiki#commitment-structure here] and [https://github.com/DriveNetTESTDRIVE/DriveNet/blob/564516653c1d876429382971a011f5f6119f7eb4/src/validation.cpp#L3348-L3375 here]. )
 
 
 ==== M1 -- "Propose New Sidechain" ====
@@ -228,7 +228,7 @@ Miners can impose a "soft limit" on m, blocking new withdrawal-attempts until pr
 
 === Depositing and Withdrawing (M5, M6) ===
 
-Both M5 and M6 are regular Bitcoin txns. They are identified by meeting an important criteria: they select a one of the Critical TxID-index Pairs (a "CTIP") as one of their inputs.
+Both M5 and M6 are regular BitRub txns. They are identified by meeting an important criteria: they select a one of the Critical TxID-index Pairs (a "CTIP") as one of their inputs.
 
 Just as these txns must select a CTIP input, they must create a new CTIP output. D1 is then updated to match only the latest CTIP output. The purpose of this is to have all of the escrow's money (ie all of the sidechain's money) in one TxID, so that depositors immediately undo any UTXO bloat they may cause. 
 
@@ -237,7 +237,7 @@ Deposits ("M5") are distinguished from withdrawals ("M6") by simply checking to 
 https://github.com/DriveNetTESTDRIVE/DriveNet/blob/564516653c1d876429382971a011f5f6119f7eb4/src/validation.cpp#L647-L742
 
 
-==== M5. "Make a Deposit" -- a transfer of BTC from-main-to-side ====
+==== M5. "Make a Deposit" -- a transfer of BTR from-main-to-side ====
 
 As far as mainchain consensus is concerned, deposits to the escrow are always valid.
 
@@ -245,9 +245,9 @@ However, in practice there will be additional requirements. The escrow account (
 
 
 
-==== M6. "Execute Withdrawal" -- a transfer of BTC from-side-to-main ====
+==== M6. "Execute Withdrawal" -- a transfer of BTR from-side-to-main ====
 
-We come, finally, to the critical matter: where users can take their money *out* of the escrow account, and return it to the "regular" UTXO set. As previously mentioned, this txn is one which (a) spends from a CTIP and (b) reduces the quantity of BTC in an account's CTIP. Most of the work has already been done by D1, M3, M4, and D2. Furthermore, existing Bitcoin tx-rules prevent the sidechain from ever withdrawing more money than has been placed into it.
+We come, finally, to the critical matter: where users can take their money *out* of the escrow account, and return it to the "regular" UTXO set. As previously mentioned, this txn is one which (a) spends from a CTIP and (b) reduces the quantity of BTR in an account's CTIP. Most of the work has already been done by D1, M3, M4, and D2. Furthermore, existing BitRub tx-rules prevent the sidechain from ever withdrawing more money than has been placed into it.
 
 In each block, a withdrawal in D2 is considered "approved" if its "ACKs" value meets the threshold (13,150).
 
@@ -290,7 +290,7 @@ consensus.vDeployments[Consensus::DEPLOYMENT_DRIVECHAINS].nTimeout = 1610695281;
 
 See: https://github.com/DriveNetTESTDRIVE/DriveNet
 
-Also, for interest, see an example sidechain here: https://github.com/drivechain-project/bitcoin/tree/sidechainBMM
+Also, for interest, see an example sidechain here: https://github.com/drivechain-project/bitrub/tree/sidechainBMM
 
 
 ==References==

@@ -5,7 +5,7 @@
   Author: Paul Sztorc <truthcoin@gmail.com>
           CryptAxe <cryptaxe@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0301
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0301
   Status: Draft
   Type: Standards Track
   Created: 2019-07-23
@@ -17,7 +17,7 @@
 
 Blind Merged Mining (BMM) is a way of mining optional extension blocks (ie, "asymmetric sidechains"). BMM produces weak guarantees that the block is valid, for *any* arbitrary set of rules; and yet it does so without requiring miners to actually do any validation on the block whatsoever.
 
-BMM actually is a process that spans two or more chains. Here we focus on the modifications to mainchain Bitcoin. For an explanation of the "whole picture", please see [http://www.truthcoin.info/blog/blind-merged-mining/ this post].
+BMM actually is a process that spans two or more chains. Here we focus on the modifications to mainchain BitRub. For an explanation of the "whole picture", please see [http://www.truthcoin.info/blog/blind-merged-mining/ this post].
 
 Our goal here, is to allow mainchain miners to trustlessly "sell" the act of finding a sidechain block.
 
@@ -27,7 +27,7 @@ Our goal here, is to allow mainchain miners to trustlessly "sell" the act of fin
 Regular "Merged-Mining" (MM) allows miners to reuse their hashing work to secure other chains (for example, as in Namecoin). However, traditional MM has two drawbacks:
 
 # Miners must run a full node of the other chain. (This is because [while miners can effortlessly create the block] miners will not create a valid payment to themselves, unless the block that they MM is a valid one. Therefore, miners must assemble a *valid* block first, then MM it.)
-# Miners are paid on the other chain, not on the regular BTC mainchain. For example, miners who MM Namecoin will earn NMC (and they will need to sell the NMC for BTC, before selling the BTC in order to pay for electricity).
+# Miners are paid on the other chain, not on the regular BTR mainchain. For example, miners who MM Namecoin will earn NMC (and they will need to sell the NMC for BTR, before selling the BTR in order to pay for electricity).
 
 BMM addresses both shortcomings.
 
@@ -96,7 +96,7 @@ Above: A chart showing normal txns, SegWit txns, and CriticalData txns. The spec
 
 These types of transactions have slightly different mempool behavior, and should probably be kept in a second mempool. These txns are received, checked immediately, and if valid they are evaluated for inclusion in a block. If they are not able to be included in the specific requested block (if the block height requested has been surpassed by the chain tip), they are discarded. In fact, after any main:block is found, everything in this "second mempool" can be discarded as new payments will be created immediately for the next block height. (This includes cases where the blockchain reorganizes.) There is no re-evaluation of the txns in this mempool ever -- they are evaluated once and then either included or discarded. They never need to be rescanned.
 
-Interestingly, these payments will *always* be directed to main:miners from non-main:miners. Therefore, non-mining full nodes do not need to keep them in any mempool at all. Non-miner nodes can just wait for a block to be found, and check the txn then. These transactions more resemble a stock market's pit trade-offers (in contrast, regular Bitcoin txns are more like paper checks).
+Interestingly, these payments will *always* be directed to main:miners from non-main:miners. Therefore, non-mining full nodes do not need to keep them in any mempool at all. Non-miner nodes can just wait for a block to be found, and check the txn then. These transactions more resemble a stock market's pit trade-offers (in contrast, regular BitRub txns are more like paper checks).
 
 ==== Lightning BMM Request ====
 
@@ -117,7 +117,7 @@ Therefore, Simon will need to ensure that he '''gives each Mary a different h\*'
 
 With a unique h\* per Mary (or, more precisely, per channel), and at most 1 h\* making it into a block (per sidechain), Simon can ensure that he is charged, at most, one time.
 
-That's probably confusing, so here is an example, in which: Simon starts with 13 BTC, Mary starts with 40 BTC, the side:block's tx-fees currently total 7.1 BTC, and Simon is keeping 0.1 BTC for himself and paying 7 BTC to Mary.
+That's probably confusing, so here is an example, in which: Simon starts with 13 BTR, Mary starts with 40 BTR, the side:block's tx-fees currently total 7.1 BTR, and Simon is keeping 0.1 BTR for himself and paying 7 BTR to Mary.
 
 We start with (I):
 
@@ -159,7 +159,7 @@ From here, if the h\* side:block in question is BMMed, they can proceed to (III)
             6 ; to Simon
 </pre>
 
-If Simon proceeds immediately, he removes Mary's incentive to care about blocks being built on this side:block. If Simon's side:block is orphaned, he loses his 7 BTC. Simon can either play it safe, and wait for (for example) 100 side:blocks before moving on (ie, before moving on to the third LN txn, above); or else Simon can take the risk if he feels comfortable with it.
+If Simon proceeds immediately, he removes Mary's incentive to care about blocks being built on this side:block. If Simon's side:block is orphaned, he loses his 7 BTR. Simon can either play it safe, and wait for (for example) 100 side:blocks before moving on (ie, before moving on to the third LN txn, above); or else Simon can take the risk if he feels comfortable with it.
 
 If the h\* side:block is not found, then (II) and (III) are basically equivalent to each other. Simon and Mary could jointly reconstruct (I) and go back there, or they could proceed to a new version of II (with a different h\*, trying again with new side:block in the next main:block).
 
@@ -205,14 +205,14 @@ consensus.vDeployments[Consensus::DEPLOYMENT_DRIVECHAINS].nTimeout = 1610695281;
 
 See: https://github.com/DriveNetTESTDRIVE/DriveNet
 
-Also, for interest, see an example sidechain here: https://github.com/drivechain-project/bitcoin/tree/sidechainBMM
+Also, for interest, see an example sidechain here: https://github.com/drivechain-project/bitrub/tree/sidechainBMM
 
 
 ==References==
 
 * http://www.drivechain.info/literature/index.html
 * http://www.truthcoin.info/blog/blind-merged-mining/
-* https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-July/014789.html
+* https://lists.linuxfoundation.org/pipermail/bitrub-dev/2017-July/014789.html
 * http://www.truthcoin.info/images/bmm-outline.txt
 
 

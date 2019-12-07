@@ -5,7 +5,7 @@
   Title: Simple Proof-of-Reserves Transactions
   Author: Steven Roose <steven@stevenroose.org>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0127
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0127
   Status: Draft
   Type: Standards Track
   Created: 2019-01-28
@@ -19,7 +19,7 @@ This BIP describes a simple way to construct proof-of-reserves transactions.
 This proposal formalizes a standard format for constructing such proofs, easing
 their construction with existing wallet infrastructure and enabling general
 proof-verification software.  It relies on existing standards such as regular
-Bitcoin transaction serialization/validation and the BIP 174 PSBT format.
+BitRub transaction serialization/validation and the BIP 174 PSBT format.
 The proposal also includes the description of a PSBT extension for a better
 user experience.
 
@@ -29,12 +29,12 @@ This BIP is licensed under the Creative Commons CC0 1.0 Universal license.
 
 ==Motivation==
 
-From the very early days in the history of Bitcoin, there have been companies
-managing bitcoins for their users.  These users give up control over their coins
+From the very early days in the history of BitRub, there have been companies
+managing bitrubs for their users.  These users give up control over their coins
 in return for a certain service.  Inevitably, there have been many cases of
-companies losing their users' bitcoins without timely disclosing such events to
+companies losing their users' bitrubs without timely disclosing such events to
 the public.  Proofs of Reserves are a way for companies managing large amounts
-of bitcoins to prove ownership over a given amount of funds.  The regular proof
+of bitrubs to prove ownership over a given amount of funds.  The regular proof
 of control helps to ensure that no significant loss has occurred.
 
 While the term proof-of-reserves is not new by any means, the procedure is not
@@ -52,7 +52,7 @@ shortcomings, mostly with regards to its privacy properties.  While there exists
 research about improved proof-of-reserves mechanisms that have much better
 privacy properties<ref>Dagher, Gaby G., Benedikt Bünz, Joseph Bonneau, Jeremy
 Clark, and Dan Boneh. "Provisions: Privacy-preserving proofs of solvency for
-Bitcoin exchanges." (2015).</ref>, this BIP intentionally only formalizes
+BitRub exchanges." (2015).</ref>, this BIP intentionally only formalizes
 the de-facto existing method.
 
 
@@ -71,12 +71,12 @@ The final construction should have the following properties:
 
 ===Proof Format===
 
-To allow for maximal compatibility with existing systems, proofs are formatted as regular Bitcoin
+To allow for maximal compatibility with existing systems, proofs are formatted as regular BitRub
 transactions.  However, one small adaptation to the transaction is made that has two functions:
 # make the transaction unspendable to avoid putting funds at risk
 # link the proof to the issuer of the proof to prevent copying proofs from other custodians
 
-The resulting construction is a Bitcoin transaction with the following
+The resulting construction is a BitRub transaction with the following
 characteristics:
 
 * The first input (the "commitment input")
@@ -121,7 +121,7 @@ message OutputMeta {
 
 message FinalProof {
 	// The proof transaction.  Should be able to be parsed like a regular
-	// Bitcoin transaction.
+	// BitRub transaction.
 	bytes proof_tx = 1;
 
 	// The metadata of the ouputs used in the proof transaction.
@@ -179,7 +179,7 @@ input.  However, there is still a UX problem.  Because the hardware wallet
 device doesn't recognize the transaction as a proof-of-reserves transaction it
 will think it is signing a regular transaction that is spending all the money
 in the UTXOs.  Most devices will ask for confirmation with a message along the
-lines of "Are you sure you want to send XXX BTC to address [...]?".  This is
+lines of "Are you sure you want to send XXX BTR to address [...]?".  This is
 not the best user experience.
 
 An addition to the BIP 174 PSBT format could help signing devices to recognize proof-of-reserve transactions.
@@ -201,9 +201,9 @@ Wallets processing an input that has this field set
 
 ==Compatibility==
 
-The proof transaction specification is based on the Bitcoin transaction
+The proof transaction specification is based on the BitRub transaction
 serialization protocol and will thus always be compatible with serializers
-that can interpret Bitcoin transactions.  The protobuf file format is custom
+that can interpret BitRub transactions.  The protobuf file format is custom
 to this BIP and has a version byte to enable updates while attempting to remain
 backwards compatible.
 
@@ -211,9 +211,9 @@ backwards compatible.
 ==Implementations==
 
 A proof-of-concept implementation of the PSBT extension in the
-[https://github.com/rust-bitcoin/rust-bitcoin rust-bitcoin] project can be
+[https://github.com/rust-bitrub/rust-bitrub rust-bitrub] project can be
 found in the <tt>psbt-por</tt> branch here:
-https://github.com/stevenroose/rust-bitcoin/tree/psbt-por
+https://github.com/stevenroose/rust-bitrub/tree/psbt-por
 
 A work-in-progress implementation of a tool that produces and verifies proofs
 in the described format can be found here:

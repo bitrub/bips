@@ -2,9 +2,9 @@
   BIP: 105
   Layer: Consensus (hard fork)
   Title: Consensus based block size retargeting algorithm
-  Author: BtcDrak <btcdrak@gmail.com>
+  Author: BtrDrak <btrdrak@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0105
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0105
   Status: Draft
   Type: Standards Track
   Created: 2015-08-21
@@ -13,16 +13,16 @@
 
 ==Abstract==
 
-A method of altering the maximum allowed block size of the Bitcoin protocol 
+A method of altering the maximum allowed block size of the BitRub protocol 
 using a consensus based approach.
 
 ==Motivation==
 
-There is a belief that Bitcoin cannot easily respond to raising the 
+There is a belief that BitRub cannot easily respond to raising the 
 blocksize limit if popularity was to suddenly increase due to a mass adoption 
 curve, because co-ordinating a hard fork takes considerable time, and being 
 unable to respond in a timely manner would irreparably harm the credibility of 
-bitcoin.
+bitrub.
 
 Additionally, predetermined block size increases are problematic because they
 attempt to predict the future, and if too large could have unintended 
@@ -49,7 +49,7 @@ when it is unnecessary. Larger miners cannot force their wishes so easily
 because not only will they have to pay extra a difficulty target, then can be
 downvoted at no cost by the objecting hash power.
 
-Using difficulty as a penalty is better than a fixed cost in bitcoins because it
+Using difficulty as a penalty is better than a fixed cost in bitrubs because it
 is less predictable.
 
 In order to prevent miners having complete control over blocksize, an upper

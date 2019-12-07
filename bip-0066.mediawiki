@@ -4,7 +4,7 @@
   Title: Strict DER signatures
   Author: Pieter Wuille <pieter.wuille@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0066
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0066
   Status: Final
   Type: Standards Track
   Created: 2015-01-10
@@ -13,7 +13,7 @@
 
 ==Abstract==
 
-This document specifies proposed changes to the Bitcoin transaction validity rules to restrict signatures to strict DER encoding.
+This document specifies proposed changes to the BitRub transaction validity rules to restrict signatures to strict DER encoding.
 
 ==Copyright==
 
@@ -21,7 +21,7 @@ This BIP is licensed under the 2-clause BSD license.
 
 ==Motivation==
 
-Bitcoin's reference implementation currently relies on OpenSSL for signature validation, which means it is implicitly defining Bitcoin's block validity rules. Unfortunately, OpenSSL is not designed for consensus-critical behaviour (it does not guarantee bug-for-bug compatibility between versions), and thus changes to it can - and have - affected Bitcoin software.
+BitRub's reference implementation currently relies on OpenSSL for signature validation, which means it is implicitly defining BitRub's block validity rules. Unfortunately, OpenSSL is not designed for consensus-critical behaviour (it does not guarantee bug-for-bug compatibility between versions), and thus changes to it can - and have - affected BitRub software.
 
 One specifically critical area is the encoding of signatures. Until recently, OpenSSL's releases would accept various deviations from the DER standard and accept signatures as valid. When this changed in OpenSSL 1.0.0p and 1.0.1k, it made some nodes reject the chain.
 
@@ -35,7 +35,7 @@ These operators all perform ECDSA verifications on pubkey/signature pairs, itera
 
 ===DER encoding reference===
 
-The following code specifies the behaviour of strict DER checking. Note that this function tests a signature byte vector which includes the 1-byte sighash flag that Bitcoin adds, even though that flag falls outside of the DER specification, and is unaffected by this proposal. The function is also not called for cases where the length of sig is 0, in order to provide a simple, short and efficiently-verifiable encoding for deliberately invalid signatures.
+The following code specifies the behaviour of strict DER checking. Note that this function tests a signature byte vector which includes the 1-byte sighash flag that BitRub adds, even though that flag falls outside of the DER specification, and is unaffected by this proposal. The function is also not called for cases where the length of sig is 0, in order to provide a simple, short and efficiently-verifiable encoding for deliberately invalid signatures.
 
 DER is specified in https://www.itu.int/rec/T-REC-X.690/en .
 
@@ -136,7 +136,7 @@ The requirement to have signatures that comply strictly with DER has been enforc
 
 ==Implementation==
 
-An implementation for the reference client is available at https://github.com/bitcoin/bitcoin/pull/5713
+An implementation for the reference client is available at https://github.com/bitrub/bitrub/pull/5713
 
 ==Acknowledgements==
 
@@ -144,4 +144,4 @@ This document is extracted from the previous BIP62 proposal, which had input fro
 
 ==Disclosures==
 
-* Subsequent to the network-wide adoption and enforcement of this BIP, the author [https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-July/009697.html disclosed] that strict DER signatures provided an indirect solution to a consensus bug he had previously discovered.
+* Subsequent to the network-wide adoption and enforcement of this BIP, the author [https://lists.linuxfoundation.org/pipermail/bitrub-dev/2015-July/009697.html disclosed] that strict DER signatures provided an indirect solution to a consensus bug he had previously discovered.

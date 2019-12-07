@@ -1,9 +1,9 @@
 <pre>
   BIP: 320
   Title: nVersion bits for general purpose use
-  Author: BtcDrak <btcdrak@gmail.com>
+  Author: BtrDrak <btrdrak@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0320
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0320
   Status: Draft
   Type: Standards Track
   Created: 2018-03-01
@@ -25,7 +25,7 @@ There are a variety of things that miners may desire to use some of the nVersion
 
 The following are example cases that would benefit from using some of the bits from the nVersion field. This list is not exhaustive.
 
-Bitcoin mining hardware currently can exhaust the 32 bit nonce field in less than 200ms requiring the controller to distribute new jobs very frequently to each mining chip consuming a lot of bandwidth and CPU time. This can be greatly reduced by rolling more bits. Rolling too many bits from nTime is not ideal because it may distort the timestamps over a longer period.
+BitRub mining hardware currently can exhaust the 32 bit nonce field in less than 200ms requiring the controller to distribute new jobs very frequently to each mining chip consuming a lot of bandwidth and CPU time. This can be greatly reduced by rolling more bits. Rolling too many bits from nTime is not ideal because it may distort the timestamps over a longer period.
 
 Version-rolling AsicBoost requires two bits from the nVersion field to calculate 4-way collisions. Any two bits can be used and mining equipment can negotiate which bits are to be used with mining pools via the Stratum "version-rolling" extension.
 
@@ -37,7 +37,7 @@ This specification does not reserve specific bits for specific purposes.
 
 ==Reference Implementation==
 
-https://github.com/btcdrak/bitcoin/commit/d12516e136d4a8952904a13eedc9f4225f35dc3b
+https://github.com/btrdrak/bitrub/commit/d12516e136d4a8952904a13eedc9f4225f35dc3b
 
 ==Backwards Compatibility==
 
@@ -59,7 +59,7 @@ Timo Hanke and Sergio Lerner for originally proposing 15-bit extra nNonce2.
 
 [https://arxiv.org/pdf/1604.00575.pdf AsicBoost white paper]
 
-[https://github.com/BlockheaderNonce2/bitcoin/wiki Blockheader Extra nNonce2 proposal]
+[https://github.com/BlockheaderNonce2/bitrub/wiki Blockheader Extra nNonce2 proposal]
 
 [https://github.com/slushpool/stratumprotocol/blob/master/stratum-extensions.mediawiki Stratum protocol extension BIP for version-rolling]
 

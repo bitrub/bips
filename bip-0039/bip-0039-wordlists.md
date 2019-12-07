@@ -41,7 +41,7 @@ uniformity, we propose to use normal ASCII spaces (0x20) to separate words as pe
 ### French
 
 Credits: @Kirvx @NicolasDorier @ecdsa @EricLarch
-([The pull request](https://github.com/bitcoin/bips/issues/152))
+([The pull request](https://github.com/bitrub/bips/issues/152))
 
 1.  High priority on simple and common French words.
 2.  Only words with 5-8 letters.

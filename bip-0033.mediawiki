@@ -4,7 +4,7 @@
   Title: Stratized Nodes
   Author: Amir Taaki <genjix@riseup.net>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0033
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0033
   Status: Draft
   Type: Standards Track
   Created: 2012-05-15
@@ -12,9 +12,9 @@
 
 == Abstract ==
 
-As the Bitcoin network scales, roles are fast becoming specialised. In the beginning, a single Bitcoin user would perform the synonymous roles of miner, merchant and end-user. With the growth however of this system, these functions are being abstracted away to specialised services as a natural part of Bitcoin's growth.
+As the BitRub network scales, roles are fast becoming specialised. In the beginning, a single BitRub user would perform the synonymous roles of miner, merchant and end-user. With the growth however of this system, these functions are being abstracted away to specialised services as a natural part of BitRub's growth.
 
-Bitcoin's blockchain becomes more unwieldy for end users over time, negatively affecting the usability of Bitcoin clients. As it grows, it becomes ever more impractical to deal with on portable devices or low end machines. Several proposals have been put forward to deal with this such as lightweight (headers-only) clients and skipping validation for blocks before the last checkpoint. However these measures are at best stop-gap workarounds to stave off a growing problem.
+BitRub's blockchain becomes more unwieldy for end users over time, negatively affecting the usability of BitRub clients. As it grows, it becomes ever more impractical to deal with on portable devices or low end machines. Several proposals have been put forward to deal with this such as lightweight (headers-only) clients and skipping validation for blocks before the last checkpoint. However these measures are at best stop-gap workarounds to stave off a growing problem.
 
 This document will examine a proposal which will be termed ''stratized nodes'', a modification of an earlier concept termed ''blockchain service''.
 
@@ -24,13 +24,13 @@ Jan Moller created BCCAPI in 2011. BCCAPI allowed a user's client to delegate bl
 
 ThomasV later created Electrum server. BCCAPI's server backend was proprietary, and Electrum required a full Free Software stack. Electrum's server was an adhoc temporary replacement. As it grew and became used, issues started to appear in its design.
 
-Marek Palatinus (slush) drafted a new standard called Stratum to replace Electrum's server. Stratum has multiple transports and is usable as a blockchain server by merchants, miners and user-clients. Electrum moved to using a Stratum implementation first relying on ABE/bitcoind and more recently libbitcoin.
+Marek Palatinus (slush) drafted a new standard called Stratum to replace Electrum's server. Stratum has multiple transports and is usable as a blockchain server by merchants, miners and user-clients. Electrum moved to using a Stratum implementation first relying on ABE/bitrubd and more recently libbitrub.
 
 Stratum is unmaintained by Marek Palatinus, suffers from easy resource starvation and denial of service attacks, and is insecure. The proposal specified here is intended to replace the Stratum's role as a blockchain for user-clients. The proposal here is solely concerned with removing the onus of blockchain validation and lookups from user-clients to specialised services in a secure manner. Any secondary benefits or uses are purely incidental.
 
 == Overview ==
 
-During the initial handshake between Bitcoin nodes, a version packet is sent. version packets have a bitfield called services. Nodes can fill this field to tell the network how they behave and which services they support. NODE_NETWORK (1) means a node can be asked for full blocks for example.
+During the initial handshake between BitRub nodes, a version packet is sent. version packets have a bitfield called services. Nodes can fill this field to tell the network how they behave and which services they support. NODE_NETWORK (1) means a node can be asked for full blocks for example.
 
 We propose two more values of NODE_SERVICE (2) and NODE_STRATIZED (4).
 
@@ -100,10 +100,10 @@ struct spend
 };
 </pre>
 
-These four messages allow a node to discover the history of a Bitcoin address without needing direct access to the blockchain.
+These four messages allow a node to discover the history of a BitRub address without needing direct access to the blockchain.
 
 A typical use case might look like:
-# Send "getoutputs" for a decoded Bitcoin address.
+# Send "getoutputs" for a decoded BitRub address.
 # Receive "outputs", and loop through each contained output point:
 ## Send "getdata" to download the transaction for that point.
 ## Send "getspend" for each output point.
@@ -130,10 +130,10 @@ The other strategy for thin clients termed ''headers-only'' or ''Simplified. Pay
 
 == Rationale ==
 
-NODE_SERVICE does not respond to "getdata" requests by itself (unless used in conjunction with NODE_NETWORK) to prevent starvation attacks. This allows a single trusted NODE_SERVICE architecture (possibly acting as a front-end to multiple backends) to service very many nodes while externalising the costs to the Bitcoin network.
+NODE_SERVICE does not respond to "getdata" requests by itself (unless used in conjunction with NODE_NETWORK) to prevent starvation attacks. This allows a single trusted NODE_SERVICE architecture (possibly acting as a front-end to multiple backends) to service very many nodes while externalising the costs to the BitRub network.
 
-NODE_STRATIZED tries its best to maintain the facade and help upkeep the Bitcoin network (see relaying), but cannot support "getblocks" as it does not have the entire blockchain.
+NODE_STRATIZED tries its best to maintain the facade and help upkeep the BitRub network (see relaying), but cannot support "getblocks" as it does not have the entire blockchain.
 
 == Backwards Compatibility ==
 
-This proposal is an addon to the current Bitcoin network, and is completely backwards compatible.
+This proposal is an addon to the current BitRub network, and is completely backwards compatible.

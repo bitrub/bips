@@ -4,7 +4,7 @@
   Title: Reduced threshold Segwit MASF
   Author: James Hilliard <james.hilliard1@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0091
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0091
   Status: Final
   Type: Standards Track
   Created: 2017-05-22
@@ -22,7 +22,7 @@ This document specifies a method to activate the existing BIP9 segwit deployment
 
 ==Motivation==
 
-Segwit increases the blocksize, fixes transaction malleability, and makes scripting easier to upgrade as well as bringing many other [https://bitcoincore.org/en/2016/01/26/segwit-benefits/ benefits].
+Segwit increases the blocksize, fixes transaction malleability, and makes scripting easier to upgrade as well as bringing many other [https://bitrubcore.org/en/2016/01/26/segwit-benefits/ benefits].
 
 This BIP provides a way for a simple majority of miners to coordinate activation of the existing segwit deployment with less than 95% hashpower. For a number of reasons a complete redeployment of segwit is difficult to do until the existing deployment expires. This is due to 0.13.1+ having many segwit related features active already, including all the P2P components, the new network service flag, the witness-tx and block messages, compact blocks v2 and preferential peering. A redeployment of segwit will need to redefine all these things and doing so before expiry would greatly complicate testing.
 
@@ -86,7 +86,7 @@ if (VersionBitsState(pindex->pprev, chainparams.GetConsensus(), Consensus::DEPLO
 }
 </pre>
 
-https://github.com/segsignal/bitcoin
+https://github.com/segsignal/bitrub
 
 ==Backwards Compatibility==
 
@@ -100,8 +100,8 @@ By orphaning non-signalling blocks during the BIP9 bit 1 "segwit" deployment, th
 
 ==References==
 
-*[https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-March/013714.html Mailing list discussion]
-*[https://github.com/bitcoin/bitcoin/blob/v0.6.0/src/main.cpp#L1281-L1283 P2SH flag day activation]
+*[https://lists.linuxfoundation.org/pipermail/bitrub-dev/2017-March/013714.html Mailing list discussion]
+*[https://github.com/bitrub/bitrub/blob/v0.6.0/src/main.cpp#L1281-L1283 P2SH flag day activation]
 *[[bip-0009.mediawiki|BIP9 Version bits with timeout and delay]]
 *[[bip-0016.mediawiki|BIP16 Pay to Script Hash]]
 *[[bip-0141.mediawiki|BIP141 Segregated Witness (Consensus layer)]]
@@ -109,7 +109,7 @@ By orphaning non-signalling blocks during the BIP9 bit 1 "segwit" deployment, th
 *[[bip-0147.mediawiki|BIP147 Dealing with dummy stack element malleability]]
 *[[bip-0148.mediawiki|BIP148 Mandatory activation of segwit deployment]]
 *[[bip-0149.mediawiki|BIP149 Segregated Witness (second deployment)]]
-*[https://bitcoincore.org/en/2016/01/26/segwit-benefits/ Segwit benefits]
+*[https://bitrubcore.org/en/2016/01/26/segwit-benefits/ Segwit benefits]
 
 ==Copyright==
 

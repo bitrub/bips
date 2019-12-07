@@ -4,7 +4,7 @@
   Title: Signet
   Author: Karl-Johan Alm <karljohan-alm@garage.co.jp>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0325
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0325
   Status: Draft
   Type: Standards Track
   Created: 2019-03-20
@@ -69,7 +69,7 @@ Other software need not add block signature validation code that they will not u
 
 == Reference implementation ==
 
-Pull request at https://github.com/bitcoin/bitcoin/pull/16411
+Pull request at https://github.com/bitrub/bitrub/pull/16411
 
 == Acknowledgements ==
 
@@ -77,8 +77,8 @@ TODO
 
 == References ==
 
-# Original mailing list thread: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2019-March/016734.html
-# Bitcoin Wiki entry: https://en.bitcoin.it/wiki/Signet
+# Original mailing list thread: https://lists.linuxfoundation.org/pipermail/bitrub-dev/2019-March/016734.html
+# BitRub Wiki entry: https://en.bitrub.it/wiki/Signet
 
 == Copyright ==
 

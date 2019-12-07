@@ -6,7 +6,7 @@
           Jonas Schnelli <dev@jonasschnelli.ch>
           Daniel Pape <dpape@dpape.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0136
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0136
   Status: Draft
   Type: Informational
   Created: 2017-07-09
@@ -16,7 +16,7 @@
 == Introduction ==
 
 === Abstract ===
-This document proposes a convenient human useable format, '''"TxRef"''', as a standard way to refer to a transaction position within the Bitcoin Blockchain, and optionally a particular outpoint index within the referred transaction. The primary purpose of this format is to allow users to refer to a confirmed transaction (and optionally an outpoint index within) in a standard, reliable, and concise way.
+This document proposes a convenient human useable format, '''"TxRef"''', as a standard way to refer to a transaction position within the BitRub Blockchain, and optionally a particular outpoint index within the referred transaction. The primary purpose of this format is to allow users to refer to a confirmed transaction (and optionally an outpoint index within) in a standard, reliable, and concise way.
 
 ''Please note: Unlike TxID where there is strong cryptographic link between the ID and the actual transaction, TxRef only provides a weak link to a particular transaction. TxRef locates an offset within a blockchain for a transaction, that may - or may not - point to an actual transaction, which in fact may change with reorganisations. We recommend that TxRef's should be not used for positions within the blockchain having a maturity less than 100 blocks.''
 
@@ -25,7 +25,7 @@ This document proposes a convenient human useable format, '''"TxRef"''', as a st
 This BIP is licensed under the 2-clause BSD license.
 
 === Motivation ===
-Since the first version of Bitcoin, TxID's (Transaction Identifiers) have been a core part of the consensus protocol and have been routinely used to identify individual transactions between users.
+Since the first version of BitRub, TxID's (Transaction Identifiers) have been a core part of the consensus protocol and have been routinely used to identify individual transactions between users.
 
 However, for many use-cases they have practical limitations:
 * TxIDs are expensive for full nodes to lookup (requiring either a linear scan of the blockchain, or an expensive TxID index).
@@ -35,7 +35,7 @@ However, for many use-cases they have practical limitations:
 For transactions that have been embedded in the blockchain, it is possible to reference them not by their TxID, but by their location within the blockchain itself. The encoding can be made friendly for occasional human transcription. In this document, we propose a standard for doing this.
 
 === Examples ===
-These examples are for Bitcoin Transactions.
+These examples are for BitRub Transactions.
 * Genesis Coinbase Transaction (Transaction #0 of Block #0): <tt>tx1:rqqq-qqqq-qmhu-qhp</tt>
 * Transaction #2205 of Block #466793: <tt>tx1:rjk0-uqay-zsrw-hqe</tt>
 
@@ -60,7 +60,7 @@ Therefore, implementers must be careful not to display TxRef's to users prematur
 
 === Encoding ===
 
-TxRef uses standard Bech32<ref name=":0">'''Why use Bech32 Encoding for Confirmed Transaction References?''' The error detection and correction properties of this encoding format make it very attractive. We expect that it will be reasonable for software to correct a maximum of two characters; however, we haven’t specified this yet.</ref> encoding as defined in [https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki BIP-173] and therefore consists of:
+TxRef uses standard Bech32<ref name=":0">'''Why use Bech32 Encoding for Confirmed Transaction References?''' The error detection and correction properties of this encoding format make it very attractive. We expect that it will be reasonable for software to correct a maximum of two characters; however, we haven’t specified this yet.</ref> encoding as defined in [https://github.com/bitrub/bips/blob/master/bip-0173.mediawiki BIP-173] and therefore consists of:
 
 * Human-readable Part, or "HRP", that provides namespacing. We have chosen to distinguish between Main and Test Networks:
 ** For Any Mainnet Network: '''"tx"'''.
@@ -90,7 +90,7 @@ All non-bech32-alphabet characters after the bech32 code separator MUST be ignor
 |
 |1 – 2
 |2
-|Bitcoin Mainnet: "'''tx'''", Bitcoin Testnet: "'''txtest'''"
+|BitRub Mainnet: "'''tx'''", BitRub Testnet: "'''txtest'''"
 |-
 |Separator
 |
@@ -122,7 +122,7 @@ The Data - Hyphen pattern is repeated for the entire length of data, ( a hyphen 
 Depending on if an optional transaction outpoint is included, there can be 75 or 90 bits of data encoded in the string above. These bits are defined in this manner:
 
 {| class="wikitable"
-|+TxRef Binary Format for Bitcoin Mainnet and Bitcoin Testnet:
+|+TxRef Binary Format for BitRub Mainnet and BitRub Testnet:
 !
 !'''Bit'''
 !'''Bit(s)'''
@@ -134,10 +134,10 @@ Depending on if an optional transaction outpoint is included, there can be 75 or
 |0 – 4
 |5
 |Chain Namespacing Code
-|'''0x3''' for Bitcoin Mainnet.
-'''0x4''' for Bitcoin Mainnet with Outpoint.
-'''0x6''' for Bitcoin Testnet.
-'''0x7''' for Bitcoin Testnet with Outpoint.
+|'''0x3''' for BitRub Mainnet.
+'''0x4''' for BitRub Mainnet with Outpoint.
+'''0x6''' for BitRub Testnet.
+'''0x7''' for BitRub Testnet with Outpoint.
 |
 |-
 |Version
@@ -199,18 +199,18 @@ We include the 30-bit checksum last:
 |}
 
 ==== Magic Notes: ====
-The magic code provides namespacing between chains. 5-bit magic codes are used for the Bitcoin Mainnet and the Bitcoin Testnet. (it may be significantly longer for other projects/chains):
+The magic code provides namespacing between chains. 5-bit magic codes are used for the BitRub Mainnet and the BitRub Testnet. (it may be significantly longer for other projects/chains):
 
-* For Bitcoin Mainnet the magic code is: '''0x3''', leading to an '''"r"''' character when encoded.
-* For Bitcoin Mainnet with Outpoint Encoded the magic code is: '''0x4''', leading to an '''"y"''' character when encoded.
-* For Bitcoin Testnet the magic code is: '''0x6''', leading to an '''"x"''' character when encoded.
-* For Bitcoin Testnet with Outpoint Encoded the magic code is: '''0x7''', leading to an '''"8"''' character when encoded.
+* For BitRub Mainnet the magic code is: '''0x3''', leading to an '''"r"''' character when encoded.
+* For BitRub Mainnet with Outpoint Encoded the magic code is: '''0x4''', leading to an '''"y"''' character when encoded.
+* For BitRub Testnet the magic code is: '''0x6''', leading to an '''"x"''' character when encoded.
+* For BitRub Testnet with Outpoint Encoded the magic code is: '''0x7''', leading to an '''"8"''' character when encoded.
 
-Codes '''0x0''', '''0x1''', '''0x2''', '''0x5''', are also reserved for future use within the Bitcoin project.
+Codes '''0x0''', '''0x1''', '''0x2''', '''0x5''', are also reserved for future use within the BitRub project.
 
 ''Any other chain MUST NOT start their magic code with any value between 0x0 and 0x7 inclusive.''
 
-Other magic codes will be specified in SLIP-XXXX "TxRef for Non-Bitcoin Chains and Networks".
+Other magic codes will be specified in SLIP-XXXX "TxRef for Non-BitRub Chains and Networks".
 
 === Compatibility ===
 There are no known compatibility issues.
@@ -220,11 +220,11 @@ There are no known compatibility issues.
 <references />
 
 == Reference implementations ==
-C Reference Implementation (supports magic codes 0x3 and 0x6): https://github.com/jonasschnelli/bitcoin_txref_code
+C Reference Implementation (supports magic codes 0x3 and 0x6): https://github.com/jonasschnelli/bitrub_txref_code
 
 Go Reference Implementation (supports magic codes 0x3 and 0x6): https://github.com/kulpreet/txref
 
-C++ Reference Implementation (support magic codes 0x3, 0x4, 0x6, 0x7): https://github.com/dcdpr/btcr-DID-method/
+C++ Reference Implementation (support magic codes 0x3, 0x4, 0x6, 0x7): https://github.com/dcdpr/btrr-DID-method/
 
 == Appendices ==
 
@@ -232,10 +232,10 @@ C++ Reference Implementation (support magic codes 0x3, 0x4, 0x6, 0x7): https://g
 There are two sets of Test Vectors included here:
 
 * Bech32 Encoding Test Vectors. These are to test if a implementation accepts the encoding, with the correct human readable part, and separator.
-* Bitcoin TxRef Test Vectors. These test the full specification, in particular, correct values for block height and the transaction index.
+* BitRub TxRef Test Vectors. These test the full specification, in particular, correct values for block height and the transaction index.
 
 ==== Bech32 Encoding (for TxRef). ====
-''Please Note: All test vectors are shown to help test if a string is compliant or not. All real-life applications (such as for Bitcoin) should comply with the Bitcoin Test Vectors listed Below.''
+''Please Note: All test vectors are shown to help test if a string is compliant or not. All real-life applications (such as for BitRub) should comply with the BitRub Test Vectors listed Below.''
 
 The following strings have a valid Human Readable Part and Bech32 Checksum.
 * <tt>TX1A12UEL5L</tt>
@@ -247,36 +247,36 @@ The following list gives invalid TxRef's and the reason for their invalidity.
 * <tt>bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kg3g4ty</tt>: Invalid human-readable part
 * <tt>tx1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t5</tt>: Invalid checksum
 
-==== Bitcoin TxRef (mainnet and testnet) ====
-The following list gives properly encoded Bitcoin mainnet TxRef's and the values in hex. (block height, transaction index)
+==== BitRub TxRef (mainnet and testnet) ====
+The following list gives properly encoded BitRub mainnet TxRef's and the values in hex. (block height, transaction index)
 
 * <tt>tx1:rqqq-qqqq-qmhu-qhp</tt>: <tt>(0x0, 0x0)</tt>
 * <tt>tx1:rqqq-qqll-l8xh-jkg</tt>: <tt>(0x0, 0x7FFF)</tt>
 * <tt>tx1:r7ll-llqq-qghq-qr8</tt>: <tt>(0xFFFFFF, 0x0)</tt>
 * <tt>tx1:r7ll-llll-l5xt-jzw</tt>: <tt>(0xFFFFFF, 0x7FFF)</tt>
 
-The following list gives properly encoded Bitcoin testnet TxRef's and the values in hex. (block height, transaction index)
+The following list gives properly encoded BitRub testnet TxRef's and the values in hex. (block height, transaction index)
 
 * <tt>txtest1:xqqq-qqqq-qkla-64l</tt>: <tt>(0x0, 0x0)</tt>
 * <tt>txtest1:xqqq-qqll-l2wk-g5k</tt>: <tt>(0x0, 0x7FFF)</tt>
 * <tt>txtest1:x7ll-llqq-q9lp-6pe</tt>: <tt>(0xFFFFFF, 0x0)</tt>
 * <tt>txtest1:x7ll-llll-lew2-gqs</tt>: <tt>(0xFFFFFF, 0x7FFF)</tt>
 
-The following list gives valid (though strangely formatted) Bitcoin TxRef's and the values in hex. (block height, transaction index)
+The following list gives valid (though strangely formatted) BitRub TxRef's and the values in hex. (block height, transaction index)
 * <tt>tx1:rjk0-uqay-zsrw-hqe</tt>: <tt>(0x71F69, 0x89D)</tt>
 * <tt>TX1RJK0UQAYZSRWHQE</tt>:  <tt>(0x71F69, 0x89D)</tt>
 * <tt>TX1RJK0--UQaYZSRw----HQE</tt>:  <tt>(0x71F69, 0x89D)</tt>
 * <tt>tx1 rjk0 uqay zsrw hqe</tt>: <tt>(0x71F69, 0x89D)</tt>
 * <tt>tx1!rjk0\uqay*zsrw^^hqe</tt>: <tt>(0x71F69, 0x89D)</tt>
 
-The following list gives invalid Bitcoin TxRef's and the reason for their invalidity.
+The following list gives invalid BitRub TxRef's and the reason for their invalidity.
 * <tt>tx1:t7ll-llll-ldup-3hh</tt>: Magic 0xB instead of 0x3.  <tt>(0xFFFFFF, 0x7FFF)</tt>
 * <tt>tx1:rlll-llll-lfet-r2y</tt>: Version 1 instead of 0. <tt>(0xFFFFFF, 0x7FFF)</tt>
 * <tt>tx1:rjk0-u5ng-gghq-fkg7</tt>: Valid Bech32, but 10x5bit packages instead of 8.
 * <tt>tx1:rjk0-u5qd-s43z</tt>: Valid Bech32, but 6x5bit packages instead of 8.
 
-==== Bitcoin TxRef with Outpoints (mainnet and testnet) ====
-The following list gives properly encoded Bitcoin mainnet TxRef's with Outpoints and the values in hex. (block height, transaction index, TXO index)
+==== BitRub TxRef with Outpoints (mainnet and testnet) ====
+The following list gives properly encoded BitRub mainnet TxRef's with Outpoints and the values in hex. (block height, transaction index, TXO index)
 
 * <tt>tx1:yqqq-qqqq-qqqq-ksvh-26</tt>: <tt>(0x0, 0x0, 0x0)</tt>
 * <tt>tx1:yqqq-qqll-lqqq-v0h2-2k</tt>: <tt>(0x0, 0x7FFF, 0x0)</tt>
@@ -291,7 +291,7 @@ The following list gives properly encoded Bitcoin mainnet TxRef's with Outpoints
 * <tt>tx1:yjk0-uqay-zrfq-g2cg-t8</tt>: <tt>(0x71F69, 0x89D, 0x123)</tt>
 * <tt>tx1:yjk0-uqay-zu4x-nk6u-pc</tt>: <tt>(0x71F69, 0x89D, 0x1ABC)</tt>
 
-The following list gives properly encoded Bitcoin testnet TxRef's with Outpoints and the values in hex. (block height, transaction index, TXO index)
+The following list gives properly encoded BitRub testnet TxRef's with Outpoints and the values in hex. (block height, transaction index, TXO index)
 
 * <tt>txtest1:8qqq-qqqq-qqqq-cgru-fa</tt>: <tt>(0x0, 0x0, 0x0)</tt>
 * <tt>txtest1:8qqq-qqll-lqqq-zhcp-f3</tt>: <tt>(0x0, 0x7FFF, 0x0)</tt>
@@ -307,7 +307,7 @@ The following list gives properly encoded Bitcoin testnet TxRef's with Outpoints
 * <tt>txtest1:8jk0-uqay-zu4x-aw4h-zl</tt>: <tt>(0x71F69, 0x89D, 0x1ABC)</tt>
 
 
-=== Bitcoin TxRef Payload Value Choice: ===
+=== BitRub TxRef Payload Value Choice: ===
 Some calculations showing why we chose these particular bit-length of the block height and transaction index.
 
 ==== Block Height Value: ====

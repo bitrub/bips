@@ -5,7 +5,7 @@
   Author: Nils Schneider <nils.schneider@gmail.com>
           Matt Corallo <bip21@bluematt.me>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0021
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0021
   Status: Final
   Type: Standards Track
   Created: 2012-01-29
@@ -14,7 +14,7 @@
 This BIP is a modification of an earlier [[bip-0020.mediawiki|BIP 0020]] by Luke Dashjr. BIP 0020 was based off an earlier document by Nils Schneider. The alternative payment amounts in BIP 0020 have been removed.
 
 ==Abstract==
-This BIP proposes a URI scheme for making Bitcoin payments.
+This BIP proposes a URI scheme for making BitRub payments.
 
 ==Motivation==
 The purpose of this URI scheme is to enable users to easily make payments by simply clicking links on webpages or scanning QR Codes.
@@ -23,15 +23,15 @@ The purpose of this URI scheme is to enable users to easily make payments by sim
 
 === General rules for handling (important!) ===
 
-Bitcoin clients MUST NOT act on URIs without getting the user's authorization.
+BitRub clients MUST NOT act on URIs without getting the user's authorization.
 They SHOULD require the user to manually approve each payment individually, though in some cases they MAY allow the user to automatically make this decision.
 
 === Operating system integration ===
-Graphical bitcoin clients SHOULD register themselves as the handler for the "bitcoin:" URI scheme by default, if no other handler is already registered. If there is already a registered handler, they MAY prompt the user to change it once when they first run the client.
+Graphical bitrub clients SHOULD register themselves as the handler for the "bitrub:" URI scheme by default, if no other handler is already registered. If there is already a registered handler, they MAY prompt the user to change it once when they first run the client.
 
 === General Format ===
 
-Bitcoin URIs follow the general format for URIs as set forth in RFC 3986. The path component consists of a bitcoin address, and the query component provides additional payment options.
+BitRub URIs follow the general format for URIs as set forth in RFC 3986. The path component consists of a bitrub address, and the query component provides additional payment options.
 
 Elements of the query component may contain characters outside the valid range. These must first be encoded according to UTF-8, and then each octet of the corresponding UTF-8 sequence must be percent-encoded as described in RFC 3986.
 
@@ -39,10 +39,10 @@ Elements of the query component may contain characters outside the valid range. 
 
 (See also [[#Simpler syntax|a simpler representation of syntax]])
 
- bitcoinurn     = "bitcoin:" bitcoinaddress [ "?" bitcoinparams ]
- bitcoinaddress = *base58
- bitcoinparams  = bitcoinparam [ "&" bitcoinparams ]
- bitcoinparam   = [ amountparam / labelparam / messageparam / otherparam / reqparam ]
+ bitruburn     = "bitrub:" bitrubaddress [ "?" bitrubparams ]
+ bitrubaddress = *base58
+ bitrubparams  = bitrubparam [ "&" bitrubparams ]
+ bitrubparam   = [ amountparam / labelparam / messageparam / otherparam / reqparam ]
  amountparam    = "amount=" *digit [ "." *digit ]
  labelparam     = "label=" *qchar
  messageparam   = "message=" *qchar
@@ -51,25 +51,25 @@ Elements of the query component may contain characters outside the valid range. 
 
 Here, "qchar" corresponds to valid characters of an RFC 3986 URI query component, excluding the "=" and "&" characters, which this BIP takes as separators.
 
-The scheme component ("bitcoin:") is case-insensitive, and implementations must accept any combination of uppercase and lowercase letters. The rest of the URI is case-sensitive, including the query parameter keys.
+The scheme component ("bitrub:") is case-insensitive, and implementations must accept any combination of uppercase and lowercase letters. The rest of the URI is case-sensitive, including the query parameter keys.
 
 === Query Keys ===
 
 *label: Label for that address (e.g. name of receiver)
-*address: bitcoin address
+*address: bitrub address
 *message: message that describes the transaction to the user ([[#Examples|see examples below]])
-*size: amount of base bitcoin units ([[#Transfer amount/size|see below]])
+*size: amount of base bitrub units ([[#Transfer amount/size|see below]])
 *(others): optional, for future extensions
 
 ==== Transfer amount/size ====
 
-If an amount is provided, it MUST be specified in decimal BTC.
+If an amount is provided, it MUST be specified in decimal BTR.
 All amounts MUST contain no commas and use a period (.) as the separating character to separate whole numbers and decimal fractions.
-I.e. amount=50.00 or amount=50 is treated as 50 BTC, and amount=50,000.00 is invalid.
+I.e. amount=50.00 or amount=50 is treated as 50 BTR, and amount=50,000.00 is invalid.
 
-Bitcoin clients MAY display the amount in any format that is not intended to deceive the user.
+BitRub clients MAY display the amount in any format that is not intended to deceive the user.
 They SHOULD choose a format that is foremost least confusing, and only after that most reasonable given the amount requested.
-For example, so long as the majority of users work in BTC units, values should always be displayed in BTC by default, even if mBTC or TBC would otherwise be a more logical interpretation of the amount.
+For example, so long as the majority of users work in BTR units, values should always be displayed in BTR by default, even if mBTR or TBC would otherwise be a more logical interpretation of the amount.
 == Rationale ==
 
 ===Payment identifiers, not person identifiers===
@@ -80,13 +80,13 @@ Therefore, a URI scheme should not represent an exchange of personal information
 Should someone from the outside happen to see such a URI, the URI scheme name already gives a description.
 A quick search should then do the rest to help them find the resources needed to make their payment.
 Other proposed names sound much more cryptic; the chance that someone googles that out of curiosity are much slimmer.
-Also, very likely, what he will find are mostly technical specifications - not the best introduction to bitcoin.
+Also, very likely, what he will find are mostly technical specifications - not the best introduction to bitrub.
 
 ==Forward compatibility==
 Variables which are prefixed with a req- are considered required.  If a client does not implement any variables which are prefixed with req-, it MUST consider the entire URI invalid.  Any other variables which are not implemented, but which are not prefixed with a req-, can be safely ignored.
 
 ==Backward compatibility==
-As this BIP is written, several clients already implement a bitcoin: URI scheme similar to this one, however usually without the additional "req-" prefix requirement.  Thus, it is recommended that additional variables prefixed with req- not be used in a mission-critical way until a grace period of 6 months from the finalization of this BIP has passed in order to allow client developers to release new versions, and users of old clients to upgrade.
+As this BIP is written, several clients already implement a bitrub: URI scheme similar to this one, however usually without the additional "req-" prefix requirement.  Thus, it is recommended that additional variables prefixed with req- not be used in a mission-critical way until a grace period of 6 months from the finalization of this BIP has passed in order to allow client developers to release new versions, and users of old clients to upgrade.
 
 == Appendix ==
 
@@ -97,35 +97,35 @@ Please see the BNF grammar above for the normative syntax.
 
 [foo] means optional, &lt;bar&gt; are placeholders
 
- <nowiki>bitcoin:<address>[?amount=<amount>][?label=<label>][?message=<message>]</nowiki>
+ <nowiki>bitrub:<address>[?amount=<amount>][?label=<label>][?message=<message>]</nowiki>
 
 === Examples ===
 
 Just the address:
- bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W
+ bitrub:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W
 
 Address with name:
- bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?label=Luke-Jr
+ bitrub:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?label=Luke-Jr
 
-Request 20.30 BTC to "Luke-Jr":
- bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=20.3&label=Luke-Jr
+Request 20.30 BTR to "Luke-Jr":
+ bitrub:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=20.3&label=Luke-Jr
 
-Request 50 BTC with message:
- bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz
+Request 50 BTR with message:
+ bitrub:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz
 
 Some future version that has variables which are (currently) not understood and required and thus invalid:
- bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?req-somethingyoudontunderstand=50&req-somethingelseyoudontget=999
+ bitrub:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?req-somethingyoudontunderstand=50&req-somethingelseyoudontget=999
 
 Some future version that has variables which are (currently) not understood but not required and thus valid:
- bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?somethingyoudontunderstand=50&somethingelseyoudontget=999
+ bitrub:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?somethingyoudontunderstand=50&somethingelseyoudontget=999
 
 Characters must be URI encoded properly.
 
 == Reference Implementations ==
-=== Bitcoin clients ===
-* Bitcoin-Qt supports the old version of Bitcoin URIs (ie without the req- prefix), with Windows and KDE integration as of commit 70f55355e29c8e45b607e782c5d76609d23cc858.
+=== BitRub clients ===
+* BitRub-Qt supports the old version of BitRub URIs (ie without the req- prefix), with Windows and KDE integration as of commit 70f55355e29c8e45b607e782c5d76609d23cc858.
 
 === Libraries ===
-* Javascript - https://github.com/bitcoinjs/bip21
-* Java - https://github.com/SandroMachado/BitcoinPaymentURI
-* Swift - https://github.com/SandroMachado/BitcoinPaymentURISwift
+* Javascript - https://github.com/bitrubjs/bip21
+* Java - https://github.com/SandroMachado/BitRubPaymentURI
+* Swift - https://github.com/SandroMachado/BitRubPaymentURISwift

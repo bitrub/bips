@@ -4,7 +4,7 @@
   Title: addrv2 message
   Author: Wladimir J. van der Laan <laanwj@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0155
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0155
   Status: Draft
   Type: Standards Track
   Created: 2019-02-27
@@ -45,7 +45,7 @@ interpreted as described in RFC 2119<ref>[https://tools.ietf.org/html/rfc2119 RF
 The <code>addrv2</code> message is defined as a message where <code>pchCommand == "addrv2"</code>.
 It is serialized in the standard encoding for P2P messages.
 Its format is similar to the current <code>addr</code> message format
-<ref>[https://bitcoin.org/en/developer-reference#addr Bitcoin Developer Reference: addr message]</ref>, with the difference that the 
+<ref>[https://bitrub.org/en/developer-reference#addr BitRub Developer Reference: addr message]</ref>, with the difference that the 
 fixed 16-byte IP address is replaced by a network ID and a variable-length address, and the time and services format has been changed to VARINT.
 
 This means that the message contains a serialized <code>std::vector</code> of the following structure:

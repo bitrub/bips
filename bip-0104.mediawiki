@@ -4,7 +4,7 @@
   Title: 'Block75' - Max block size like difficulty
   Author: t.khan <teekhan42@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0104
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0104
   Status: Draft
   Type: Standards Track
   Created: 2017-01-13
@@ -20,11 +20,11 @@ Automatic adjustment of max block size with the target of keeping blocks 75% ful
 
 Blocks are already too full and cannot support further transaction growth. While SegWit and Lightning (and other off-chain solutions) will help, they will not solve this problem.
 
-Bitcoin needs a reasonably effective and predictable way of managing the maximum block size which allows moderate growth, keeps max block size as small as possible, and prevents wild swings in transaction fees.
+BitRub needs a reasonably effective and predictable way of managing the maximum block size which allows moderate growth, keeps max block size as small as possible, and prevents wild swings in transaction fees.
 
 The every two-week and automatic adjustment of difficulty has proven to be a reasonably effective and predictable way of managing how quickly blocks are mined. It works well because humans aren’t involved  (except for setting the original target of a 10 minute per block average), and therefore it isn’t political or contentious. It’s simply a response to changing network resources.
 
-It’s clear at this point that human beings should not be involved in the determination of max block size, just as they’re not involved in deciding the difficulty. Therefore, it is logical and consistent with Bitcoin’s design to implement a permanent solution which, as with the difficulty adjustment, is simply an automatic response to changing transaction volumes. With the target of keeping blocks 75% full on average, this is the goal of Block75.
+It’s clear at this point that human beings should not be involved in the determination of max block size, just as they’re not involved in deciding the difficulty. Therefore, it is logical and consistent with BitRub’s design to implement a permanent solution which, as with the difficulty adjustment, is simply an automatic response to changing transaction volumes. With the target of keeping blocks 75% full on average, this is the goal of Block75.
 
 
 ==Specification==
@@ -55,7 +55,7 @@ The 2016 block (~2 weeks) period was selected because:
 * the frequent and gradual adjustments that result will be relatively easy for miners and node operators to predict and adapt to, as any unforeseen consequences will be visible well in advance
 * it minimizes any effect a malicious party could have in an attempt to manipulate max block size
 
-The Block75 algorithm will adjust the max block size up and down in response to transaction volume, including changes brought on by SegWit and Lightning. This is important as it will keep average transaction fees stable, thereby allowing miners and businesses using Bitcoin more certainty regarding future income/expenses.
+The Block75 algorithm will adjust the max block size up and down in response to transaction volume, including changes brought on by SegWit and Lightning. This is important as it will keep average transaction fees stable, thereby allowing miners and businesses using BitRub more certainty regarding future income/expenses.
 
 ==Other solutions considered==
 A hardcoded increase to max block size (2MB, 8MB, etc.), rejected because:

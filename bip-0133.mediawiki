@@ -4,7 +4,7 @@
   Title: feefilter message
   Author: Alex Morcos <morcos@chaincode.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0133
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0133
   Status: Draft
   Type: Standards Track
   Created: 2016-02-13
@@ -17,7 +17,7 @@ Add a new message, "feefilter", which serves to instruct peers not to send "inv"
 
 ==Motivation==
 
-The concept of a limited mempool was introduced in Bitcoin Core 0.12 to provide protection against attacks or spam transactions of low fees that are not being mined. A reject filter was also introduced to help prevent repeated requests for the same transaction that might have been recently rejected for insufficient fee. These methods help keep resource utilization on a node from getting out of control.
+The concept of a limited mempool was introduced in BitRub Core 0.12 to provide protection against attacks or spam transactions of low fees that are not being mined. A reject filter was also introduced to help prevent repeated requests for the same transaction that might have been recently rejected for insufficient fee. These methods help keep resource utilization on a node from getting out of control.
 
 However, there are limitations to the effectiveness of these approaches.  The reject filter is reset after every block which means transactions that are inv'ed over a longer time period will be rerequested and there is no method to prevent requesting the transaction the first time.  Furthermore, inv data is sent at least once either to or from each peer for every transaction accepted to the mempool and there is no mechanism by which to know that an inv sent to a given peer would not result in a getdata request because it represents a transaction with too little fee.
 
@@ -46,7 +46,7 @@ Older clients remain fully compatible and interoperable after this change. Also,
 
 ==Implementation==
 
-https://github.com/bitcoin/bitcoin/pull/7542
+https://github.com/bitrub/bitrub/pull/7542
 
 ==Copyright==
 This document is placed in the public domain.

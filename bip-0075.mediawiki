@@ -7,7 +7,7 @@
           Aaron Voisine <voisine@gmail.com>
           James MacWhyte <macwhyte@gmail.com>
   Comments-Summary: Recommended for implementation (one person)
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0075
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0075
   Status: Final
   Type: Standards Track
   Created: 2015-11-20
@@ -50,30 +50,30 @@ The motivation for this extension to [[bip-0070.mediawiki|BIP70]] is threefold:
 
 # Allow a sender of funds the option of sharing their identity with the receiver. This information could then be used to:
 
-#* Make Bitcoin logs (wallet transaction history) more human readable
-#* Give the user the ability to decide whether or not they share their Bitcoin address and other payment details when requested
+#* Make BitRub logs (wallet transaction history) more human readable
+#* Give the user the ability to decide whether or not they share their BitRub address and other payment details when requested
 #* Allow for an open standards based way for businesses to keep verifiable records of their financial transactions, to better meet the needs of accounting practices or other reporting and statutory requirements
 #* Automate the active exchange of payment addresses, so static addresses and BIP32 X-Pubs can be avoided to maintain privacy and convenience
 
-In short we wanted to make Bitcoin more human, while at the same time improving transaction privacy.
+In short we wanted to make BitRub more human, while at the same time improving transaction privacy.
 
 ==Example Use Cases==
 
 1. Address Book
 
-A Bitcoin wallet developer would like to offer the ability to store an "address book" of payees, so users could send multiple payments to known entities without having to request an address every time. Static addresses compromise privacy, and address reuse is considered a security risk. BIP32 X-Pubs allow the generation of unique addresses, but watching an X-Pub chain for each person you wish to receive funds from is too resource-intensive for mobile applications, and there is always a risk of unknowingly sending funds to an X-Pub address after the owner has lost access to the corresponding private key.
+A BitRub wallet developer would like to offer the ability to store an "address book" of payees, so users could send multiple payments to known entities without having to request an address every time. Static addresses compromise privacy, and address reuse is considered a security risk. BIP32 X-Pubs allow the generation of unique addresses, but watching an X-Pub chain for each person you wish to receive funds from is too resource-intensive for mobile applications, and there is always a risk of unknowingly sending funds to an X-Pub address after the owner has lost access to the corresponding private key.
 
-With this BIP, Bitcoin wallets could maintain an "address book" that only needs to store each payee's public key. Adding an entry to one's address book could be done by using a Wallet Name, scanning a QR code, sending a URI through a text message or e-mail, or searching a public repository. When the user wishes to make a payment, their wallet would do all the work in the background to communicate with the payee's wallet to receive a unique payment address. If the payee's wallet has been lost, replaced, or destroyed, no communication will be possible, and the sending of funds to a "dead" address is prevented.
+With this BIP, BitRub wallets could maintain an "address book" that only needs to store each payee's public key. Adding an entry to one's address book could be done by using a Wallet Name, scanning a QR code, sending a URI through a text message or e-mail, or searching a public repository. When the user wishes to make a payment, their wallet would do all the work in the background to communicate with the payee's wallet to receive a unique payment address. If the payee's wallet has been lost, replaced, or destroyed, no communication will be possible, and the sending of funds to a "dead" address is prevented.
 
 2. Individual Permissioned Address Release
 
-A Bitcoin wallet developer would like to allow users to view a potential sending party's identifying information before deciding whether or not to share payment information with them. Currently, [[bip-0070.mediawiki|BIP70]] shares the receiver’s payment address and identity information with anyone who requests it.
+A BitRub wallet developer would like to allow users to view a potential sending party's identifying information before deciding whether or not to share payment information with them. Currently, [[bip-0070.mediawiki|BIP70]] shares the receiver’s payment address and identity information with anyone who requests it.
 
-With this BIP, Bitcoin wallets could use the sender’s identifying information to make a determination of whether or not to share their own information. This gives the receiving party more control over who receives their payment and identity information. Additionally, this could be used to automatically provide new payment addresses to whitelisted senders, or to protect users’ privacy from unsolicited payment requests.
+With this BIP, BitRub wallets could use the sender’s identifying information to make a determination of whether or not to share their own information. This gives the receiving party more control over who receives their payment and identity information. Additionally, this could be used to automatically provide new payment addresses to whitelisted senders, or to protect users’ privacy from unsolicited payment requests.
 
 3. Using Store & Forward Servers
 
-A Bitcoin wallet developer would like to use a public Store & Forward service for an asynchronous address exchange. This is a common case for mobile and offline wallets.
+A BitRub wallet developer would like to use a public Store & Forward service for an asynchronous address exchange. This is a common case for mobile and offline wallets.
 
 With this BIP, returned payment information is encrypted with an ECDH-computed shared key before sending to a Store & Forward service. In this case, a successful attack against a Store & Forward service would not be able to read or modify wallet address or payment information, only delete encrypted messages.
 
@@ -87,7 +87,7 @@ This BIP adds additional possible values for the pki_type variable in the Paymen
 |-
 | pgp+sha256            || An [[https://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP|OpenPGP]] certificate
 |-
-| ecdsa+sha256          || A [[https://en.bitcoin.it/wiki/Secp256k1|secp256k1]] [[https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm|ECDSA]] public key
+| ecdsa+sha256          || A [[https://en.bitrub.it/wiki/Secp256k1|secp256k1]] [[https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm|ECDSA]] public key
 |}
 
 '''NOTE''': Although SHA1 was supported in BIP70, it has been deprecated and BIP75 only supports SHA256. The hashing algorithm is still specified in the values listed above for forward and backwards compatibility.
@@ -250,9 +250,9 @@ When communicated via '''HTTP''', the listed messages MUST be transmitted via TL
 {| class="wikitable"
 ! Message Type !! Content Type
 |-
-| ProtocolMessage                   || application/bitcoin-paymentprotocol-message
+| ProtocolMessage                   || application/bitrub-paymentprotocol-message
 |-
-| EncryptedProtocolMessage          || application/bitcoin-encrypted-paymentprotocol-message
+| EncryptedProtocolMessage          || application/bitrub-encrypted-paymentprotocol-message
 |}
 
 ===Payment Protocol Status Communication===
@@ -319,7 +319,7 @@ For the following we assume the Sender already knows the Receiver's public key, 
 * If NOT including certificate, set '''pki_type''' to "none"
 * If including certificate:
 ** Set '''pki_type''' to "x509+sha256"
-** Set '''pki_data''' as it would be set in BIP-0070 ([https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki#Certificates Certificates])
+** Set '''pki_data''' as it would be set in BIP-0070 ([https://github.com/bitrub/bips/blob/master/bip-0070.mediawiki#Certificates Certificates])
 ** Sign [[#InvoiceRequest|InvoiceRequest]] with signature = "" using the X509 Certificate's private key
 ** Set '''signature''' value to the computed signature
 
@@ -408,12 +408,12 @@ The following flowchart is borrowed from [[bip-0070.mediawiki|BIP70]] and expand
 ==Mobile to Mobile Examples==
 
 ===Full Payment Protocol===
-The following diagram shows a sample flow in which one mobile client is sending value to a second mobile client with the use of an InvoiceRequest, a Store & Forward server, PaymentRequest, Payment and PaymentACK. In this case, the PaymentRequest, Payment and PaymentACK messages are encrypted using [[#EncryptedProtocolMessage|EncryptedProtocolMessage]] '''and''' the Receiver submits the transaction to the Bitcoin network.
+The following diagram shows a sample flow in which one mobile client is sending value to a second mobile client with the use of an InvoiceRequest, a Store & Forward server, PaymentRequest, Payment and PaymentACK. In this case, the PaymentRequest, Payment and PaymentACK messages are encrypted using [[#EncryptedProtocolMessage|EncryptedProtocolMessage]] '''and''' the Receiver submits the transaction to the BitRub network.
 
 <img src="bip-0075/mobile-sf-ir-with-payment.png" alt="Payment Required flow diagram">
 
 ===Encrypting Initial InvoiceRequest via EncryptedProtocolMessage===
-The following diagram shows a sample flow in which one mobile client is sending value to a second mobile client using an [[#EncryptedProtocolMessage|EncryptedProtocolMessage]] to transmit the InvoiceRequest using encryption, Store & Forward server, and PaymentRequest. In this case, all Payment Protocol messages are encrypting using [[#EncryptedProtocolMessage|EncryptedProtocolMessage]] '''and''' the Sender submits the transaction to the Bitcoin network.
+The following diagram shows a sample flow in which one mobile client is sending value to a second mobile client using an [[#EncryptedProtocolMessage|EncryptedProtocolMessage]] to transmit the InvoiceRequest using encryption, Store & Forward server, and PaymentRequest. In this case, all Payment Protocol messages are encrypting using [[#EncryptedProtocolMessage|EncryptedProtocolMessage]] '''and''' the Sender submits the transaction to the BitRub network.
 
 <img src="bip-0075/mobile-sf-encrypted-ir-without-payment.png" alt="Encrypted InvoiceRequest without payment">
 
@@ -424,5 +424,5 @@ The following diagram shows a sample flow in which one mobile client is sending 
 * [http://csrc.nist.gov/publications/nistpubs/800-90A/SP800-90A.pdf HMAC_DRBG]
 * [http://csrc.nist.gov/publications/nistpubs/800-38D/SP-800-38D.pdf NIST Special Publication 800-38D - Recommendation for Block Cipher Modes of Operation: Galois/Counter Mode (GCM) and GMAC]
 * [https://tools.ietf.org/html/rfc6979 RFC6979]
-* [https://en.bitcoin.it/wiki/Address_reuse Address Reuse]
+* [https://en.bitrub.it/wiki/Address_reuse Address Reuse]
 * [http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf FIPS 180-4 (Secure Hash Standard)]

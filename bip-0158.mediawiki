@@ -5,7 +5,7 @@
   Author: Olaoluwa Osuntokun <laolu32@gmail.com>
           Alex Akselrod <alex@akselrod.org>
   Comments-Summary: None yet
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0158
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0158
   Status: Draft
   Type: Standards Track
   Created: 2017-05-24
@@ -36,11 +36,11 @@ that is designed to reduce the filter size for regular wallets.
 
 <code>[N]byte</code> represents a fixed-size byte array with length N.
 
-''CompactSize'' is a compact encoding of unsigned integers used in the Bitcoin
+''CompactSize'' is a compact encoding of unsigned integers used in the BitRub
 P2P protocol.
 
 ''Data pushes'' are byte vectors pushed to the stack according to the rules of
-Bitcoin script.
+BitRub script.
 
 ''Bit streams'' are readable and writable streams of individual bits. The
 following functions are used in the pseudocode in this document:
@@ -271,7 +271,7 @@ This BIP defines one initial filter type:
 ==== Contents ====
 
 The basic filter is designed to contain everything that a light client needs to
-sync a regular Bitcoin wallet. A basic filter MUST contain exactly the
+sync a regular BitRub wallet. A basic filter MUST contain exactly the
 following items for each transaction in a block:
 * The previous output script (the script being spent) for each input, except
   for the coinbase transaction.
@@ -284,7 +284,7 @@ We exclude all outputs that start with <code>OP_RETURN</code> in order to allow
 filters to easily be committed to in the future via a soft-fork. A likely area
 for future commitments is an additional <code>OP_RETURN</code> output in the
 coinbase transaction similar to the current witness commitment
-<ref>https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki</ref>. By
+<ref>https://github.com/bitrub/bips/blob/master/bip-0141.mediawiki</ref>. By
 excluding all <code>OP_RETURN</code> outputs we avoid a circular dependency
 between the commitment, and the item being committed to.
 
@@ -332,11 +332,11 @@ though it requires implementation of the new filters.
 
 == Acknowledgments ==
 
-We would like to thank bfd (from the bitcoin-dev mailing list) for bringing the
+We would like to thank bfd (from the bitrub-dev mailing list) for bringing the
 basis of this BIP to our attention, Greg Maxwell for pointing us in the
 direction of Golomb-Rice coding and fast range optimization, Pieter Wullie for
 his analysis of optimal GCS parameters, and Pedro
-Martelletto for writing the initial indexing code for <code>btcd</code>.
+Martelletto for writing the initial indexing code for <code>btrd</code>.
 
 We would also like to thank Dave Collins, JJ Jeffrey, and Eric Lombrozo for
 useful discussions.
@@ -345,9 +345,9 @@ useful discussions.
 
 Light client: [https://github.com/lightninglabs/neutrino]
 
-Full-node indexing: https://github.com/Roasbeef/btcd/tree/segwit-cbf
+Full-node indexing: https://github.com/Roasbeef/btrd/tree/segwit-cbf
 
-Golomb-Rice Coded sets: https://github.com/btcsuite/btcutil/blob/master/gcs
+Golomb-Rice Coded sets: https://github.com/btrsuite/btrutil/blob/master/gcs
 
 == Appendix A: Alternatives ==
 
@@ -358,7 +358,7 @@ alternatives along with our rationale for not pursuing them.
 ==== Bloom Filters ====
 
 Bloom Filters are perhaps the best known probabilistic data structure for
-testing set membership, and were introduced into the Bitcoin protocol with BIP
+testing set membership, and were introduced into the BitRub protocol with BIP
 37. The size of a Bloom filter is larger than the expected size of a GCS with
 the same false positive rate, which is the main reason the option was rejected.
 

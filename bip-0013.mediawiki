@@ -4,7 +4,7 @@
   Title: Address Format for pay-to-script-hash
   Author: Gavin Andresen <gavinandresen@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0013
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0013
   Status: Final
   Type: Standards Track
   Created: 2011-10-18
@@ -12,9 +12,9 @@
 
 ==Abstract==
 
-This BIP describes a new type of Bitcoin address to support arbitrarily complex transactions.  Complexity in this context is defined as what information is needed by the recipient to respend the received coins, in contrast to needing a single ECDSA private key as in current implementations of Bitcoin.
+This BIP describes a new type of BitRub address to support arbitrarily complex transactions.  Complexity in this context is defined as what information is needed by the recipient to respend the received coins, in contrast to needing a single ECDSA private key as in current implementations of BitRub.
 
-In essence, an address encoded under this proposal represents the encoded hash of a [https://en.bitcoin.it/wiki/Script script], rather than the encoded hash of an ECDSA public key.
+In essence, an address encoded under this proposal represents the encoded hash of a [https://en.bitrub.it/wiki/Script script], rather than the encoded hash of an ECDSA public key.
 
 ==Motivation==
 
@@ -22,7 +22,7 @@ Enable "end-to-end" secure wallets and payments to fund escrow transactions or o
 
 ==Specification==
 
-The new bitcoin address type is constructed in the same manner as existing bitcoin addresses (see [https://en.bitcoin.it/Base58Check_encoding Base58Check encoding]):
+The new bitrub address type is constructed in the same manner as existing bitrub addresses (see [https://en.bitrub.it/Base58Check_encoding Base58Check encoding]):
 
     base58-encode: [one-byte version][20-byte hash][4-byte checksum]
 
@@ -32,25 +32,25 @@ And the 4-byte checksum is the first four bytes of the double SHA256 hash of the
 
 ==Rationale==
 
-One criticism is that bitcoin addresses should be deprecated in favor of a more user-friendly mechanism for payments, and that this will just encourage continued use of a poorly designed mechanism.
+One criticism is that bitrub addresses should be deprecated in favor of a more user-friendly mechanism for payments, and that this will just encourage continued use of a poorly designed mechanism.
 
-Another criticism is that bitcoin addresses are inherently insecure because there is no identity information tied to them; if you only have a bitcoin address, how can you be certain that you're paying who or what you think you're paying?
+Another criticism is that bitrub addresses are inherently insecure because there is no identity information tied to them; if you only have a bitrub address, how can you be certain that you're paying who or what you think you're paying?
 
-Furthermore, truncating SHA256 is not an optimal checksum; there are much better error-detecting algorithms. If we are introducing a new form of Bitcoin address, then perhaps a better algorithm should be used.
+Furthermore, truncating SHA256 is not an optimal checksum; there are much better error-detecting algorithms. If we are introducing a new form of BitRub address, then perhaps a better algorithm should be used.
 
-This is one piece of the simplest path to a more secure bitcoin infrastructure. It is not intended to solve all of bitcoin's usability or security issues, but to be an incremental improvement over what exists today. A future BIP or BIPs should propose more user-friendly mechanisms for making payments, or for verifying that you're sending a payment to the Free Software Foundation and not Joe Random Hacker.
+This is one piece of the simplest path to a more secure bitrub infrastructure. It is not intended to solve all of bitrub's usability or security issues, but to be an incremental improvement over what exists today. A future BIP or BIPs should propose more user-friendly mechanisms for making payments, or for verifying that you're sending a payment to the Free Software Foundation and not Joe Random Hacker.
 
-Assuming that typing in bitcoin addresses manually will become increasingly rare in the future, and given that the existing checksum method for bitcoin addresses seems to work "well enough" in practice and has already been implemented multiple times, the Author believes no change to the checksum algorithm is necessary.
+Assuming that typing in bitrub addresses manually will become increasingly rare in the future, and given that the existing checksum method for bitrub addresses seems to work "well enough" in practice and has already been implemented multiple times, the Author believes no change to the checksum algorithm is necessary.
 
 The leading version bytes are chosen so that, after base58 encoding, the leading character is consistent: for the main network, byte 5 becomes the character '3'. For the testnet, byte 196 is encoded into '2'.
 
 ==Backwards Compatibility==
 
-This proposal is not backwards compatible, but it fails gracefully-- if an older implementation is given one of these new bitcoin addresses, it will report the address as invalid and will refuse to create a transaction.
+This proposal is not backwards compatible, but it fails gracefully-- if an older implementation is given one of these new bitrub addresses, it will report the address as invalid and will refuse to create a transaction.
 
 ==Reference Implementation==
 
-See base58.cpp/base58.h at https://github.com/bitcoin/bitcoin/tree/master/src
+See base58.cpp/base58.h at https://github.com/bitrub/bitrub/tree/master/src
 
 ==See Also==
 

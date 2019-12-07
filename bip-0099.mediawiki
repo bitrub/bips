@@ -3,12 +3,12 @@
   Title: Motivation and deployment of consensus rule changes ([soft/hard]forks)
   Author: Jorge Timón <jtimon@jtimon.cc>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0099
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0099
   Status: Draft
   Type: Informational
   Created: 2015-06-20
   License: PD
-  Post-History: http://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-June/008936.html
+  Post-History: http://lists.linuxfoundation.org/pipermail/bitrub-dev/2015-June/008936.html
 </pre>
 
 ==Abstract==
@@ -18,7 +18,7 @@ consensus forks and proposes a deployment mechanism for each of them.
 
 ==Motivation==
 
-The security assumptions of p2p consensus-based systems like Bitcoin are
+The security assumptions of p2p consensus-based systems like BitRub are
 not always well-understood, and the best upgrade mechanisms to the
 consensus validation rules may vary depending on the type of change being deployed.
 Discussing such changes without a uniform view on the deployment
@@ -42,8 +42,8 @@ deployment of changes.
 ;Libconsensus
 : a theoretical piece of software that contains the specifications that define the validity of a block for a given state and chain parameters (ie it may act differently on, for example, regtest).
 
-;Libbitcoinconsensus
-: the existing implementation is a library that is compiled by default with Bitcoin Core master and exposes a single C function named bitcoinconsensus_verify_script(). Although it has a deterministic build and implements the most complex rules (most of the cryptography, which is itself heavily based on libsecp256k1 after #REPLACE_libsecp256k1_PR), it is still not a complete specification of the consensus rules. Since libconsensus doesn't manage the current state but only the validation of the next block given that state, it is known that this long effort of encapsulation and decoupling will eventually finish, and that the person who moves the last line 
+;Libbitrubconsensus
+: the existing implementation is a library that is compiled by default with BitRub Core master and exposes a single C function named bitrubconsensus_verify_script(). Although it has a deterministic build and implements the most complex rules (most of the cryptography, which is itself heavily based on libsecp256k1 after #REPLACE_libsecp256k1_PR), it is still not a complete specification of the consensus rules. Since libconsensus doesn't manage the current state but only the validation of the next block given that state, it is known that this long effort of encapsulation and decoupling will eventually finish, and that the person who moves the last line 
 
 ==Taxonomy of consensus forks==
 
@@ -52,9 +52,9 @@ deployment of changes.
 Software forks are very different in nature from consensus rules forks. No software
 maintainer has special powers over consensus rules changes. There's
 many good reasons (experimentation, lack of features, independent
-development, diversity, etc) to fork the Bitcoin Core software and it's good
+development, diversity, etc) to fork the BitRub Core software and it's good
 that there's many alternative implementations of the protocol (forks
-of Bitcoin Core or written from scratch).
+of BitRub Core or written from scratch).
 
 But sometimes a bug in the reimplementaion of the consensus
 validation rules can prevent users of alternative implementation from
@@ -66,19 +66,19 @@ consensus is not determined by such specification but by the software
 that the majority of the network runs. That's why "the implementation
 is the specification".
 
-But Bitcoin Core contains many more things than just consensus
+But BitRub Core contains many more things than just consensus
 validation and it would be unreasonable for all alternative
-implementations to depend on it. Bitcoin Core should not be the
+implementations to depend on it. BitRub Core should not be the
 specification. That's why the consensus validation is being separated
-into a libbitcoinconsensus library with a C API easily accessible from
+into a libbitrubconsensus library with a C API easily accessible from
 any language. This makes alternative implementations much more secure
-without burdening them with specific design choices made by Bitcoin
+without burdening them with specific design choices made by BitRub
 Core. It is to be noted that sharing the same code for consensus
 validation doesn't prevent alternative implementations from
 independently changing their consensus rules: they can always fork
-the libbitcoinconsensus project (once it is in a separate repository). 
+the libbitrubconsensus project (once it is in a separate repository). 
 
-Hopefully libbitcoinconsensus will remove this type of consensus fork
+Hopefully libbitrubconsensus will remove this type of consensus fork
 which - being accidental - obviously doesn't need a deployment plan.
 
 ====11/12 March 2013 Chain Fork====
@@ -86,10 +86,10 @@ which - being accidental - obviously doesn't need a deployment plan.
 There is a precedent of an accidental consensus fork at height 225430. 
 Without entering into much detail (see [2]), the situation was different from
 what's being described from the alternative implementation risks (today alternative implementation
-still usually rely in different degrees on Bitcoin Core trusted proxies, which
+still usually rely in different degrees on BitRub Core trusted proxies, which
 is very reasonable considering the lack of a complete libconsensus).
 The two conflicting consensus validation implementations were two
-different versions of Bitcoin Core (Bitcoin-qt at the time): 0.8
+different versions of BitRub Core (BitRub-qt at the time): 0.8
 against all versions prior to it. Most miners had been fast on
 upgrading to 0.8 and they were also fast on downgrading to 0.7 as an
 emergency when they were asked to by the developers community.
@@ -109,15 +109,15 @@ If "the implementation is the specification", then those
 levelDB-specific limitations were part of the consensus rules.
 Then additional rules were necessary and any alternative
 implementation (including 0.8) would have to implement it. Then a
-planned consensus fork to migrate all Bitcoin-qt 0.7- users could
+planned consensus fork to migrate all BitRub-qt 0.7- users could
 remove those additional consensus restrictions.
 Had libconsensus being implemented without depending on levelDB,
 those additional restrictions wouldn't have been part of "the specification"
  and this would just have been a bug in the
 consensus rules, just a consensus-critical bug in a set of
-implementations, concretely all satoshi-bitcoin-0.7-or-less (which
+implementations, concretely all satoshi-bitrub-0.7-or-less (which
 happened to be a huge super majority of the users), but other
-implementations (like libbitcoin) would be free from such bug and
+implementations (like libbitrub) would be free from such bug and
 implementing the correct libconsensus specification. But since the
 buggy implementation was a super-majority, the solution would have
 been to instantly (from a specific block) change the rules to not let
@@ -142,7 +142,7 @@ unnecessary.
 ===Schism hardforks===
 
 Fundamental disagreements and controversies are part of social
-systems, like the one defined as the human participants in the Bitcoin
+systems, like the one defined as the human participants in the BitRub
 network. Without judging the motivation of the rule discrepancies or
 what rules were in place first, we're defining schism[1] hardforks as
 those in which - for whatever reason - users are consiously going to validate 2
@@ -156,22 +156,22 @@ that this must always be the case.
 
 While 2 chains cohexist, they can be considered two different
 currencies.
-We could say that bitcoin becomes bitcoinA and bitcoinB. The implications for market
+We could say that bitrub becomes bitrubA and bitrubB. The implications for market
 capitalization are completely unpredictable, 
 
-maybe mc(bitcoinA) = mc(bitcoinB) = mc(old_bitcoin), 
+maybe mc(bitrubA) = mc(bitrubB) = mc(old_bitrub), 
 
-maybe mc(bitcoinA) + mc(bitcoinB) = mc(old_bitcoin), 
+maybe mc(bitrubA) + mc(bitrubB) = mc(old_bitrub), 
 
-maybe mc(bitcoinA) + mc(bitcoinB) = 1000 * mc(old_bitcoin),
+maybe mc(bitrubA) + mc(bitrubB) = 1000 * mc(old_bitrub),
 
-maybe mc(bitcoinA) + mc(bitcoinB) = 0,
+maybe mc(bitrubA) + mc(bitrubB) = 0,
 
 ... 
 
 Schism hardforks have been compared to one type of altcoins called
 "spinoffs"[spinoffs] that distribute all or part of its initial seigniorage to
-bitcoin owners at a given block height.
+bitrub owners at a given block height.
 
 This is very disruptive and hopefully will never be needed. But if
 it's needed the best deployment path is just to activate the rule
@@ -223,7 +223,7 @@ have to be ignored.
 Let's imagine BIP66 had a crypto backdoor
 that nobody noticed and allows an evil developer cabal to steal
 everyone's coins. The users and non-evil developers could join, fork
-libconsensus and use the forked version in their respective bitcoin
+libconsensus and use the forked version in their respective bitrub
 implementations. 
 Should miner's "vote" be required to express their consent? What if some miners
 are part of the cabal? In the unlikely event that most miners are
@@ -317,22 +317,22 @@ softfork unnecessary.
 
 This BIP is complemented with a concrete code proposal[4] for an
 uncontroversial hardfork which acts as a precedent and removes the
-perception that hardforks are impossible in Bitcoin. The deployment of
+perception that hardforks are impossible in BitRub. The deployment of
 the proposal should not block any other potential hardforks (thus it
 will required the version bits proposal[3] to be implemented). The
-change itself doesn't add much complexity to Bitcoin Core and is simple
+change itself doesn't add much complexity to BitRub Core and is simple
 enough that is trivial to apply to diverse implementations (that
-currently can only use libbitcoinconsensus to validate script-related
+currently can only use libbitrubconsensus to validate script-related
 rules). The change has been already widely tested in many altcoins.
 
 The chosen consensus change is the fix of the timewarp attack
 discovered and also fixed with a simple patch[5] by @ArtForz. This
 change has been deployed by most altcoins that made any minimally
-meaningful change to bitcoin and thus can be considered somewhat
+meaningful change to bitrub and thus can be considered somewhat
 tested (in fact, most SHA256d altcoins that didn't implement it have
 died or being forced to implement it as an emergency hardfork). When
 deploying this change has been discussed, usually arguments in the
-lines of "if we get to the point when this matters to bitcoin, we
+lines of "if we get to the point when this matters to bitrub, we
 would be already in serious trouble" were used against it. This
 shouldn't be seen as a disadvantage in this context, since it means we
 can safely activate the fix very far away in the future (say, 4 years
@@ -342,26 +342,26 @@ worth of blocks).
 
 [1] https://en.wikipedia.org/wiki/Schism
 
-[2] https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki
+[2] https://github.com/bitrub/bips/blob/master/bip-0050.mediawiki
 
 [non_proportional_inflatacoin_fork] TODO missing link
 
-[spinoffs] https://bitcointalk.org/index.php?topic=563972.0
+[spinoffs] https://bitrubtalk.org/index.php?topic=563972.0
 
-[3] https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
+[3] https://github.com/bitrub/bips/blob/master/bip-0009.mediawiki
 
-[4] https://github.com/bitcoin/bitcoin/compare/0.11...jtimon:hardfork-timewarp-0.11
+[4] https://github.com/bitrub/bitrub/compare/0.11...jtimon:hardfork-timewarp-0.11
 
 [5] Original references:
-https://bitcointalk.org/index.php?topic=114751.0
-https://bitcointalk.org/index.php?topic=43692.msg521772#msg521772
+https://bitrubtalk.org/index.php?topic=114751.0
+https://bitrubtalk.org/index.php?topic=43692.msg521772#msg521772
 Rebased patch: 
 https://github.com/freicoin/freicoin/commit/beb2fa54745180d755949470466cbffd1cd6ff14
 
 ==Attribution==
 
 Incorporated corrections and suggestions from: Andy Chase, Bryan Bishop, 
-Btcdrak, Gavin Andresen, Gregory Sanders, Luke Dashjr, Marco Falke.
+Btrdrak, Gavin Andresen, Gregory Sanders, Luke Dashjr, Marco Falke.
 
 ==Copyright==
 

@@ -4,7 +4,7 @@
   Title: Merkelized Abstract Syntax Tree
   Author: Johnson Lau <jl2012@xbt.hk>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0114
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0114
   Status: Draft
   Type: Standards Track
   Created: 2016-04-02
@@ -15,8 +15,8 @@
 This BIP defines a new witness program type that uses a Merkle tree to encode mutually exclusive branches in a script. This enables complicated redemption conditions that are currently not possible, improves privacy by hiding unexecuted scripts, and allows inclusion of non-consensus enforced data with very low or no additional cost.
 
 ==Motivation==
-===Evolution of Bitcoin script system===
-Bitcoin uses a script system to specify the conditions for redemption of transaction outputs. In its original design, the conditions for redemption are directly recorded in the scriptPubKey by the sender of the funds. This model has several drawbacks, particularly for complicated scripts:
+===Evolution of BitRub script system===
+BitRub uses a script system to specify the conditions for redemption of transaction outputs. In its original design, the conditions for redemption are directly recorded in the scriptPubKey by the sender of the funds. This model has several drawbacks, particularly for complicated scripts:
 # It could be difficult for the receiver to specify the conditions;
 # Large scripts take up more UTXO space;
 # The sender will pay for the additional block space;
@@ -113,7 +113,7 @@ The advantages of the current proposal are:
 
 The are some disadvantages, but only when the redemption condition is very complicated:
 * It may require more branches than a general MAST design (as shown in the previous example) and take more witness space in redemption
-* Creation and storage of the MAST structure may take more time and space. However, such additional costs affect only the related parties in the contract but not any other Bitcoin users.
+* Creation and storage of the MAST structure may take more time and space. However, such additional costs affect only the related parties in the contract but not any other BitRub users.
 
 === MAST Version ===
 This proposal allows users to indicate the version of scripting language in the witness, which is cheaper than doing that in <code>scriptPubKey</code> or <code>scriptSig</code>. Undefined versions remain anyone-can-spend and are reserved for future expansions. A new version could be used for relaxing constraints (e.g. the 10,000 bytes size limit of <code>MAST Script</code>), adding or redefining opcodes, or even introducing a completely novel scripting system.
@@ -235,10 +235,10 @@ As a soft fork, older software will continue to operate without modification. No
 This BIP depends on [[bip-0141.mediawiki|BIP141]] and will be deployed by version-bits [[bip-0009.mediawiki|BIP9]] after BIP141 is enforced. Exact details TBD.
 
 == Credits ==
-The idea of MAST originates from Russell O’Connor, Pieter Wuille, and [https://bitcointalk.org/index.php?topic=255145.msg2757327#msg2757327 Peter Todd].
+The idea of MAST originates from Russell O’Connor, Pieter Wuille, and [https://bitrubtalk.org/index.php?topic=255145.msg2757327#msg2757327 Peter Todd].
 
 == Reference Implementation ==
-https://github.com/jl2012/bitcoin/tree/bip114v2 (WIP)
+https://github.com/jl2012/bitrub/tree/bip114v2 (WIP)
 
 <source lang="cpp">
 //New rules apply if version byte is 1 and witness program size is 32 bytes

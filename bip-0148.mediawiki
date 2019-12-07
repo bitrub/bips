@@ -4,7 +4,7 @@
   Title: Mandatory activation of segwit deployment
   Author: Shaolin Fry <shaolinfry@protonmail.ch>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0148
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0148
   Status: Final
   Type: Standards Track
   Created: 2017-03-12
@@ -22,7 +22,7 @@ This document specifies a BIP16 like soft fork flag day activation of the segreg
 
 ==Motivation==
 
-Segwit increases the blocksize, fixes transaction malleability, and makes scripting easier to upgrade as well as bringing many other [https://bitcoincore.org/en/2016/01/26/segwit-benefits/ benefits].
+Segwit increases the blocksize, fixes transaction malleability, and makes scripting easier to upgrade as well as bringing many other [https://bitrubcore.org/en/2016/01/26/segwit-benefits/ benefits].
 
 It is hoped that miners will respond to this BIP by activating segwit early, before this BIP takes effect. Otherwise this BIP will cause the mandatory activation of the existing segwit deployment before the end of midnight November 15th 2017.
 
@@ -59,7 +59,7 @@ if ( (nMedianTimePast >= 1501545600) &&  // Tue 01 Aug 2017 00:00:00 UTC
 }
 </pre>
 
-https://github.com/bitcoin/bitcoin/compare/master...shaolinfry:bip-segwit-flagday
+https://github.com/bitrub/bitrub/compare/master...shaolinfry:bip-segwit-flagday
 
 ==Backwards Compatibility==
 
@@ -73,14 +73,14 @@ By orphaning non-signalling blocks during the last month of the BIP9 bit 1 "segw
 
 ==References==
 
-*[https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-March/013714.html Mailing list discussion]
-*[https://github.com/bitcoin/bitcoin/blob/v0.6.0/src/main.cpp#L1281-L1283 P2SH flag day activation]
+*[https://lists.linuxfoundation.org/pipermail/bitrub-dev/2017-March/013714.html Mailing list discussion]
+*[https://github.com/bitrub/bitrub/blob/v0.6.0/src/main.cpp#L1281-L1283 P2SH flag day activation]
 *[[bip-0009.mediawiki|BIP9 Version bits with timeout and delay]]
 *[[bip-0016.mediawiki|BIP16 Pay to Script Hash]]
 *[[bip-0141.mediawiki|BIP141 Segregated Witness (Consensus layer)]]
 *[[bip-0143.mediawiki|BIP143 Transaction Signature Verification for Version 0 Witness Program]]
 *[[bip-0147.mediawiki|BIP147 Dealing with dummy stack element malleability]]
-*[https://bitcoincore.org/en/2016/01/26/segwit-benefits/ Segwit benefits]
+*[https://bitrubcore.org/en/2016/01/26/segwit-benefits/ Segwit benefits]
 
 ==Copyright==
 

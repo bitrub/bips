@@ -4,7 +4,7 @@
   Title: Derivation scheme for P2WPKH based accounts
   Author: Pavol Rusnak <stick@satoshilabs.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0084
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0084
   Status: Draft
   Type: Informational
   Created: 2017-12-28

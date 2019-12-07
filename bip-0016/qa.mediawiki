@@ -7,7 +7,7 @@ If you can help test, please edit this page to sign-off on it.
 
 |- style="color:green;"
 | &#x2713;
-| Run BIP-16-capable Bitcoin 0.6 on testnet and main net<br />
+| Run BIP-16-capable BitRub 0.6 on testnet and main net<br />
 Send coins using GUI, RCP sendtoaddress, and RCP sendmany commands<br />
 Result: coins sent in all cases
 | Gavin Andresen
@@ -15,9 +15,9 @@ Result: coins sent in all cases
 |- style="color:green;"
 | &#x2713;
 | Test multisig 1-of-1<br />
-Run 0.6 bitcoind, get a public key with: ./bitcoind -testnet validateaddress $(./bitcoind -testnet getnewaddress)<br />
-Generate a multisig 1-of-1 address: ./bitcoind addmultisigaddress 1 {public key from above}<br />
-Send-to-self some bitcoins using that address<br />
+Run 0.6 bitrubd, get a public key with: ./bitrubd -testnet validateaddress $(./bitrubd -testnet getnewaddress)<br />
+Generate a multisig 1-of-1 address: ./bitrubd addmultisigaddress 1 {public key from above}<br />
+Send-to-self some bitrubs using that address<br />
 Result: transaction is confirmed by network, displays properly in listtransactions.
 Result: balance is unaffected
 | Gavin Andresen; see transactions in [http://blockexplorer.com/testnet/block/000000001bdceba3936f2ea6a55311ac7b6030e327f1960e892620fcde6abf5f testnet block 44989]
@@ -26,11 +26,11 @@ Result: balance is unaffected
 |- style="color:green;"
 | &#x2713;
 | Test multisig 1-of-2<br />
-Run 0.6 bitcoind, get 2 new bitcoin addresses<br />
-Generate a multisig 1-of-2 address: ./bitcoind addmultisigaddress 1 {address1} {address2}<br />
-Send-to-self some bitcoins using that address<br />
+Run 0.6 bitrubd, get 2 new bitrub addresses<br />
+Generate a multisig 1-of-2 address: ./bitrubd addmultisigaddress 1 {address1} {address2}<br />
+Send-to-self some bitrubs using that address<br />
 Result: transaction is confirmed by network, displays properly in listtransactions.
-Result: bitcoin balance is unaffected.
+Result: bitrub balance is unaffected.
 | Gavin Andresen; see transactions in [http://blockexplorer.com/testnet/block/000000001bdceba3936f2ea6a55311ac7b6030e327f1960e892620fcde6abf5f testnet block 44989]
 
 
@@ -43,9 +43,9 @@ Repeat test procedures above, with the other new multisignature transaction type
 |- style="color:green;"
 | &#x2713;
 | Test multisig send-to-other<br />
-Repeat test procedures above, but use two bitcoinds, prepared as follows:<br />
-bitcoind 1 : Run getnewaddress and addmultisigaddress<br />
-bitcoind 2 : Just addmultisigaddress<br />
+Repeat test procedures above, but use two bitrubds, prepared as follows:<br />
+bitrubd 1 : Run getnewaddress and addmultisigaddress<br />
+bitrubd 2 : Just addmultisigaddress<br />
 Send coins from 2 to 1 using the address<br />
 Result: transaction is accepted/confirmed by network<br />
 Result: balance for 2 goes down, listtransactions for 2 displays correct result<br />
@@ -67,20 +67,20 @@ Result: balance decreases, listtransactions displays correct information<br />
 
 |- style="color:green;"
 | &#x2713;
-| Run 0.6 Bitcoin-Qt GUI on one of the test wallets from above<br />
+| Run 0.6 BitRub-Qt GUI on one of the test wallets from above<br />
 Result: balance and transactions displayed correctly
 | Gavin Andresen
 
 |- style="color:orange;"
 | &#x2713;
-| Run BIP-16-capable backport Bitcoin 0.3.19 through 0.5.1 on testnet and main net<br />
+| Run BIP-16-capable backport BitRub 0.3.19 through 0.5.1 on testnet and main net<br />
 Send coins using GUI, RCP sendtoaddress, and RCP sendmany commands<br />
 Result: coins sent in all cases
 | Gavin Andresen (tested 0.3.19, 0.3.24 and 0.5.1)
 
 |- style="color:green;"
 | &#x2713;
-| Run BIP-16-capable Bitcoin 0.6.0 on testnet<br />
+| Run BIP-16-capable BitRub 0.6.0 on testnet<br />
 Mine coins using built-in miner<br />
 Result: blocks accepted, show up on blockexplorer.com/testnet<br />
 Result: mined blocks' coinbase contains /P2SH/ string
@@ -88,7 +88,7 @@ Result: mined blocks' coinbase contains /P2SH/ string
 
 |- style="color:green;"
 | &#x2713;
-| Run BIP-16-capable Bitcoin 0.6.0 on testnet<br />
+| Run BIP-16-capable BitRub 0.6.0 on testnet<br />
 Mine coins using getwork interface<br />
 Result: blocks accepted, show up on blockexplorer.com/testnet<br />
 Result: mined blocks' coinbase contains /P2SH/ string
@@ -96,7 +96,7 @@ Result: mined blocks' coinbase contains /P2SH/ string
 
 |- style="color:green;"
 |
-| Run BIP-16-capable Bitcoin 0.6.0 on testnet<br />
+| Run BIP-16-capable BitRub 0.6.0 on testnet<br />
 Mine coins using getmemorypool interface<br />
 Result: blocks accepted, show up on blockexplorer.com/testnet<br />
 Result: mined blocks' coinbase contains /P2SH/ string
@@ -104,7 +104,7 @@ Result: mined blocks' coinbase contains /P2SH/ string
 
 |- style="color:green;"
 | &#x2713;
-| Run BIP-16-capable Bitcoin 0.3.19 through 0.5.1 backports on testnet<br />
+| Run BIP-16-capable BitRub 0.3.19 through 0.5.1 backports on testnet<br />
 Mine coins using built-in miner<br />
 Result: blocks accepted, show up on blockexplorer.com/testnet<br />
 Result: mined blocks' coinbase contains /P2SH/ string
@@ -112,7 +112,7 @@ Result: mined blocks' coinbase contains /P2SH/ string
 
 |- style="color:green;"
 | &#x2713;
-| Run BIP-16-capable Bitcoin 3.19 through 0.5.1 backports on testnet<br />
+| Run BIP-16-capable BitRub 3.19 through 0.5.1 backports on testnet<br />
 Mine coins using getwork interface<br />
 Result: blocks accepted, show up on blockexplorer.com/testnet<br />
 Result: mined blocks' coinbase contains /P2SH/ string
@@ -120,7 +120,7 @@ Result: mined blocks' coinbase contains /P2SH/ string
 
 |- style="color:green;"
 | &#x2713;
-| Run BIP-16-capable Bitcoin 0.3.19 through 0.5.1 backports on testnet<br />
+| Run BIP-16-capable BitRub 0.3.19 through 0.5.1 backports on testnet<br />
 Mine coins using built-in miner<br />
 Result: blocks accepted, show up on blockexplorer.com/testnet<br />
 Result: mined blocks' coinbase contains /P2SH/ string
@@ -128,7 +128,7 @@ Result: mined blocks' coinbase contains /P2SH/ string
 
 |- style="color:green;"
 | &#x2713;
-| Run BIP-16-capable Bitcoin 3.19 through 0.5.1 backports on testnet<br />
+| Run BIP-16-capable BitRub 3.19 through 0.5.1 backports on testnet<br />
 Mine coins using getwork interface<br />
 Result: blocks accepted, show up on blockexplorer.com/testnet<br />
 Result: mined blocks' coinbase contains /P2SH/ string
@@ -137,7 +137,7 @@ Result: mined blocks' coinbase contains /P2SH/ string
 
 |- style="color:red;"
 |
-| Run BIP-16-capable Bitcoin 3.19 through 0.5.1 backports on testnet<br />
+| Run BIP-16-capable BitRub 3.19 through 0.5.1 backports on testnet<br />
 Mine coins using getmemorypool interface<br />
 Result: blocks accepted, show up on blockexplorer.com/testnet<br />
 Result: mined blocks' coinbase contains /P2SH/ string
@@ -156,16 +156,16 @@ BIP 16 compatibility with other 3 standard transaction types<br />
 BIP 16 no-recursion test<br />
 BIP 16 switchover date logic<br />
 OP_CHECKMULTISIG counting of signature operations inside BIP 16 transactions<br />
-| Gavin Andresen (see test/multisig_tests.cpp, test/script_tests.cpp, test/script_P2SH_tests.cpp, test/sigopcount_tests.cpp in the bitcoin source tree; 'make test_bitcoin' in src/ directory to compile)
+| Gavin Andresen (see test/multisig_tests.cpp, test/script_tests.cpp, test/script_P2SH_tests.cpp, test/sigopcount_tests.cpp in the bitrub source tree; 'make test_bitrub' in src/ directory to compile)
 
 |- style="color:green;"
 | &#x2713;
 | Create/run 'transaction fuzzer' to stress-test BIP 16 transactions
-| Gavin Andresen (https://github.com/gavinandresen/bitcoin-git/tree/fuzzer , run twice on both testnet-in-a-box and testnet with 100,000 'fuzzed' transactions each test run) Valid fuzzed transactions appeared in (for example) [http://blockexplorer.com/testnet/block/000000001587c859649cea954e921ba4efd77707fb327dd53e122fd7b89636c4 testnet block 44987]
+| Gavin Andresen (https://github.com/gavinandresen/bitrub-git/tree/fuzzer , run twice on both testnet-in-a-box and testnet with 100,000 'fuzzed' transactions each test run) Valid fuzzed transactions appeared in (for example) [http://blockexplorer.com/testnet/block/000000001587c859649cea954e921ba4efd77707fb327dd53e122fd7b89636c4 testnet block 44987]
 
 |- style="color:green;"
 | &#x2713;
-| Run Bitcoin 0.6 on main net <br />
+| Run BitRub 0.6 on main net <br />
 Result: blocks created properly
 Result: blocks include /P2SH/ string in their coinbase
 | various mining pools
@@ -181,10 +181,10 @@ Result: blocks include /P2SH/ string in their coinbase
 | &#x2713;
 | Test chain-split handling on testnet-in-a-box <br />
 Create two valid hash, invalid signature transactions in two blocks separated in time on a testnet-in-a-box chain<br />
-Run a bitcoind to synchronize with the chain, with -paytoscripthashtime set in between the two blocks<br/>
+Run a bitrubd to synchronize with the chain, with -paytoscripthashtime set in between the two blocks<br/>
 Result: first transaction/block accepted, second causes a chain split<br/>
-Re-run bitcoind with -paytoscripthashtime in the future<br/>
+Re-run bitrubd with -paytoscripthashtime in the future<br/>
 Result: entire chain accepted
-| Gavin Andresen: testnet-in-a-box files at: http://www.skypaint.com/bitcoin/bip16chain.tar.gz first half-valid BIP16 transaction at block 2431 (time 1328202835) second at block 2436 (time 1328204241)<br />
+| Gavin Andresen: testnet-in-a-box files at: http://www.skypaint.com/bitrub/bip16chain.tar.gz first half-valid BIP16 transaction at block 2431 (time 1328202835) second at block 2436 (time 1328204241)<br />
 
 |}

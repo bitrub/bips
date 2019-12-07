@@ -3,7 +3,7 @@
   Title: Version bits with lock-in by height
   Author: Shaolin Fry <shaolinfry@protonmail.ch>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0008
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0008
   Status: Draft
   Type: Informational
   Created: 2017-02-01
@@ -191,7 +191,7 @@ A client that does not understand a rule prefixed by '!' must not attempt to pro
 
 === Reference implementation ===
 
-https://github.com/bitcoin/bitcoin/compare/master...shaolinfry:bip8-height
+https://github.com/bitrub/bitrub/compare/master...shaolinfry:bip8-height
 
 ==Backwards compatibility==
 
@@ -205,7 +205,7 @@ A living list of deployment proposals can be found [[bip-0008/assignments.mediaw
 
 [[bip-0009.mediawiki|BIP9]]
 
-[https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-February/013643.html Mailing list discussion]
+[https://lists.linuxfoundation.org/pipermail/bitrub-dev/2017-February/013643.html Mailing list discussion]
 
 ==Copyright==
 

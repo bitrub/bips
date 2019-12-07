@@ -5,7 +5,7 @@
   Author: Eric Lombrozo <elombrozo@gmail.com>
           Pieter Wuille <pieter.wuille@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0144
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0144
   Status: Final
   Type: Standards Track
   Created: 2016-01-08
@@ -16,7 +16,7 @@
 This BIP defines new messages and serialization formats for propagation of transactions and blocks committing to segregated witness structures.
 
 ==Motivation==
-In addition to defining witness structures and requiring commitments in future blocks ([https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki BIP141] - Consensus segwit BIP), new mechanisms must be defined to allow peers to advertise support for segregated witness and to relay the witness structures and request them from other peers without breaking compatibility with older nodes.
+In addition to defining witness structures and requiring commitments in future blocks ([https://github.com/bitrub/bips/blob/master/bip-0141.mediawiki BIP141] - Consensus segwit BIP), new mechanisms must be defined to allow peers to advertise support for segregated witness and to relay the witness structures and request them from other peers without breaking compatibility with older nodes.
 
 ==Specification==
 
@@ -121,7 +121,7 @@ MSG_WITNESS_BLOCK requests will return a block message with transactions that ha
 Special thanks to Gregory Maxwell for originating many of the ideas in this BIP and Luke-Jr for figuring out how to deploy this as a soft fork.
 
 == Reference Implementation ==
-https://github.com/bitcoin/bitcoin/pull/8149
+https://github.com/bitrub/bitrub/pull/8149
 
 == Copyright ==
 This document is placed in the public domain.

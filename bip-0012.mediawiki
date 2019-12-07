@@ -4,7 +4,7 @@
   Title: OP_EVAL
   Author: Gavin Andresen <gavinandresen@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0012
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0012
   Status: Withdrawn
   Type: Standards Track
   Created: 2011-10-18
@@ -12,7 +12,7 @@
 
 ==Abstract==
 
-This BIP describes a new opcode (OP_EVAL) for the [https://en.bitcoin.it/wiki/Script Bitcoin scripting system], and a new 'standard' transaction type that uses it to enables the receiver of bitcoins to specify the transaction type needed to re-spend them.
+This BIP describes a new opcode (OP_EVAL) for the [https://en.bitrub.it/wiki/Script BitRub scripting system], and a new 'standard' transaction type that uses it to enables the receiver of bitrubs to specify the transaction type needed to re-spend them.
 
 ==Motivation==
 
@@ -39,13 +39,13 @@ Transactions that redeem standard OP_EVAL scriptPubKeys are only considered stan
 
 ==Rationale==
 
-OP_EVAL allows the receiver of bitcoins to specify how they can be spent when they are spent, instead of requiring the sender of the bitcoins to know the details of how the bitcoins may be redeemed. The sender only needs to know the hash of the ''serialized script'', and one new type of bitcoin address can be used to fund arbitrarily complex transactions.
+OP_EVAL allows the receiver of bitrubs to specify how they can be spent when they are spent, instead of requiring the sender of the bitrubs to know the details of how the bitrubs may be redeemed. The sender only needs to know the hash of the ''serialized script'', and one new type of bitrub address can be used to fund arbitrarily complex transactions.
 
 If ''serialized script'' is a large or complicated multi-signature script, then the burden of paying for it (in increased transaction fees due to more signature operations or transaction size) is shifted from the sender to the receiver.
 
 The main objection to OP_EVAL is that it adds complexity, and complexity is the enemy of security. Also, evaluating data as code has a long record of being a source of security vulnerabilties.
 
-That same argument can be applied to the existing Bitcoin 'scripting' system; scriptPubKeys are transmit as data across the network and are then interpreted by every bitcoin implementation. OP_EVAL just moves the data that will be interpreted. It is debatable whether or not the entire idea of putting a little interpreted expression evaluation language at the core of Bitcoin was brilliant or stupid, but the existence of OP_EVAL does not make the expression language less secure.
+That same argument can be applied to the existing BitRub 'scripting' system; scriptPubKeys are transmit as data across the network and are then interpreted by every bitrub implementation. OP_EVAL just moves the data that will be interpreted. It is debatable whether or not the entire idea of putting a little interpreted expression evaluation language at the core of BitRub was brilliant or stupid, but the existence of OP_EVAL does not make the expression language less secure.
 
 There is a 1-confirmation attack on old clients that interepret OP_EVAL as a no-op, but it is expensive and difficult in practice. The attack is:
 
@@ -53,7 +53,7 @@ There is a 1-confirmation attack on old clients that interepret OP_EVAL as a no-
 # Attacker also creates a standard transaction that spends the OP_EVAL transaction, and pays the victim.
 # Attacker manages to mine a block that contains both transactions. If the victim accepts the 1-confirmation payment, then the attacker wins because both transactions will be invalidated when the rest of the network overwrites the attacker's invalid block.
 
-The attack is expensive because it requires the attacker create a block that they know will be invalidated. It is difficult because bitcoin businesses should not accept 1-confirmation transactions for higher-value transactions.
+The attack is expensive because it requires the attacker create a block that they know will be invalidated. It is difficult because bitrub businesses should not accept 1-confirmation transactions for higher-value transactions.
 
 ==Backwards Compatibility==
 
@@ -75,12 +75,12 @@ Example of a transaction that must fail for both old and new miners/clients:
 
 ==Reference Implementation==
 
-https://github.com/gavinandresen/bitcoin-git/tree/op_eval
+https://github.com/gavinandresen/bitrub-git/tree/op_eval
 
 ==See Also==
 
-https://bitcointalk.org/index.php?topic=46538
+https://bitrubtalk.org/index.php?topic=46538
 
-"Bitcoin Address 01" BIP
+"BitRub Address 01" BIP
 
 M-of-N Multisignature Transactions BIP 11

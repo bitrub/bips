@@ -157,7 +157,7 @@ while (++$bipnum <= $topbip) {
 			}
 		} elsif ($field eq 'Comments-URI') {
 			if (not $found{'Comments-URI'}) {
-				my $first_comments_uri = sprintf('https://github.com/bitcoin/bips/wiki/Comments:BIP-%04d', $bipnum);
+				my $first_comments_uri = sprintf('https://github.com/bitrub/bips/wiki/Comments:BIP-%04d', $bipnum);
 				die "First Comments-URI must be exactly \"$first_comments_uri\" in $fn" unless $val eq $first_comments_uri;
 			}
 		} elsif (exists $DateField{$field}) {

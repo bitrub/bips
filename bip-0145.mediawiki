@@ -4,7 +4,7 @@
   Title: getblocktemplate Updates for Segregated Witness
   Author: Luke Dashjr <luke+bip22@dashjr.org>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0145
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0145
   Status: Final
   Type: Standards Track
   Created: 2016-01-30
@@ -91,9 +91,9 @@ Why shouldn't the server simply add the commitment upfront in the "coinbasetxn",
 
 ==Reference Implementation==
 
-* [https://github.com/bitcoin/libblkmaker/tree/segwit libblkmaker]
+* [https://github.com/bitrub/libblkmaker/tree/segwit libblkmaker]
 * [https://github.com/luke-jr/eloipool/tree/segwit Eloipool]
-* [https://github.com/bitcoin/bitcoin/pull/7404/files Bitcoin Core]
+* [https://github.com/bitrub/bitrub/pull/7404/files BitRub Core]
 
 ==See Also==
 * [[bip-0009.mediawiki|BIP 9: Version bits with timeout and delay]]

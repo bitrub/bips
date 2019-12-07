@@ -7,7 +7,7 @@
           Aaron Voisine <voisine@gmail.com>
           Sean Bowe <ewillbefull@gmail.com>
   Comments-Summary: Unanimously Discourage for implementation
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0039
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0039
   Status: Proposed
   Type: Standards Track
   Created: 2013-09-10
@@ -150,11 +150,11 @@ Haskell:
 * https://github.com/Thashiznets/BIP39.NET
 
 .NET C# (PCL):
-* https://github.com/NicolasDorier/NBitcoin
+* https://github.com/NicolasDorier/NBitRub
 
 JavaScript:
 * https://github.com/bitpay/bitcore-mnemonic
-* https://github.com/bitcoinjs/bip39 (used by [[https://github.com/blockchain/My-Wallet-V3/blob/v3.8.0/src/hd-wallet.js#L121-L146|blockchain.info]])
+* https://github.com/bitrubjs/bip39 (used by [[https://github.com/blockchain/My-Wallet-V3/blob/v3.8.0/src/hd-wallet.js#L121-L146|blockchain.info]])
 
 Ruby:
 * https://github.com/sreekanthgs/bip_mnemonic
@@ -167,7 +167,7 @@ Swift:
 * https://github.com/yuzushioh/WalletKit
 
 C++:
-* https://github.com/libbitcoin/libbitcoin-system/blob/master/include/bitcoin/system/wallet/mnemonic.hpp
+* https://github.com/libbitrub/libbitrub-system/blob/master/include/bitrub/system/wallet/mnemonic.hpp
 
 C (with Python/Java/Javascript bindings):
 * https://github.com/ElementsProject/libwally-core

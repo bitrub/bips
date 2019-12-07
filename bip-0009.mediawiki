@@ -6,7 +6,7 @@
           Greg Maxwell <greg@xiph.org>
           Rusty Russell <rusty@rustcorp.com.au>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0009
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0009
   Status: Final
   Type: Informational
   Created: 2015-10-04
@@ -15,7 +15,7 @@
 
 ==Abstract==
 
-This document specifies a proposed change to the semantics of the 'version' field in Bitcoin blocks, allowing multiple backward-compatible changes (further called "soft forks") to be deployed in parallel. It relies on interpreting the version field as a bit vector, where each bit can be used to track an independent change. These are tallied each retarget period. Once the consensus change succeeds or times out, there is a "fallow" pause after which the bit can be reused for later changes.
+This document specifies a proposed change to the semantics of the 'version' field in BitRub blocks, allowing multiple backward-compatible changes (further called "soft forks") to be deployed in parallel. It relies on interpreting the version field as a bit vector, where each bit can be used to track an independent change. These are tallied each retarget period. Once the consensus change succeeds or times out, there is a "fallow" pause after which the bit can be reused for later changes.
 
 ==Motivation==
 

@@ -4,7 +4,7 @@
   Title: Generic anti-replay protection using Script
   Author: Luke Dashjr <luke+bip@dashjr.org>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0115
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0115
   Status: Draft
   Type: Standards Track
   Created: 2016-09-23
@@ -13,7 +13,7 @@
 
 ==Abstract==
 
-This BIP describes a new opcode (<code>OP_CHECKBLOCKATHEIGHT</code>) for the Bitcoin scripting system that allows construction of transactions which are valid only on specific blockchains.
+This BIP describes a new opcode (<code>OP_CHECKBLOCKATHEIGHT</code>) for the BitRub scripting system that allows construction of transactions which are valid only on specific blockchains.
 
 ==Copyright==
 
@@ -40,16 +40,16 @@ Otherwise, script execution will continue as if a NOP had been executed.
 
 This BIP will be deployed by "version bits" [[bip-0009.mediawiki|BIP9]] with the '''name''' "cbah" and using '''bit''' TBD.
 
-For Bitcoin '''mainnet''', the BIP9 '''starttime''' will be TBD (Epoch timestamp TBD) and BIP9 '''timeout''' will be TBD (Epoch timestamp TBD).
+For BitRub '''mainnet''', the BIP9 '''starttime''' will be TBD (Epoch timestamp TBD) and BIP9 '''timeout''' will be TBD (Epoch timestamp TBD).
 
-For Bitcoin '''mainnet''', the BIP9 '''starttime''' will be TBD (Epoch timestamp TBD) and BIP9 '''timeout''' will be TBD (Epoch timestamp TBD).
+For BitRub '''mainnet''', the BIP9 '''starttime''' will be TBD (Epoch timestamp TBD) and BIP9 '''timeout''' will be TBD (Epoch timestamp TBD).
 
 ==Motivation==
 
 ===Securely recovering from double spends===
 
-In some circumstances, users may wish to spend received bitcoins before they have confirmed on the blockchain (Tx B1).
-However, if the transaction sending them those bitcoins (Tx A1) is double-spent, the wallet must re-issue their own transaction spending them (Tx B2).
+In some circumstances, users may wish to spend received bitrubs before they have confirmed on the blockchain (Tx B1).
+However, if the transaction sending them those bitrubs (Tx A1) is double-spent, the wallet must re-issue their own transaction spending them (Tx B2).
 So long as the double-spend of the incoming transaction (Tx A2) also pays the wallet, this can be managed by simply updating the outgoing transaction with the new outpoint and resigning.
 However, if the double-spend does not pay the wallet, the situation is presently irrecoverable:
 it must spend different, non-conflicting TXOs in Tx B2, which allows an attacker to then reorganise the chain (reversing the incoming transaction's double-spend) and confirm both of his transactions Tx B1 and Tx B2.
@@ -78,7 +78,7 @@ How is this different from the transaction's lock-time?
 
 Why are block heights required to be absolute, rather than relative?
 
-* A relative block height would allow for creation of transactions which are valid at block N, but not N+1. This is carefully avoided by Bitcoin to ensure that if any given block is reorganised out, non-malicious transactions can be simply re-confirmed in a later block.
+* A relative block height would allow for creation of transactions which are valid at block N, but not N+1. This is carefully avoided by BitRub to ensure that if any given block is reorganised out, non-malicious transactions can be simply re-confirmed in a later block.
 
 Why are blocks older than 52596 deep in the chain not verified?
 
@@ -114,4 +114,4 @@ Old nodes will likely also not relay transactions using this opcode for the same
 
 ==Reference Implementation==
 
-https://github.com/bitcoin/bitcoin/compare/master...luke-jr:cbah
+https://github.com/bitrub/bitrub/compare/master...luke-jr:cbah

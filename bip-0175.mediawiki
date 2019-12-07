@@ -5,7 +5,7 @@
   Author: Omar Shibli <omar@commerceblock.com>
           Nicholas Gregory <nicholas@commerceblock.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0175
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0175
   Status: Draft
   Type: Informational
   Created: 2017-07-17
@@ -20,7 +20,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ==Motivation==
 
-A Bitcoin transaction represents a "real world" contract between two parties transferring value. Counterparties in a business interaction traditionally keep track of a payment with bills (invoices) and receipts. Delivery of a good is made by the payee once the payer has signed the receipt, agreeing to pay for the items on the invoice. Gerhardt and Hanke [0] formulate this interaction within the confines of the Bitcoin protocol using homomorphic payment addresses and the multiparty pay-to-contract protocol.
+A BitRub transaction represents a "real world" contract between two parties transferring value. Counterparties in a business interaction traditionally keep track of a payment with bills (invoices) and receipts. Delivery of a good is made by the payee once the payer has signed the receipt, agreeing to pay for the items on the invoice. Gerhardt and Hanke [0] formulate this interaction within the confines of the BitRub protocol using homomorphic payment addresses and the multiparty pay-to-contract protocol.
 
 The protocol is constructed in such a way that all parties have cryptographic proof of both who is being paid and for what. Using the technique described in this BIP, an address can be provably derived from the terms of a contract and the payee's public key. This derivation scheme does not bloat the UTXO and is completely hidden to network participants; the derived address looks like any other P2(W)PKH or P2(W)SH address. Redemption of the funds requires knowledge of the contract and the payee's private key.
 
@@ -102,11 +102,11 @@ For a given contract documents denoted by c<sub>1</sub>,...,c<sub>n</sub>, payme
 
 ===Payment address verification===
 
-For a given Bitcoin address, <code>payment_base</code> extended public key, contract documents denoted by c<sub>1</sub>,...,c<sub>n</sub>, and cryptographic hash function denoted by <code>h</code>, we can verify the integrity of the address by the following steps:
+For a given BitRub address, <code>payment_base</code> extended public key, contract documents denoted by c<sub>1</sub>,...,c<sub>n</sub>, and cryptographic hash function denoted by <code>h</code>, we can verify the integrity of the address by the following steps:
 
 1. Compute contract address from the given inputs as described in Contract Address Generation section.
 
-2. Compare the computed address from step 1 with the given Bitcoin address as an input.
+2. Compare the computed address from step 1 with the given BitRub address as an input.
 
 ===Redemption===
 
@@ -233,7 +233,7 @@ document 1:
 
   1QGe5LaDMAmHeibJbZBmZqhQDZSp7QCqSs
 
-8. As expected the address doesn't match the Bitcoin address from the last example <code>1C7f322izqMqLzZzfzkPAjxBzprxDi47Yf</code>.
+8. As expected the address doesn't match the BitRub address from the last example <code>1C7f322izqMqLzZzfzkPAjxBzprxDi47Yf</code>.
 
 Verification operation will succeed only if we use identical documents to ones that have been used in the contract address generation.
 

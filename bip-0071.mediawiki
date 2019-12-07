@@ -4,7 +4,7 @@
   Title: Payment Protocol MIME types
   Author: Gavin Andresen <gavinandresen@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0071
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0071
   Status: Final
   Type: Standards Track
   Created: 2013-07-29
@@ -12,7 +12,7 @@
 
 ==Abstract==
 
-This BIP defines a MIME (RFC 2046) Media Type for Bitcoin payment
+This BIP defines a MIME (RFC 2046) Media Type for BitRub payment
 request messages.
 
 ==Motivation==
@@ -23,17 +23,17 @@ encapsulating the messages.
 
 ==Specification==
 
-The Media Type (Content-Type in HTML/email headers) for bitcoin
+The Media Type (Content-Type in HTML/email headers) for bitrub
 protocol messages shall be:
 
 {|
 | Message || Type/Subtype
 |-
-| PaymentRequest || application/bitcoin-paymentrequest
+| PaymentRequest || application/bitrub-paymentrequest
 |-
-| Payment || application/bitcoin-payment
+| Payment || application/bitrub-payment
 |-
-| PaymentACK || application/bitcoin-paymentack
+| PaymentACK || application/bitrub-paymentack
 |}
 
 Payment protocol messages are encoded in binary.
@@ -44,6 +44,6 @@ A web server generating a PaymentRequest message to initiate the
 payment protocol would precede the binary message data with the
 following headers:
 <pre>
-Content-Type: application/bitcoin-paymentrequest
+Content-Type: application/bitrub-paymentrequest
 Content-Transfer-Encoding: binary
 </pre>

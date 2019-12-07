@@ -5,7 +5,7 @@
   Author: Pavel Moravec <pavel.moravec@braiins.cz>
           Jan Čapek <jan.capek@braiins.cz>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0310
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0310
   Status: Draft
   Type: Informational
   Created: 2018-03-10
@@ -18,7 +18,7 @@
 This BIP provides a generic mechanism for specifying stratum protocol
 extensions. At the same time, one of the important extensions that is
 specified by this BIP is configuration of bits for "version rolling"
-in nVersion field of bitcoin block header.
+in nVersion field of bitrub block header.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
@@ -28,7 +28,7 @@ document are to be interpreted as described in RFC 2119.
 
 The initial motivation for specifying some general support for stratum
 protocol extensions was a need to allow miners to do so called
-"version rolling", changing value in the first field of the Bitcoin
+"version rolling", changing value in the first field of the BitRub
 block header.
 
 Version rolling is backwards incompatible change to the stratum protocol
@@ -190,7 +190,7 @@ send the mask, in this case a default full mask is used.
 
 * '''"version-rolling.mask"''' (REQUIRED, ''TMask'')
 ::- Bits set to 1 are allowed to be changed by the miner. If a miner changes bits with mask value 0, the server will reject the submit.
-::- The server SHOULD return the largest mask possible (as many bits set to 1 as possible). This can be useful in a mining proxy setup when a proxy needs to negotiate the best mask for its future clients. There is a [Draft BIP](https://github.com/bitcoin/bips/pull/661/files) describing available nVersion bits. The server SHOULD pick a mask that preferably covers all bits specified in the BIP.
+::- The server SHOULD return the largest mask possible (as many bits set to 1 as possible). This can be useful in a mining proxy setup when a proxy needs to negotiate the best mask for its future clients. There is a [Draft BIP](https://github.com/bitrub/bips/pull/661/files) describing available nVersion bits. The server SHOULD pick a mask that preferably covers all bits specified in the BIP.
 
 * '''"version-rolling.min-bit-count"''' (REQUIRED, ''TMask'')
 ::- The miner also provides a minimum number of bits that it needs for efficient version rolling in hardware. Note that this parameter provides important diagnostic information to the pool server. If the requested bit count exceeds the limit of the pool server, the miner always has the chance to operate in a degraded mode without using full hashing power. The pool server SHOULD NOT terminate miner connection if this rare mismatch case occurs.

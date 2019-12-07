@@ -4,9 +4,9 @@
   Title: Fast Merkle Trees
   Author: Mark Friedenbach <mark@friedenbach.org>
           Kalle Alm <kalle.alm@gmail.com>
-          BtcDrak <btcdrak@gmail.com>
+          BtrDrak <btrdrak@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0098
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0098
   Status: Draft
   Type: Standards Track
   Created: 2017-08-24
@@ -18,10 +18,10 @@
 
 In many applications it is useful to prove membership of a data element in a set without having to reveal the entire contents of that set.
 The Merkle hash-tree, where inner/non-leaf nodes are labeled with the hash of the labels or values of its children, is a cryptographic tool that achieves this goal.
-Bitcoin uses a Merkle hash-tree construct for committing the transactions of a block into the block header.
+BitRub uses a Merkle hash-tree construct for committing the transactions of a block into the block header.
 This particular design, created by Satoshi, suffers from a serious flaw related to duplicate entries documented in the National Vulnerability Database as CVE-2012-2459[1], and also suffers from less than optimal performance due to unnecessary double-hashing.
 
-This Bitcoin Improvement Proposal describes a more efficient Merkle hash-tree construct that is not vulnerable to CVE-2012-2459
+This BitRub Improvement Proposal describes a more efficient Merkle hash-tree construct that is not vulnerable to CVE-2012-2459
 and achieves an approximate 55% decrease in hash-tree construction and validation times as compared with fully optimized implementations of the Satoshi Merkle hash-tree construct.
 
 ==Copyright==
@@ -31,7 +31,7 @@ This BIP is licensed under a Creative Commons Attribution-ShareAlike license. Al
 ==Motivation==
 
 A Merkle hash-tree is a directed acyclic graph data structure where all non-terminal nodes are labeled with the hash of combined labels or values of the node(s) it is connected to.
-Bitcoin uses a unique Merkle hash-tree construct invented by Satoshi for calculating the block header commitment to the list of transactions in a block.
+BitRub uses a unique Merkle hash-tree construct invented by Satoshi for calculating the block header commitment to the list of transactions in a block.
 While it would be convenient for new applications to make use of this same data structure so as to share implementation and maintenance costs, there are three principle drawbacks to reuse.
 
 First, Satoshi's Merkle hash-tree has a serious vulnerability[1] related to duplicate tree entries that can cause bugs in protocols that use it.
@@ -89,7 +89,7 @@ and a Merkle tree with a single value has a root hash label equal to that self-s
 
 The fast-SHA256 hash function can be calculated 2.32x faster than a specialized double-SHA256 implementation[2], or three (3) times faster than an implementation applying a generic SHA-256 primitive twice,
 as hashing 64 bytes of data with SHA-256 as specified by FIPS 180-4[3] takes two compression runs (because of message padding) and then a third compression run for the double-SHA256 construction.
-Validating a fast-SHA256 Merkle root is therefore more than twice as fast as the double-SHA256 construction used by Satoshi in bitcoin.
+Validating a fast-SHA256 Merkle root is therefore more than twice as fast as the double-SHA256 construction used by Satoshi in bitrub.
 Furthermore the fastest fast-SHA256 implementation ''is'' the generic SHA-256 implementation, enabling generic circuitry and code reuse without a cost to performance.
 
 The application of fast-SHA256 to inner node label updates is safe in this limited domain because the inputs are hash values and fixed in number and in length,
@@ -102,7 +102,7 @@ The prime 23 was chosen as the leading fractional bits of the first eight (8) pr
 Using the next prime in sequence reduces the likelihood of introducing weakness due to reuse of a constant factor.
 
 The Merkle root hash of a single element tree is a simple pass-through of the leaf hash without modification so as to allow for chained validation of split proofs.
-This is particularly useful when the validation environment constrains proof sizes, such as push limits in Bitcoin script.
+This is particularly useful when the validation environment constrains proof sizes, such as push limits in BitRub script.
 Chained validation allows a verifier to split one proof into two or more, where the leaf is shown to be under an inner node, and that inner node is shown to be under the root.
 Without pass-through hashing in a single-element tree, use of chained validation would unnecessarily introduce a minimum path length requirement equal to the number of chain links.
 Pass-through hashing of single elements allows instead for one or more of the chained validations to use a "NOP" proof consisting of a zero-length path,
@@ -274,7 +274,7 @@ It differs in a subtle but important way from the algorithm used by Satoshi so a
 #* Pass through the list combining adjacent entries with the fast-SHA256 hash. If the list has an odd number of elements, leave the last element as-is (this fixes [1]). This step reduces a list of N elements to ceil(N/2) entries.
 # The last remaining item in the list is the Merkle root.
 
-This algorithm differs from Merkle lists used in bitcoin in two ways.
+This algorithm differs from Merkle lists used in bitrub in two ways.
 First, fast-SHA256 is used instead of double-SHA256 for inner node labels.
 Second, final entries on an odd-length list are not duplicated and hashed, which is the mistake that led to CVE-2012-2459[1].
 
@@ -282,7 +282,7 @@ Second, final entries on an odd-length list are not duplicated and hashed, which
 
 An implementation of this BIP for extraction of Merkle branches and fast, log-space Merkle branch validation is available at the following Github repository:
 
-[https://github.com/maaku/bitcoin/tree/fast-merkle-tree]
+[https://github.com/maaku/bitrub/tree/fast-merkle-tree]
 
 Also included in this repo is a 'merklebranch' RPC for calculating root values and extracting inclusion proofs for both arbitrary trees and trees constructed from lists of values using the algorithm in this BIP,
 and a 'mergemerklebranch' RPC for unifying two or more fast Merkle tree inclusion proofs--replacing SKIP hashes in one proof with a subtree extracted from another.
@@ -301,8 +301,8 @@ This BIP on its own does not cause any backwards incompatibility.
 
 [1] [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2459 National Vulnerability Database: CVE-2012-2459]
 
-[2] [https://github.com/sipa/bitcoin/tree/201709_dsha256_64 github.com:sipa/bitcoin 201709_dsha256_64] Pieter Wuille, September 2017, personal communication. By making use of knowledge that the inputs at each stage are fixed length, Mr. Wuille was able to achieve a 22.7% reduction in the time it takes to compute the double-SHA256 hash of 64 bytes of data, the hash aggregation function of the Satoshi Merkle tree construction.
+[2] [https://github.com/sipa/bitrub/tree/201709_dsha256_64 github.com:sipa/bitrub 201709_dsha256_64] Pieter Wuille, September 2017, personal communication. By making use of knowledge that the inputs at each stage are fixed length, Mr. Wuille was able to achieve a 22.7% reduction in the time it takes to compute the double-SHA256 hash of 64 bytes of data, the hash aggregation function of the Satoshi Merkle tree construction.
 
 [3] [http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf Secure Hash Standard]
 
-[4] [https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki BIP 116 MERKLEBRANCHVERIFY]
+[4] [https://github.com/bitrub/bips/blob/master/bip-0116.mediawiki BIP 116 MERKLEBRANCHVERIFY]

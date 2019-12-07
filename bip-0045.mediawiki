@@ -6,7 +6,7 @@
           Ryan X. Charles <ryan@bitpay.com>
           Matias Alejo Garcia <matias@bitpay.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0045
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0045
   Status: Proposed
   Type: Standards Track
   Created: 2014-04-25
@@ -252,4 +252,4 @@ requested by the corresponding cosigner.
 
 * [[bip-0032.mediawiki|BIP32 - Hierarchical Deterministic Wallets]]
 * [[bip-0043.mediawiki|BIP43 - Purpose Field for Deterministic Wallets]]
-* [[https://www.mail-archive.com/bitcoin-development@lists.sourceforge.net/msg05156.html|Original mailing list discussion]]
+* [[https://www.mail-archive.com/bitrub-development@lists.sourceforge.net/msg05156.html|Original mailing list discussion]]

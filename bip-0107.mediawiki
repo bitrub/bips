@@ -4,7 +4,7 @@
   Title: Dynamic limit on the block size
   Author: Washington Y. Sanchez <washington.sanchez@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0107
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0107
   Status: Draft
   Type: Standards Track
   Created: 2015-09-11
@@ -20,12 +20,12 @@ This BIP proposes a dynamic limit to the block size based on transaction volume.
 Over the next few years, large infrastructure investments will be made into:
 
 # Improving global network connectivity
-# Improving block propagation across the Bitcoin network
+# Improving block propagation across the BitRub network
 # Layer 2 services and networks for off-chain transactions
 # General efficiency improvements to transactions and the blockchain
 
-* While there is a consensus between Bitcoin developers, miners, businesses and users that the block size needs to be increased, there is a lingering concern over the potential unintended consequences that may augment the trend towards network and mining centralization (largely driven by mining hardware such as ASICs) and thereby threaten the security of the network. 
-* In contrast, failing to respond to elevated on-chain transaction volume may lead to a consumer-failure of Bitcoin, where ordinary users - having enjoyed over 6 years of submitting transactions on-chain at relatively low cost - will be priced out of blockchain with the emergence of a prohibitive 'fee market'.
+* While there is a consensus between BitRub developers, miners, businesses and users that the block size needs to be increased, there is a lingering concern over the potential unintended consequences that may augment the trend towards network and mining centralization (largely driven by mining hardware such as ASICs) and thereby threaten the security of the network. 
+* In contrast, failing to respond to elevated on-chain transaction volume may lead to a consumer-failure of BitRub, where ordinary users - having enjoyed over 6 years of submitting transactions on-chain at relatively low cost - will be priced out of blockchain with the emergence of a prohibitive 'fee market'.
 * These two concerns must be delicately balanced so that all users can benefit from a robust, scalable, and neutral network.
 
 ==Specification==

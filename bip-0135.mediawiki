@@ -3,14 +3,14 @@
   Title: Generalized version bits voting
   Author: Sancho Panza <sanch0panza@protonmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0135
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0135
                 https://bitco.in/forum/threads/bip9-generalized-version-bits-voting-bip-genvbvoting.1968/
   Status: Draft
   Type: Informational
   Created: 2017-03-29
   License: CC0-1.0
            GNU-All-Permissive
-  Post-History: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-April/013969.html
+  Post-History: https://lists.linuxfoundation.org/pipermail/bitrub-dev/2017-April/013969.html
   Replaces: 9
 </pre>
 
@@ -38,7 +38,7 @@ extended by additional parameters ('threshold', 'windowsize', 'minlockedblocks',
 
 ==Motivation==
 
-The Bitcoin protocol requires a flexible scheme for finding consensus on
+The BitRub protocol requires a flexible scheme for finding consensus on
 protocol changes, to ensure that it can adapt to the needs of the market and
 remain competitive as an electronic payment system.
 
@@ -390,9 +390,9 @@ By way of design it does not interfere with unknown (undefined) deployments.
 
 A working reference implementation, including tests, can be found in these Pull Requests:
 
-* https://github.com/BitcoinUnlimited/BitcoinUnlimited/pull/458
+* https://github.com/BitRubUnlimited/BitRubUnlimited/pull/458
 
-* https://github.com/bitcoin/bitcoin/pull/10437
+* https://github.com/bitrub/bitrub/pull/10437
 
 Existing unit tests and regression tests have been left active to demonstrate
 backward compatibility of the default settings with BIP9.
@@ -402,7 +402,7 @@ backward compatibility of the default settings with BIP9.
 
 [1] http://pubs.opengroup.org/onlinepubs/9699919799/xrat/V4_xbd_chap04.html#tag_21_04_16
 
-[2] [[https://github.com/bitcoin/bips/blob/master/bip-0009/assignments.mediawiki|List of existing BIP9 deployment proposals]]
+[2] [[https://github.com/bitrub/bips/blob/master/bip-0009/assignments.mediawiki|List of existing BIP9 deployment proposals]]
 
 
 ==Copyright==

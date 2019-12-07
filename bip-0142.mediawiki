@@ -4,7 +4,7 @@
   Title: Address Format for Segregated Witness
   Author: Johnson Lau <jl2012@xbt.hk>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0142
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0142
   Status: Withdrawn
   Type: Standards Track
   Created: 2015-12-24
@@ -13,7 +13,7 @@
 
 == Abstract ==
 
-This BIP describes new types of Bitcoin address to support native segregated witness transactions with 20-byte and 32-byte program.
+This BIP describes new types of BitRub address to support native segregated witness transactions with 20-byte and 32-byte program.
 
 == Motivation ==
 
@@ -21,7 +21,7 @@ To define standard payment address for native segregated witness (segwit) transa
 
 == Specification ==
 
-The new Bitcoin address format defined is for the Pay-to-Witness-Public-Key-Hash (P2WPKH) and Pay-to-Witness-Script-Hash (P2WSH) transaction described in segregated witness soft fork (BIP141). The scriptPubKey is an OP_0 followed by a push of 20-byte-hash (P2WPKH) or 32-byte hash (P2WSH).
+The new BitRub address format defined is for the Pay-to-Witness-Public-Key-Hash (P2WPKH) and Pay-to-Witness-Script-Hash (P2WSH) transaction described in segregated witness soft fork (BIP141). The scriptPubKey is an OP_0 followed by a push of 20-byte-hash (P2WPKH) or 32-byte hash (P2WSH).
 
 The new address is encoded in a way similar to existing address formats:
   
@@ -105,7 +105,7 @@ BIP141 defines 2 ways of encoding a "witness program", a data push of 2 to 32 by
 
 Considering the BIP13 P2SH address has been defined in 2012, using segwit-in-P2SH allows most existing wallets to pay a segwit-compatible wallet without any upgrade. However, this method requires more block space and is only a short-term solution to make the transition smoother. Eventually, all users are expected to use the more efficient native witness program as the primary method of payment.
 
-The drawbacks of Bitcoin addresses have been extensively discussed in BIP13. Since then, better payment methods have been proposed or deployed, for example:
+The drawbacks of BitRub addresses have been extensively discussed in BIP13. Since then, better payment methods have been proposed or deployed, for example:
 *BIP47 Reusable Payment Codes for Hierarchical Deterministic Wallets
 *BIP63 Stealth Addresses
 *BIP70 Payment protocol
@@ -130,7 +130,7 @@ when encoded as a P2PKH template, would become:
   
     DUP HASH160 <010966776006953D5567439E5E39F86A0D273BEE> EQUALVERIFY CHECKSIG
 
-With the corresponding version 1 Bitcoin address being:
+With the corresponding version 1 BitRub address being:
   
     16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM
  
@@ -144,7 +144,7 @@ Using 0x06 as address version, followed by 0x00 as witness program version, and 
  
 == Reference implementation ==
 
-https://github.com/theuni/bitcoin/commit/ede1b57058ac8efdefe61f67395affb48f2c0d80
+https://github.com/theuni/bitrub/commit/ede1b57058ac8efdefe61f67395affb48f2c0d80
 
 == References ==
 

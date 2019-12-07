@@ -4,7 +4,7 @@
   Title: Proof of Payment
   Author: Kalle Rosenbaum <kalle@rosenbaum.se>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0120
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0120
   Status: Withdrawn
   Type: Standards Track
   Created: 2015-07-28
@@ -48,7 +48,7 @@ If an input script type is P2SH, any satisfying script should do, just as if it 
 
 === Data structure ===
 
-A proof of payment for a transaction T, here called PoP(T), is used to prove that one has ownership of the credentials needed to unlock all the inputs of T. It has the exact same structure as a bitcoin transaction with the same inputs as T and in the same order as in T, but with each sequence number set to 0. There is exactly one output, here called the pop output, with value 0. The pop output must have the following format:
+A proof of payment for a transaction T, here called PoP(T), is used to prove that one has ownership of the credentials needed to unlock all the inputs of T. It has the exact same structure as a bitrub transaction with the same inputs as T and in the same order as in T, but with each sequence number set to 0. There is exactly one output, here called the pop output, with value 0. The pop output must have the following format:
 
  OP_RETURN <version> <txid> <nonce>
 
@@ -62,7 +62,7 @@ A proof of payment for a transaction T, here called PoP(T), is used to prove tha
 | &lt;nonce>   || 6        || Random data
 |}
 
-The lock_time of the PoP must be set to 499999999 to prevent the PoP from being included in a block, should it appear on the bitcoin p2p network. This is also the reason for setting the sequence numbers to 0, since sequence number of ffffffff would make lock_time ineffective. This specification demands that all input sequence numbers are 0, not just one of them, which would be sufficient to make lock_time effective. This is for simplicity reasons.
+The lock_time of the PoP must be set to 499999999 to prevent the PoP from being included in a block, should it appear on the bitrub p2p network. This is also the reason for setting the sequence numbers to 0, since sequence number of ffffffff would make lock_time ineffective. This specification demands that all input sequence numbers are 0, not just one of them, which would be sufficient to make lock_time effective. This is for simplicity reasons.
 
 An illustration of the PoP data structure and its original payment is shown below.
 
@@ -91,7 +91,7 @@ An illustration of the PoP data structure and its original payment is shown belo
  +-------------------------------------------------------------+
 </pre>
 
-The PoP is signed using the same signing process that is used for bitcoin transactions.
+The PoP is signed using the same signing process that is used for bitrub transactions.
 
 The purpose of the nonce is to make it harder to use a stolen PoP; Once the PoP has reached the server, that PoP is useless since the server will generate a new nonce for every PoP request.
 
@@ -148,8 +148,8 @@ The server needs to validate the PoP and reply with "valid" or "invalid". That p
 
 == References ==
 
-[https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki BIP0021]: URI Scheme
+[https://github.com/bitrub/bips/blob/master/bip-0021.mediawiki BIP0021]: URI Scheme
 
-[https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki BIP0070]: Payment Protocol
+[https://github.com/bitrub/bips/blob/master/bip-0070.mediawiki BIP0070]: Payment Protocol
 
-[https://github.com/bitcoin/bips/blob/master/bip-0121.mediawiki BIP0121]: Proof of Payment URI scheme
+[https://github.com/bitrub/bips/blob/master/bip-0121.mediawiki BIP0121]: Proof of Payment URI scheme

@@ -1,10 +1,10 @@
-People wishing to submit BIPs, first should propose their idea or document to the [https://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev bitcoin-dev@lists.linuxfoundation.org] mailing list. After discussion, please open a PR. After copy-editing and acceptance, it will be published here.
+People wishing to submit BIPs, first should propose their idea or document to the [https://lists.linuxfoundation.org/mailman/listinfo/bitrub-dev bitrub-dev@lists.linuxfoundation.org] mailing list. After discussion, please open a PR. After copy-editing and acceptance, it will be published here.
 
 We are fairly liberal with approving BIPs, and try not to be too involved in decision making on behalf of the community. The exception is in very rare cases of dispute resolution when a decision is contentious and cannot be agreed upon. In those cases, the conservative option will always be preferred.
 
 Having a BIP here does not make it a formally accepted standard until its status becomes Final or Active.
 
-Those proposing changes should consider that ultimately consent may rest with the consensus of the Bitcoin users (see also: [https://en.bitcoin.it/wiki/Economic_majority economic majority]).
+Those proposing changes should consider that ultimately consent may rest with the consensus of the BitRub users (see also: [https://en.bitrub.it/wiki/Economic_majority economic majority]).
 
 {| class="wikitable sortable" style="width: auto; text-align: center; font-size: smaller; table-layout: fixed;"
 !Number
@@ -226,7 +226,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 |- style="background-color: #cfffcf"
 | [[bip-0042.mediawiki|42]]
 | Consensus (soft fork)
-| A finite monetary supply for Bitcoin
+| A finite monetary supply for BitRub
 | Pieter Wuille
 | Standard
 | Final
@@ -333,7 +333,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | [[bip-0068.mediawiki|68]]
 | Consensus (soft fork)
 | Relative lock-time using consensus-enforced sequence numbers
-| Mark Friedenbach, BtcDrak, Nicolas Dorier, kinoshitajona
+| Mark Friedenbach, BtrDrak, Nicolas Dorier, kinoshitajona
 | Standard
 | Final
 |- style="background-color: #ffffcf"
@@ -360,7 +360,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 |- style="background-color: #cfffcf"
 | [[bip-0072.mediawiki|72]]
 | Applications
-| bitcoin: uri extensions for Payment Protocol
+| bitrub: uri extensions for Payment Protocol
 | Gavin Andresen
 | Standard
 | Final
@@ -438,7 +438,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | [[bip-0098.mediawiki|98]]
 | Consensus (soft fork)
 | Fast Merkle Trees
-| Mark Friedenbach, Kalle Alm, BtcDrak
+| Mark Friedenbach, Kalle Alm, BtrDrak
 | Standard
 | Draft
 |-
@@ -487,13 +487,13 @@ Those proposing changes should consider that ultimately consent may rest with th
 | [[bip-0105.mediawiki|105]]
 | Consensus (hard fork)
 | Consensus based block size retargeting algorithm
-| BtcDrak
+| BtrDrak
 | Standard
 | Draft
 |-
 | [[bip-0106.mediawiki|106]]
 | Consensus (hard fork)
-| Dynamically Controlled Bitcoin Block Size Max Cap
+| Dynamically Controlled BitRub Block Size Max Cap
 | Upal Chakraborty
 | Standard
 | Draft
@@ -522,7 +522,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | [[bip-0112.mediawiki|112]]
 | Consensus (soft fork)
 | CHECKSEQUENCEVERIFY
-| BtcDrak, Mark Friedenbach, Eric Lombrozo
+| BtrDrak, Mark Friedenbach, Eric Lombrozo
 | Standard
 | Final
 |- style="background-color: #cfffcf"
@@ -550,14 +550,14 @@ Those proposing changes should consider that ultimately consent may rest with th
 | [[bip-0116.mediawiki|116]]
 | Consensus (soft fork)
 | MERKLEBRANCHVERIFY
-| Mark Friedenbach, Kalle Alm, BtcDrak
+| Mark Friedenbach, Kalle Alm, BtrDrak
 | Standard
 | Draft
 |-
 | [[bip-0117.mediawiki|117]]
 | Consensus (soft fork)
 | Tail Call Execution Semantics
-| Mark Friedenbach, Kalle Alm, BtcDrak
+| Mark Friedenbach, Kalle Alm, BtrDrak
 | Standard
 | Draft
 |-
@@ -829,7 +829,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 |- style="background-color: #ffffcf"
 | [[bip-0174.mediawiki|174]]
 | Applications
-| Partially Signed Bitcoin Transaction Format
+| Partially Signed BitRub Transaction Format
 | Andrew Chow
 | Standard
 | Proposed
@@ -907,7 +907,7 @@ Those proposing changes should consider that ultimately consent may rest with th
 | [[bip-0320.mediawiki|320]]
 |
 | nVersion bits for general purpose use
-| BtcDrak
+| BtrDrak
 | Standard
 | Draft
 |-

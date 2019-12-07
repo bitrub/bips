@@ -4,7 +4,7 @@
   Title: getblocktemplate - Fundamentals
   Author: Luke Dashjr <luke+bip22@dashjr.org>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0022
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0022
   Status: Final
   Type: Standards Track
   Created: 2012-02-28
@@ -13,7 +13,7 @@
 
 ==Abstract==
 
-This BIP describes a new JSON-RPC method for "smart" Bitcoin miners and proxies.
+This BIP describes a new JSON-RPC method for "smart" BitRub miners and proxies.
 Instead of sending a simple block header for hashing, the entire block structure is sent, and left to the miner to (optionally) customize and assemble.
 
 ==Copyright==
@@ -57,9 +57,9 @@ getblocktemplate MUST return a JSON Object containing the following keys:
 |-
 | sizelimit || No || Number || number of bytes allowed in blocks
 |-
-| transactions || Should || Array of Objects || Objects containing [[#Transactions Object Format|information for Bitcoin transactions]] (excluding coinbase)
+| transactions || Should || Array of Objects || Objects containing [[#Transactions Object Format|information for BitRub transactions]] (excluding coinbase)
 |-
-| version || Yes || Number || always 1 or 2 (at least for bitcoin) - clients MUST understand the implications of the version they use (eg, comply with [[bip-0034.mediawiki|BIP 0034]] for version 2)
+| version || Yes || Number || always 1 or 2 (at least for bitrub) - clients MUST understand the implications of the version they use (eg, comply with [[bip-0034.mediawiki|BIP 0034]] for version 2)
 |-
 | coinbaseaux || No || Object || data that SHOULD be included in the coinbase's scriptSig content. Only the values (hexadecimal byte-for-byte) in this Object should be included, not the keys. This does not include the block height, which is required to be included in the scriptSig by [[bip-0034.mediawiki|BIP 0034]]. It is advisable to encode values inside "PUSH" opcodes, so as to not inadvertently expend SIGOPs (which are counted toward limits, despite not being executed).
 |-
@@ -185,7 +185,7 @@ Possible reasons a share may be rejected include, but are not limited to:
 |-
 | bad-cb-flag || the server detected a feature-signifying flag that it does not allow
 |-
-| bad-cb-length || the coinbase was too long (bitcoin limit is 100 bytes)
+| bad-cb-length || the coinbase was too long (bitrub limit is 100 bytes)
 |-
 | bad-cb-prefix || the server only allows appending to the coinbase, but it was modified beyond that
 |-
@@ -222,7 +222,7 @@ Possible reasons a share may be rejected include, but are not limited to:
 
 ==Motivation==
 
-bitcoind's JSON-RPC server can no longer support the load of generating the work required to productively mine Bitcoin, and external software specializing in work generation has become necessary.
+bitrubd's JSON-RPC server can no longer support the load of generating the work required to productively mine BitRub, and external software specializing in work generation has become necessary.
 At the same time, new independent node implementations are maturing to the point where they will also be able to support miners.
 
 A common standard for communicating block construction details is necessary to ensure compatibility between the full nodes and work generation software.
@@ -240,9 +240,9 @@ Why should "sigops" be provided for transactions?
 
 ==Reference Implementation==
 
-* [https://gitorious.org/bitcoin/eloipool Eloipool (server)]
-* [http://gitorious.org/bitcoin/libblkmaker libblkmaker (client)]
-* [https://github.com/bitcoin/bitcoin/pull/936/files bitcoind (minimal server)]
+* [https://gitorious.org/bitrub/eloipool Eloipool (server)]
+* [http://gitorious.org/bitrub/libblkmaker libblkmaker (client)]
+* [https://github.com/bitrub/bitrub/pull/936/files bitrubd (minimal server)]
 
 ==See Also==
 * [[bip-0023.mediawiki|BIP 23: getblocktemplate - Pooled Mining]]

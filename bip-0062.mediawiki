@@ -6,7 +6,7 @@
   Title: Dealing with malleability
   Author: Pieter Wuille <pieter.wuille@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0062
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0062
   Status: Withdrawn
   Type: Standards Track
   Created: 2014-03-12
@@ -15,7 +15,7 @@
 
 ==Abstract==
 
-This document specifies proposed changes to the Bitcoin transaction validity rules in order to make malleability of transactions impossible (at least when the sender doesn't choose to avoid it).
+This document specifies proposed changes to the BitRub transaction validity rules in order to make malleability of transactions impossible (at least when the sender doesn't choose to avoid it).
 
 ==Copyright==
 
@@ -23,7 +23,7 @@ This BIP is licensed under the 2-clause BSD license.
 
 ==Motivation==
 
-As of february 2014, Bitcoin transactions are malleable in multiple ways. This means a (valid) transaction can be modified in-flight, without invalidating it, but without access to the relevant private keys.
+As of february 2014, BitRub transactions are malleable in multiple ways. This means a (valid) transaction can be modified in-flight, without invalidating it, but without access to the relevant private keys.
 
 This is a problem for multiple reasons:
 * The sender may not recognize his own transaction after being modified.
@@ -32,9 +32,9 @@ This is a problem for multiple reasons:
 
 Several sources of malleability are known:
 
-# '''Non-DER encoded ECDSA signatures''' Right now, the Bitcoin reference client uses OpenSSL to validate signatures. As OpenSSL accepts more than serializations that strictly adhere to the DER standard, this is a source of malleability. Since v0.8.0, non-DER signatures are no longer relayed already.
+# '''Non-DER encoded ECDSA signatures''' Right now, the BitRub reference client uses OpenSSL to validate signatures. As OpenSSL accepts more than serializations that strictly adhere to the DER standard, this is a source of malleability. Since v0.8.0, non-DER signatures are no longer relayed already.
 # '''Non-push operations in scriptSig''' Any sequence of script operations in scriptSig that results in the intended data pushes, but is not just a push of that data, results in an alternative transaction with the same validity.
-# '''Push operations in scriptSig of non-standard size type''' The Bitcoin scripting language has several push operators (OP_0, single-byte pushes, data pushes of up to 75 bytes, OP_PUSHDATA1, OP_PUSHDATA2, OP_PUSHDATA4). As the later ones have the same result as the former ones, they result in additional possibilities.
+# '''Push operations in scriptSig of non-standard size type''' The BitRub scripting language has several push operators (OP_0, single-byte pushes, data pushes of up to 75 bytes, OP_PUSHDATA1, OP_PUSHDATA2, OP_PUSHDATA4). As the later ones have the same result as the former ones, they result in additional possibilities.
 # '''Zero-padded number pushes''' In cases where scriptPubKey opcodes use inputs that are interpreted as numbers, they can be zero padded.
 # '''Inherent ECDSA signature malleability''' ECDSA signatures themselves are already malleable: taking the negative of the number S inside (modulo the curve order) does not invalidate it.
 # '''Superfluous scriptSig operations''' Adding extra data pushes at the start of scripts, which are not consumed by the corresponding scriptPubKey, is also a source of malleability.
@@ -73,7 +73,7 @@ Below is a summary of the effects on signatures, their encoding and data pushes.
 
 The value S in signatures must be between 0x1 and 0x7FFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF 5D576E73 57A4501D DFE92F46 681B20A0 (inclusive). If S is too high, simply replace it by S' = 0xFFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFE BAAEDCE6 AF48A03B BFD25E8C D0364141 - S.
 
-Signatures produced by the OpenSSL library are not guaranteed to be consistent with this constraint. Version 0.9.3 of the reference client provides [https://github.com/bitcoin/bitcoin/blob/v0.9.3/src/key.cpp#L202-L227 an example] for detection and correction.
+Signatures produced by the OpenSSL library are not guaranteed to be consistent with this constraint. Version 0.9.3 of the reference client provides [https://github.com/bitrub/bitrub/blob/v0.9.3/src/key.cpp#L202-L227 an example] for detection and correction.
 
 The constraints on the value R are unchanged w.r.t. ECDSA, and values can be between 0x1 and 0xFFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFE BAAEDCE6 AF48A03B BFD25E8C D0364140 (inclusive).
 

@@ -6,7 +6,7 @@
           Tom Harding <tomh@thinlink.com>
           Dagur Valberg Johannsson <dagurval@pvv.ntnu.no>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0100
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0100
   Status: Rejected
   Type: Standards Track
   Created: 2015-06-11
@@ -61,16 +61,16 @@ The system is compatible with emergent consensus, but whereas under that system 
 
 ==Deployment==
 
-This BIP is presumed deployed and activated as of block height 449568 by implementing nodes on the bitcoin mainnet. It has no effect until a raise value different from 1M is observed, which requires at least 1512 of 2016 blocks to vote differently from 1M.
+This BIP is presumed deployed and activated as of block height 449568 by implementing nodes on the bitrub mainnet. It has no effect until a raise value different from 1M is observed, which requires at least 1512 of 2016 blocks to vote differently from 1M.
 
 ==Backward compatibility==
 
 The first block larger than 1M will create a network partition, as nodes with a fixed 1M hard limit reject that block.
 
 ==Implementations==
-https://github.com/bitcoinxt/bitcoinxt/pull/188</br>
-https://github.com/bitcoinxt/bitcoin/pull/1</br>
-https://github.com/BitcoinUnlimited/BitcoinUnlimited/pull/398</br>
+https://github.com/bitrubxt/bitrubxt/pull/188</br>
+https://github.com/bitrubxt/bitrub/pull/1</br>
+https://github.com/BitRubUnlimited/BitRubUnlimited/pull/398</br>
 
 ==Copyright==
 This document is licensed under the BSD 2-clause license.

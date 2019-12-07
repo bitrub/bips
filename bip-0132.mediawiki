@@ -3,7 +3,7 @@
   Title: Committee-based BIP Acceptance Process
   Author: Andy Chase <theandychase@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0132
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0132
   Status: Withdrawn
   Type: Process
   Created: 2015-08-31
@@ -12,7 +12,7 @@
 
 == Abstract ==
 
-The current process for accepting a BIP is not clearly defined. While [https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki BIP-0001] defines the process for writing and submitting a Bitcoin Improvement Proposal to the community it does not specify the precise method for which BIPs are considered accepted or rejected.
+The current process for accepting a BIP is not clearly defined. While [https://github.com/bitrub/bips/blob/master/bip-0001.mediawiki BIP-0001] defines the process for writing and submitting a BitRub Improvement Proposal to the community it does not specify the precise method for which BIPs are considered accepted or rejected.
 
 This proposal sets up a method for determining BIP acceptance.
 
@@ -24,9 +24,9 @@ This BIP has two parts:
 ** Waiting on opinion (2 weeks)
 ** BIP becomes either Accepted or Deferred
 * It sets up '''committees''' for reviewing comments and indicating acceptance under precise conditions.
-** Committees are authorized groups that represent client authors, miners, merchants, and users (each as a segment). Each one must represent at least 1% stake in the Bitcoin ecosystem.
+** Committees are authorized groups that represent client authors, miners, merchants, and users (each as a segment). Each one must represent at least 1% stake in the BitRub ecosystem.
 
-BIP acceptance is defined as at least 70% of the represented percentage stake in 3 out of the 4 Bitcoin segments.
+BIP acceptance is defined as at least 70% of the represented percentage stake in 3 out of the 4 BitRub segments.
 
 == Copyright ==
 
@@ -34,21 +34,21 @@ This document is placed into the public domain.
 
 == Motivation ==
 
-BIPs represent important improvements to Bitcoin infrastructure, and in order to foster continued innovation, the BIP process must have clearly defined stages and acceptance acknowledgement.
+BIPs represent important improvements to BitRub infrastructure, and in order to foster continued innovation, the BIP process must have clearly defined stages and acceptance acknowledgement.
 
 == Rationale ==
 
-A committee system is used to organize the essential concerns of each segment of the Bitcoin ecosystem. Although each segment may have many different viewpoints on each BIP, in order to seek a decisive yes/no on a BIP, a representational authoritative structure is sought. This structure should be fluid, allowing people to move away from committees that do not reflect their views and should be re-validated on each BIP evaluation.
+A committee system is used to organize the essential concerns of each segment of the BitRub ecosystem. Although each segment may have many different viewpoints on each BIP, in order to seek a decisive yes/no on a BIP, a representational authoritative structure is sought. This structure should be fluid, allowing people to move away from committees that do not reflect their views and should be re-validated on each BIP evaluation.
 
 == Weaknesses ==
 
-Each committee submits a declaration including their claim to represent a certain percentage of the Bitcoin ecosystem in some way. Though guidelines are given, it's up to each committee to prove their stake, and it's up to the reader of the opinions to decide if a BIP was truly accepted or rejected.
+Each committee submits a declaration including their claim to represent a certain percentage of the BitRub ecosystem in some way. Though guidelines are given, it's up to each committee to prove their stake, and it's up to the reader of the opinions to decide if a BIP was truly accepted or rejected.
 
 The author doesn't believe this is a problem because a BIP cannot be forced on client authors, miners, merchants, or users. Ultimately this BIP is a tool for determining whether a BIP is overwhelmingly accepted. If one committee's validity claim becomes the factor that decides whether the BIP will succeed or fail, this process simply didn't return a clear answer and the BIP should be considered deferred.
 
 == Process ==
 
-* '''Submit for Comments.''' The first BIP champion named in the proposal can call a &quot;submit for comments&quot; at any time by posting to the [https://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev Dev Mailing List] mailling with the BIP number and a statement that the champion intends to immediately submit the BIP for comments.
+* '''Submit for Comments.''' The first BIP champion named in the proposal can call a &quot;submit for comments&quot; at any time by posting to the [https://lists.linuxfoundation.org/mailman/listinfo/bitrub-dev Dev Mailing List] mailling with the BIP number and a statement that the champion intends to immediately submit the BIP for comments.
 ** The BIP must have been assigned BIP-number (i.e. been approved by the BIP editor) to be submitted for comments.
 * '''Comments.'''
 ** After a BIP has been submitted for comments, a two-week waiting period begins in which the community should transition from making suggestions about a proposal to publishing their opinions or concerns on the proposal.
@@ -73,11 +73,11 @@ The author doesn't believe this is a problem because a BIP cannot be forced on c
 
 '''BIP Committees.'''
 
-* BIP Committees are representational structures that represent critical segments of the Bitcoin ecosystem.
-* Each committee must prove and maintain a clear claim that they represent at least 1% of the Bitcoin ecosystem in some form.
+* BIP Committees are representational structures that represent critical segments of the BitRub ecosystem.
+* Each committee must prove and maintain a clear claim that they represent at least 1% of the BitRub ecosystem in some form.
 * If an organization or community does not meet that requirement, it should conglomerate itself with other communities and organizations so that it does.
 * The segments that committees can be based around are:
-** Bitcoin software
+** BitRub software
 ** Exchanges/Merchants/services/payment processors
 ** Mining operators
 ** User communities
@@ -89,10 +89,10 @@ The author doesn't believe this is a problem because a BIP cannot be forced on c
 ** The segment the Committee is representing
 ** Who the committee claim to represent and it's compositional makeup (if made up of multiple miner orgs, user orgs, companies, clients, etc).
 ** Proof of claim and minimum 1% stake via:
-*** Software: proof of ownership and user base (Min 1% of Bitcoin userbase)
-*** Merchant: proof of economic activity (Min 1% of Bitcoin economic activity)
+*** Software: proof of ownership and user base (Min 1% of BitRub userbase)
+*** Merchant: proof of economic activity (Min 1% of BitRub economic activity)
 *** Mining: proof of work (Min 1% of Hashpower)
-*** For a user organization, auditable signatures qualifies for a valid committee (Min 1% of Bitcoin userbase)
+*** For a user organization, auditable signatures qualifies for a valid committee (Min 1% of BitRub userbase)
 ** Who is running the committee, their names and roles
 ** How represented members can submit comments to the committee
 ** A code of conduct and code of ethics which the committee promises to abide by
@@ -116,5 +116,5 @@ A BIP Process Manager should be chosen who is in charge of:
 
 == Conditions for activation ==
 
-In order for this process BIP to become active, it must succeed by its own rules. At least a 4% sample of the Bitcoin community must be represented, with at least one committee in each segment included. Once at least one committee has submitted a declaration, a request for comments will be called and the process should be completed from there.
+In order for this process BIP to become active, it must succeed by its own rules. At least a 4% sample of the BitRub community must be represented, with at least one committee in each segment included. Once at least one committee has submitted a declaration, a request for comments will be called and the process should be completed from there.
 

@@ -3,7 +3,7 @@
   Title: BIP Classification
   Author: Eric Lombrozo <elombrozo@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0123
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0123
   Status: Active
   Type: Process
   Created: 2015-08-26
@@ -25,7 +25,7 @@ This BIP is dual-licensed under the Creative Commons CC0 1.0 Universal and GNU A
 
 ==Motivation==
 
-Bitcoin is a system involving a number of different standards. Some standards are absolute requirements for interoperability while others can be considered optional, giving implementors a choice of whether to support them.
+BitRub is a system involving a number of different standards. Some standards are absolute requirements for interoperability while others can be considered optional, giving implementors a choice of whether to support them.
 
 In order to have a BIP process which more closely reflects the interoperability requirements, it is necessary to categorize BIPs accordingly. Lower layers present considerably greater challenges in getting standards accepted and deployed.
 
@@ -275,7 +275,7 @@ The applications layer specifies high level structures, abstractions, and conven
 |-
 | [[bip-0042.mediawiki|42]]
 | Consensus (soft fork)
-| A finite monetary supply for Bitcoin
+| A finite monetary supply for BitRub
 | Pieter Wuille
 | Standard
 | Draft
@@ -374,7 +374,7 @@ The applications layer specifies high level structures, abstractions, and conven
 | [[bip-0068.mediawiki|68]]
 | Consensus (soft fork)
 | Relative lock-time using consensus-enforced sequence numbers
-| Mark Friedenbach, BtcDrak, Nicolas Dorier, kinoshitajona
+| Mark Friedenbach, BtrDrak, Nicolas Dorier, kinoshitajona
 | Standard
 | Final
 |- style="background-color: #ffffcf"
@@ -401,7 +401,7 @@ The applications layer specifies high level structures, abstractions, and conven
 |- style="background-color: #cfffcf"
 | [[bip-0072.mediawiki|72]]
 | Applications
-| bitcoin: uri extensions for Payment Protocol
+| bitrub: uri extensions for Payment Protocol
 | Gavin Andresen
 | Standard
 | Final
@@ -479,13 +479,13 @@ The applications layer specifies high level structures, abstractions, and conven
 | [[bip-0105.mediawiki|105]]
 | Consensus (hard fork)
 | Consensus based block size retargeting algorithm
-| BtcDrak
+| BtrDrak
 | Standard
 | Draft
 |-
 | [[bip-0106.mediawiki|106]]
 | Consensus (hard fork)
-| Dynamically Controlled Bitcoin Block Size Max Cap
+| Dynamically Controlled BitRub Block Size Max Cap
 | Upal Chakraborty
 | Standard
 | Draft
@@ -514,7 +514,7 @@ The applications layer specifies high level structures, abstractions, and conven
 | [[bip-0112.mediawiki|112]]
 | Consensus (soft fork)
 | CHECKSEQUENCEVERIFY
-| BtcDrak, Mark Friedenbach, Eric Lombrozo
+| BtrDrak, Mark Friedenbach, Eric Lombrozo
 | Standard
 | Final
 |- style="background-color: #cfffcf"

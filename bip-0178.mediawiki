@@ -4,7 +4,7 @@
   Title: Version Extended WIF
   Author: Karl-Johan Alm <karljohan-alm@garage.co.jp>
   Comments-Summary: Discouraged for implementation (one person)
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0178
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0178
   Status: Draft
   Type: Standards Track
   Created: 2018-04-04
@@ -13,15 +13,15 @@
 
 == Abstract ==
 
-An extension to the Wallet Import Format (WIF) to specify what kind of bitcoin address the private key corresponds to.
+An extension to the Wallet Import Format (WIF) to specify what kind of bitrub address the private key corresponds to.
 
 == Motivation ==
 
-There are several types of bitcoin addresses which can all be associated with a given private key: P2PKH (legacy <code>1...</code> format), P2SH-P2WPKH (SegWit public key inside P2SH), P2WPKH (bech32), etc.
+There are several types of bitrub addresses which can all be associated with a given private key: P2PKH (legacy <code>1...</code> format), P2SH-P2WPKH (SegWit public key inside P2SH), P2WPKH (bech32), etc.
 
-While private keys have a 1-byte suffix indicating whether the corresponding public key is compressed (<code>0x01</code>) or not (through suffix absence), there is no way of knowing what kind of bitcoin address were associated with the private key. As a result, when importing a private key, the wallet has to assume all kinds, and keep track of each possible alternative.
+While private keys have a 1-byte suffix indicating whether the corresponding public key is compressed (<code>0x01</code>) or not (through suffix absence), there is no way of knowing what kind of bitrub address were associated with the private key. As a result, when importing a private key, the wallet has to assume all kinds, and keep track of each possible alternative.
 
-By extending the suffix, we can specify what kind of bitcoin address was associated with a given private key.
+By extending the suffix, we can specify what kind of bitrub address was associated with a given private key.
 
 == Specification ==
 
@@ -56,15 +56,15 @@ Note: the difference between `0x01` and `0x10` is that the former can correspond
 
 This proposal is not backwards compatible, in that software that does not recognize the new types will not understand the compressed flag. It would be trivial to change this, by keeping the 'uncompressed' state as it is (no suffix) and changing 'compressed' to be 'anything not 0', as opposed to 'the value 1'.
 
-The proposal ''is'' backwards compatible in that new wallet software will always understand the old WIF format, however. It will, as it does today, assume that any kind of bitcoin address is possible, and will have to track all of them, as it has to today.
+The proposal ''is'' backwards compatible in that new wallet software will always understand the old WIF format, however. It will, as it does today, assume that any kind of bitrub address is possible, and will have to track all of them, as it has to today.
 
 == Acknowledgements ==
 
-This BIP is based on the initial proposal by Thomas Voegtlin (thomasv at electrum dot org) on the Bitcoin Dev mailing list<ref>https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-September/015007.html</ref> and the Electrum 3.0 implementation<ref>https://github.com/spesmilo/electrum/blob/82e88cb89df35288b80dfdbe071da74247351251/RELEASE-NOTES#L95-L108</ref>
+This BIP is based on the initial proposal by Thomas Voegtlin (thomasv at electrum dot org) on the BitRub Dev mailing list<ref>https://lists.linuxfoundation.org/pipermail/bitrub-dev/2017-September/015007.html</ref> and the Electrum 3.0 implementation<ref>https://github.com/spesmilo/electrum/blob/82e88cb89df35288b80dfdbe071da74247351251/RELEASE-NOTES#L95-L108</ref>
 
 == Reference implementation ==
 
-There is a partial implementation which adds, but does not use, the types described in this BIP here: https://github.com/bitcoin/bitcoin/pull/12869
+There is a partial implementation which adds, but does not use, the types described in this BIP here: https://github.com/bitrub/bitrub/pull/12869
 
 == References ==
 

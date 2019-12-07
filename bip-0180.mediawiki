@@ -4,7 +4,7 @@
   Title: Block size/weight fraud proof
   Author: Luke Dashjr <luke+bip@dashjr.org>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0180
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0180
   Status: Draft
   Type: Standards Track
   Created: 2017-03-17

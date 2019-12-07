@@ -5,7 +5,7 @@
   Author: David A. Harding <dave@dtrt.org>
           Peter Todd <pete@petertodd.org>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0125
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0125
   Status: Proposed
   Type: Standards Track
   Created: 2015-12-04
@@ -43,7 +43,7 @@ replaceable.
 
 ===Implementation Details===
 
-The initial implementation expected in Bitcoin Core 0.12.0 uses the following rules:
+The initial implementation expected in BitRub Core 0.12.0 uses the following rules:
 
 One or more transactions currently in the mempool (original
 transactions) will be replaced by a new transaction (replacement
@@ -60,7 +60,7 @@ transaction) that spends one or more of the same inputs if,
 # The number of original transactions to be replaced and their descendant transactions which will be evicted from the mempool must not exceed a total of 100 transactions.
 
 The initial implementation may be seen in
-[https://github.com/bitcoin/bitcoin/pull/6871 Bitcoin Core PR#6871]
+[https://github.com/bitrub/bitrub/pull/6871 BitRub Core PR#6871]
 and specifically the master branch commits from
 5891f870d68d90408aa5ce5b597fb574f2d2cbca to
 16a2f93629f75d182871f288f0396afe6cdc8504 (inclusive).
@@ -94,7 +94,7 @@ for those they created themselves.
 Wallets that do want to make replacements should use explicit signaling
 and meet the criteria described above in the Implementation Details
 section. A
-[https://en.bitcoin.it/wiki/Transaction_replacement Bitcoin Wiki page]
+[https://en.bitrub.it/wiki/Transaction_replacement BitRub Wiki page]
 has been created to help wallet authors track deployed mempool policies
 relating to transaction replacement.
 
@@ -107,9 +107,9 @@ replacement has propagated.
 
 ==Motivation==
 
-Satoshi Nakamoto's original Bitcoin implementation provided the
+Satoshi Nakamoto's original BitRub implementation provided the
 nSequence number field in each input to
-[https://github.com/trottier/original-bitcoin/blob/master/src/main.cpp#L434 allow replacement]
+[https://github.com/trottier/original-bitrub/blob/master/src/main.cpp#L434 allow replacement]
 of transactions containing that input within the
 mempool. When receiving replacements, nodes were supposed to replace
 transactions whose inputs had lower sequence numbers with transactions
@@ -119,8 +119,8 @@ In that implementation, replacement transactions did not have to pay
 additional fees, so there was no direct incentive for miners to
 include the replacement and no built-in rate limiting that prevented
 overuse of relay node bandwidth. Nakamoto
-[https://github.com/bitcoin/bitcoin/commit/05454818dc7ed92f577a1a1ef6798049f17a52e7#diff-118fcbaaba162ba17933c7893247df3aR522 removed replacement]
-from Bitcoin version 0.3.12, leaving only the
+[https://github.com/bitrub/bitrub/commit/05454818dc7ed92f577a1a1ef6798049f17a52e7#diff-118fcbaaba162ba17933c7893247df3aR522 removed replacement]
+from BitRub version 0.3.12, leaving only the
 comment, "Disable replacement feature for now".
 
 Replacing transactions with higher-fee transactions provided a way for
@@ -150,20 +150,20 @@ of full-RBF.
 
 There are no known problematic interactions between opt-in full-RBF and
 other uses of nSequence. Specifically, opt-in full-RBF is compatible
-with consensus-enforced locktime as provided in the Bitcoin 0.1
+with consensus-enforced locktime as provided in the BitRub 0.1
 implementation, draft BIP68 (Relative lock-time using consensus-enforced
 sequence numbers), and draft BIP112 (CHECKSEQUENCEVERIFY).
 
 ==Deployment==
 
-Now, and since Bitcoin's first release, 100% of the network hash rate
+Now, and since BitRub's first release, 100% of the network hash rate
 mines transactions using opt-in full-RBF semantics (sequence less than
 (0xffffffff - 1)).
 
 Opt-in full-RBF as a default mempool replacement policy among nodes
-and miners is expected to become widespread as they upgrade to Bitcoin
+and miners is expected to become widespread as they upgrade to BitRub
 Core 0.12.0 (release expected Jan/Feb 2016) and similar node software
-such as Bitcoin LJR.
+such as BitRub LJR.
 
 Actual replacement may be unreliable until two conditions have been satisfied:
 
@@ -181,11 +181,11 @@ existing wallets signals inherited replaceability.
 
 ==See also==
 
-# [https://en.bitcoin.it/wiki/Transaction_replacement Transaction Replaceability on Bitcoin Wiki] targeted at helping wallet authors use RBF
+# [https://en.bitrub.it/wiki/Transaction_replacement Transaction Replaceability on BitRub Wiki] targeted at helping wallet authors use RBF
 
 # Tools for creating opt-in full-RBF transactions: https://github.com/petertodd/replace-by-fee-tools#replace-by-fee-tools
 
-# [https://www.reddit.com/r/Bitcoin/comments/3urm8o/optin_rbf_is_misunderstood_ask_questions_about_it/ Reddit: Questions about opt-in RBF] targeted at helping community members understand opt-in full-RBF
+# [https://www.reddit.com/r/BitRub/comments/3urm8o/optin_rbf_is_misunderstood_ask_questions_about_it/ Reddit: Questions about opt-in RBF] targeted at helping community members understand opt-in full-RBF
 
 ==Copyright==
 

@@ -4,9 +4,9 @@
   Title: Tail Call Execution Semantics
   Author: Mark Friedenbach <mark@friedenbach.org>
           Kalle Alm <kalle.alm@gmail.com>
-          BtcDrak <btcdrak@gmail.com>
+          BtrDrak <btrdrak@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0117
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0117
   Status: Draft
   Type: Standards Track
   Created: 2017-08-25
@@ -77,7 +77,7 @@ At spend time membership in this tree of the provided policy script is proven be
 
 ==Rationale==
 
-This proposal is a soft-fork change to bitcoin's consensus rules because leaving a script that data-wise evaluates as true from its serialized form on the stack as execution terminates would result in the script validation returning true anyway.
+This proposal is a soft-fork change to bitrub's consensus rules because leaving a script that data-wise evaluates as true from its serialized form on the stack as execution terminates would result in the script validation returning true anyway.
 Giving the subscript a chance to terminate execution is only further constraining the validation rules.
 The only scripts which would evaluate as false are the empty script, or a script that does nothing more than push empty/zero values to the stack.
 None of these scripts have any real-world utility, so excluding them to achieve soft-fork compatibility doesn't come with any downsides.
@@ -96,7 +96,7 @@ while leaving the door open to future generalized tail-call recursion if and whe
 
 The global SIGOP limit and per-script opcode limits do not apply to the policy script
 because dynamic selection of the policy script makes it not possible for static analysis tools to verify these limits in general,
-and because performance improvements to libsecp256k1 and Bitcoin Core have made these limits no longer necessary as they once were.
+and because performance improvements to libsecp256k1 and BitRub Core have made these limits no longer necessary as they once were.
 The validation costs are still limited by the number of signature operations it is possible to encode within block size limits,
 and the maximum script size per input is limited to 10,000 + 17*520 = 18,840 bytes.
 
@@ -165,15 +165,15 @@ This removes a potentially significant hurdle to deployment by making this featu
 
 An implementation of this BIP, including both consensus code changes and tests are available at the following Github repository:
 
-[https://github.com/maaku/bitcoin/tree/tail-call-semantics]
+[https://github.com/maaku/bitrub/tree/tail-call-semantics]
 
 ==Deployment==
 
 This BIP will be deployed by BIP8 (Version bits with lock-in by height)[9] with the name "tailcall" and using bit 3.
 
-For Bitcoin mainnet, the BIP8 startheight will be at height M to be determined and BIP8 timeout activation will occur on height M + 50,400 blocks.
+For BitRub mainnet, the BIP8 startheight will be at height M to be determined and BIP8 timeout activation will occur on height M + 50,400 blocks.
 
-For Bitcoin testnet, the BIP8 startheight will be at height T to be determined and BIP8 timeout activation will occur on height T + 50,400 blocks.
+For BitRub testnet, the BIP8 startheight will be at height T to be determined and BIP8 timeout activation will occur on height T + 50,400 blocks.
 
 We note that CLEANSTACK means that transactions which use this feature are already considered non-standard by the rules of the network, making deployment easier than was the case with, for example, with BIP68 (Relative lock-time using consensus-enforced sequence numbers)[6].
 
@@ -183,14 +183,14 @@ The v0 segwit rules prohibit leaving anything on the stack, so for v0 parameters
 
 ==References==
 
-[1] [https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki BIP16: Pay to Script Hash]
+[1] [https://github.com/bitrub/bips/blob/master/bip-0016.mediawiki BIP16: Pay to Script Hash]
 
-[2] [https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki BIP141: Segregated Witness (Consensus Layer)]
+[2] [https://github.com/bitrub/bips/blob/master/bip-0141.mediawiki BIP141: Segregated Witness (Consensus Layer)]
 
-[3] [https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki BIP116: MERKLEBRANCHVERIFY]
+[3] [https://github.com/bitrub/bips/blob/master/bip-0116.mediawiki BIP116: MERKLEBRANCHVERIFY]
 
-[4] "[https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-September/015028.html An explanation and justification of the tail-call and MBV approach to MAST]", Mark Friedenbach, Bitcoin Development Mailing List, 20 September 2017.
+[4] "[https://lists.linuxfoundation.org/pipermail/bitrub-dev/2017-September/015028.html An explanation and justification of the tail-call and MBV approach to MAST]", Mark Friedenbach, BitRub Development Mailing List, 20 September 2017.
 
-[5] [https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki BIP114: Merkelized Abstract Syntax Tree]
+[5] [https://github.com/bitrub/bips/blob/master/bip-0114.mediawiki BIP114: Merkelized Abstract Syntax Tree]
 
-[6] [https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki BIP68: Relative lock-time using consensus-enforced sequence numbers]
+[6] [https://github.com/bitrub/bips/blob/master/bip-0068.mediawiki BIP68: Relative lock-time using consensus-enforced sequence numbers]

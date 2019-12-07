@@ -4,7 +4,7 @@
   Author: Justus Ranvier <justus@opentransactions.org>
           Jimmy Song <jimmy@monetas.net>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0081
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0081
   Status: Deferred
   Type: Informational
   Created: 2014-08-11
@@ -45,7 +45,7 @@ Index values which can be applied to a BIP32 node are limited to 4 bytes (32 bit
 
 Since this is not sufficient to identify color definitions without a risk of collision, multiple levels are used.
 
-Color definitions are first shortened to 20 bytes using the Bitcoin hash160 function.
+Color definitions are first shortened to 20 bytes using the BitRub hash160 function.
 
 The resulting 20 bytes are split into five groups in little endian format, and where each group is used as the seed for the five levels of color definition levels
 
@@ -61,7 +61,7 @@ Public derivation is used at this level.
 
 ==Compatible wallets==
 
-* [[https://github.com/btcsuite/btcwallet|btcwallet]] is the reference Bitcoin wallet for voting pools.
+* [[https://github.com/btrsuite/btrwallet|btrwallet]] is the reference BitRub wallet for voting pools.
 
 ==Copyright==
 

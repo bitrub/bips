@@ -5,7 +5,7 @@
   Author: Marek Palatinus <slush@satoshilabs.com>
           Pavol Rusnak <stick@satoshilabs.com>
   Comments-Summary: Mixed review (one person)
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0044
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0044
   Status: Proposed
   Type: Standards Track
   Created: 2014-04-24
@@ -47,7 +47,7 @@ Hardened derivation is used at this level.
 ===Coin type===
 
 One master node (seed) can be used for unlimited number of independent
-cryptocoins such as Bitcoin, Litecoin or Namecoin. However, sharing the same
+cryptocoins such as BitRub, Litecoin or Namecoin. However, sharing the same
 space for various cryptocoins has some disadvantages.
 
 This level creates a separate subtree for every cryptocoin, avoiding
@@ -142,11 +142,11 @@ All these constants are used as hardened derivation.
 |-
 |0
 |0x80000000
-|Bitcoin
+|BitRub
 |-
 |1
 |0x80000001
-|Bitcoin Testnet
+|BitRub Testnet
 |}
 
 This BIP is not a central directory for the registered coin types, please
@@ -166,97 +166,97 @@ is required and a pull request to the above file should be created.
 !address
 !path
 |-
-|Bitcoin
+|BitRub
 |first
 |external
 |first
 |m / 44' / 0' / 0' / 0 / 0
 |-
-|Bitcoin
+|BitRub
 |first
 |external
 |second
 |m / 44' / 0' / 0' / 0 / 1
 |-
-|Bitcoin
+|BitRub
 |first
 |change
 |first
 |m / 44' / 0' / 0' / 1 / 0
 |-
-|Bitcoin
+|BitRub
 |first
 |change
 |second
 |m / 44' / 0' / 0' / 1 / 1
 |-
-|Bitcoin
+|BitRub
 |second
 |external
 |first
 |m / 44' / 0' / 1' / 0 / 0
 |-
-|Bitcoin
+|BitRub
 |second
 |external
 |second
 |m / 44' / 0' / 1' / 0 / 1
 |-
-|Bitcoin
+|BitRub
 |second
 |change
 |first
 |m / 44' / 0' / 1' / 1 / 0
 |-
-|Bitcoin
+|BitRub
 |second
 |change
 |second
 |m / 44' / 0' / 1' / 1 / 1
 |-
-|Bitcoin Testnet
+|BitRub Testnet
 |first
 |external
 |first
 |m / 44' / 1' / 0' / 0 / 0
 |-
-|Bitcoin Testnet
+|BitRub Testnet
 |first
 |external
 |second
 |m / 44' / 1' / 0' / 0 / 1
 |-
-|Bitcoin Testnet
+|BitRub Testnet
 |first
 |change
 |first
 |m / 44' / 1' / 0' / 1 / 0
 |-
-|Bitcoin Testnet
+|BitRub Testnet
 |first
 |change
 |second
 |m / 44' / 1' / 0' / 1 / 1
 |-
-|Bitcoin Testnet
+|BitRub Testnet
 |second
 |external
 |first
 |m / 44' / 1' / 1' / 0 / 0
 |-
-|Bitcoin Testnet
+|BitRub Testnet
 |second
 |external
 |second
 |m / 44' / 1' / 1' / 0 / 1
 |-
-|Bitcoin Testnet
+|BitRub Testnet
 |second
 |change
 |first
 |m / 44' / 1' / 1' / 1 / 0
 |-
-|Bitcoin Testnet
+|BitRub Testnet
 |second
 |change
 |second

@@ -4,7 +4,7 @@
   Title: Segregated Witness (second deployment)
   Author: Shaolin Fry <shaolinfry@protonmail.ch>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0149
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0149
   Status: Withdrawn
   Type: Standards Track
   Created: 2017-04-14
@@ -18,13 +18,13 @@ This document specifies a user activated soft fork for [[bip-0141.mediawiki|BIP1
 
 ==Motivation==
 
-Miners have been reluctant to signal the BIP9 segwit deployment despite a large portion of the Bitcoin ecosystem who want the soft fork activated. This BIP specifies a user activated soft fork (UASF) that deploys segwit again using versionbits with guaranteed lock-in on timeout if the BIP is not already locked-in or activated by the timeout. This ensures users have sufficient time to prepare and no longer require a miner supermajority, while still allowing for an earlier miner activated soft fork (MASF).
+Miners have been reluctant to signal the BIP9 segwit deployment despite a large portion of the BitRub ecosystem who want the soft fork activated. This BIP specifies a user activated soft fork (UASF) that deploys segwit again using versionbits with guaranteed lock-in on timeout if the BIP is not already locked-in or activated by the timeout. This ensures users have sufficient time to prepare and no longer require a miner supermajority, while still allowing for an earlier miner activated soft fork (MASF).
 
 ==Reference implementation==
 
-The reference implementation will refuse to run on Bitcoin mainnet before 7 November 2017, and can only be run on testnet and regtest until then.
+The reference implementation will refuse to run on BitRub mainnet before 7 November 2017, and can only be run on testnet and regtest until then.
 
-https://github.com/bitcoin/bitcoin/compare/master...shaolinfry:uasegwit-flagday
+https://github.com/bitrub/bitrub/compare/master...shaolinfry:uasegwit-flagday
 
 ==Specification==
 
@@ -36,9 +36,9 @@ This BIP should only be deployed if BIP9-segwit fails to lock-in or activate bef
 
 This BIP will be deployed by BIP8 with the name "segwit" and using bit 1.
 
-For Bitcoin mainnet, the BIP8 starttime will be midnight 16 November 2017 UTC (Epoch timestamp 1510790400) and BIP8 timeout will be 4 July 2018 UTC (Epoch timestamp 1530662400).
+For BitRub mainnet, the BIP8 starttime will be midnight 16 November 2017 UTC (Epoch timestamp 1510790400) and BIP8 timeout will be 4 July 2018 UTC (Epoch timestamp 1530662400).
 
-For Bitcoin testnet, segwit is already activated so no deployment is specified.
+For BitRub testnet, segwit is already activated so no deployment is specified.
 
 ==Backwards Compatibility==
 
@@ -52,7 +52,7 @@ The '''starttime''' of this BIP is after the BIP9-segwit timeout to remove compa
 
 ==References==
 
-[https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2017-April/014234.html Mailing list discussion]
+[https://lists.linuxfoundation.org/pipermail/bitrub-dev/2017-April/014234.html Mailing list discussion]
 
 [[bip-0008.mediawiki|BIP8]]
 

@@ -1,7 +1,7 @@
-// This program connects to your local btcd and generates test vectors for
+// This program connects to your local btrd and generates test vectors for
 // 5 blocks and collision space sizes of 1-32 bits. Change the RPC cert path
 // and credentials to run on your system. The program assumes you're running
-// a btcd with cfilter support, which mainline btcd doesn't have; in order to
+// a btrd with cfilter support, which mainline btrd doesn't have; in order to
 // circumvent this assumption, comment out the if block that checks for
 // filter size of DefaultP.
 
@@ -17,12 +17,12 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/rpcclient"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcutil/gcs/builder"
+	"github.com/btrsuite/btrd/blockchain"
+	"github.com/btrsuite/btrd/chaincfg/chainhash"
+	"github.com/btrsuite/btrd/rpcclient"
+	"github.com/btrsuite/btrd/wire"
+	"github.com/btrsuite/btrutil"
+	"github.com/btrsuite/btrutil/gcs/builder"
 	"github.com/davecgh/go-spew/spew"
 )
 
@@ -42,8 +42,8 @@ var (
 		{1414221, "Empty data"},
 	}
 
-	defaultBtcdDir         = btcutil.AppDataDir("btcd", false)
-	defaultBtcdRPCCertFile = filepath.Join(defaultBtcdDir, "rpc.cert")
+	defaultBtrdDir         = btrutil.AppDataDir("btrd", false)
+	defaultBtrdRPCCertFile = filepath.Join(defaultBtrdDir, "rpc.cert")
 )
 
 const (
@@ -164,7 +164,7 @@ func main() {
 
 	writerFile = writer
 
-	cert, err := ioutil.ReadFile(defaultBtcdRPCCertFile)
+	cert, err := ioutil.ReadFile(defaultBtrdRPCCertFile)
 	if err != nil {
 		fmt.Println("Couldn't read RPC cert: ", err.Error())
 		return

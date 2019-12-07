@@ -4,7 +4,7 @@
   Title: getblocktemplate - Pooled Mining
   Author: Luke Dashjr <luke+bip22@dashjr.org>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0023
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0023
   Status: Final
   Type: Standards Track
   Created: 2012-02-28
@@ -204,7 +204,7 @@ If the block template contains a "mutable" key, it is a list of these to signify
 
 ==== Format of Data for Merkle-Only Shares ====
 
-The format used for submitting shares with the "share/merkle" mutation shall be the 80-byte block header, the total number of transactions encoded in Bitcoin variable length number format, the coinbase transaction, and then finally the little-endian SHA256 hashes of each link in the merkle chain connecting it to the merkle root.
+The format used for submitting shares with the "share/merkle" mutation shall be the 80-byte block header, the total number of transactions encoded in BitRub variable length number format, the coinbase transaction, and then finally the little-endian SHA256 hashes of each link in the merkle chain connecting it to the merkle root.
 
 ===Logical Services===
 
@@ -282,7 +282,7 @@ What is the purpose of the "prevblock" mutation?
 * There are often cases where a miner has processed a new block before the server. If the server allows "prevblock" mutation, the miner may begin mining on the new block immediately, without waiting for a new template.
 
 Why must both "mintime"/"maxtime" and "mintimeoff"/"maxtimeoff" keys be defined?
-* In some cases, the limits may be unrelated to the current time (such as the Bitcoin network itself; the minimum is always a fixed median time)
+* In some cases, the limits may be unrelated to the current time (such as the BitRub network itself; the minimum is always a fixed median time)
 * In other cases, the limits may be bounded by other rules (many pools limit the time header to within 5 minutes of when the share is submitted to them).
 
 Is "target" really needed?
@@ -296,9 +296,9 @@ What is the purpose of the "hash" transaction list format?
 
 ==Reference Implementation==
 
-* [http://gitorious.org/bitcoin/libblkmaker libblkmaker]
-* [https://gitorious.org/bitcoin/eloipool Eloipool]
-* [https://github.com/bitcoin/bitcoin/pull/936/files bitcoind]
+* [http://gitorious.org/bitrub/libblkmaker libblkmaker]
+* [https://gitorious.org/bitrub/eloipool Eloipool]
+* [https://github.com/bitrub/bitrub/pull/936/files bitrubd]
 
 ==See Also==
 * [[bip-0022.mediawiki|BIP 22: getblocktemplate - Fundamentals]]

@@ -4,7 +4,7 @@
   Title: SIGHASH_NOINPUT
   Author: Christian Decker <decker.christian@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0118
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0118
   Status: Draft
   Type: Standards Track
   Created: 2017-02-28
@@ -20,7 +20,7 @@ compatibility of output scripts to input scripts.
 
 == Motivation ==
 Off-chain protocols make use of transactions that are not yet
-broadcast to the Bitcoin network in order to renegotiate the final
+broadcast to the BitRub network in order to renegotiate the final
 state that should be settled on-chain.
 In a number of cases it is desirable to react to a given transaction
 being seen on-chain with a predetermined reaction in the form of
@@ -70,7 +70,7 @@ digest and is therefore also committed to in the signature.
 
 The <tt>NOINPUT</tt> flag MAY be combined with the <tt>SINGLE</tt> flag in which
 case the <tt>hashOutputs</tt> is modified as per BIP
-143<ref>https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki</ref>: it
+143<ref>https://github.com/bitrub/bips/blob/master/bip-0143.mediawiki</ref>: it
 only commits to the output with the matching index, if such output exists, and
 is a <tt>uint256</tt> <tt>0x0000......0000</tt> otherwise.
 
@@ -127,11 +127,11 @@ it valid.
 == Acknowledgments ==
 
 The <tt>NOINPUT</tt> sighash flag was first proposed by Joseph Poon in
-February 2016<ref>https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-February/012460.html</ref>, after being mentioned in the original
+February 2016<ref>https://lists.linuxfoundation.org/pipermail/bitrub-dev/2016-February/012460.html</ref>, after being mentioned in the original
 Lightning paper<ref>http://lightning.network/lightning-network.pdf</ref>. A formal proposal was however
 deferred until after the activation of segwit. This proposal is a
 continuation of this discussion and attempts to formalize it in such a
-way that it can be included in the Bitcoin protocol. As such we'd like
+way that it can be included in the BitRub protocol. As such we'd like
 acknowledge Joseph Poon and Thaddeus Dryja as the original inventors
 of the <tt>NOINPUT</tt> sighash flag, and its uses in off-chain protocols.
 

@@ -5,7 +5,7 @@
   Author: Gleb Naumenko <naumenko.gs@gmail.com>
           Pieter Wuille <pieter.wuille@gmail.com>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0330
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0330
   Status: Draft
   Type: Standards Track
   Created: 2019-09-25
@@ -19,11 +19,11 @@ This document specifies a P2P protocol extension for reconciliation of transacti
 
 ==Motivation==
 
-Currently in the Bitcoin network, every 32-byte transaction ID is announced in at least one direction between every pair of connected peers, via INV messages. This results in high cost of announcing transactions: ''O(nodes * connections_per_node)''.
+Currently in the BitRub network, every 32-byte transaction ID is announced in at least one direction between every pair of connected peers, via INV messages. This results in high cost of announcing transactions: ''O(nodes * connections_per_node)''.
 
 A <b>reconciliation-based protocol</b> which uses the technique suggested in this document can have better scaling properties than INV-based flooding.
 
-Increasing the connectivity of the network makes the network more robust to partitioning attacks; thus, improving the bandwidth scaling of transaction relay to ''O(nodes)'' (and without a high constant overhead) would allow us to improve the security of the network by increasing connectivity. It would also reduce the bandwidth required to run a Bitcoin node and potentially enable more users to run full nodes.
+Increasing the connectivity of the network makes the network more robust to partitioning attacks; thus, improving the bandwidth scaling of transaction relay to ''O(nodes)'' (and without a high constant overhead) would allow us to improve the security of the network by increasing connectivity. It would also reduce the bandwidth required to run a BitRub node and potentially enable more users to run full nodes.
 
 ===Erlay===
 

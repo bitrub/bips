@@ -4,7 +4,7 @@
   Title: Rate Limiting via peer specified challenges
   Author: Karl-Johan Alm <karljohan-alm@garage.co.jp>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0154
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0154
   Status: Withdrawn
   Type: Standards Track
   Created: 2017-04-12
@@ -28,7 +28,7 @@ An anti-DoS system which provides additional service for peers which perform pro
 
 ==Motivation==
 
-The Bitcoin network has a maximum number of inbound and outbound connections (125).
+The BitRub network has a maximum number of inbound and outbound connections (125).
 It is trivial and relatively cheap to flood the network with connections via dummy
 nodes. Such an attack would result in (1) nodes evicting some other nodes in order to
 facilitate the new connection, and (2) nodes' ability to connect to each other being
@@ -40,7 +40,7 @@ of work, to prove that they are not simply spamming the network. This would seve
 ramp up the costs of a Sybil attack, as the attacker would now have to perform proof
 of work for each node, beyond the free slots.
 
-However, using the "standard" double-SHA256 POW algorithm in use by Bitcoin nodes to
+However, using the "standard" double-SHA256 POW algorithm in use by BitRub nodes to
 generate blocks means attackers can use special-purpose hardware to greatly accelerate
 the POW solving process. To counter this, the proof weight would have to be raised,
 but this would mean standard nodes would need to solve unacceptably costly challenges
@@ -450,7 +450,7 @@ and be disconnected, as if they hit the peer connection limit as normal.
 
 ==Reference implementation==
 
-https://github.com/kallewoof/bitcoin/pull/2 (https://github.com/kallewoof/bitcoin/tree/pow-connection-slots)
+https://github.com/kallewoof/bitrub/pull/2 (https://github.com/kallewoof/bitrub/tree/pow-connection-slots)
 
 ==References==
 

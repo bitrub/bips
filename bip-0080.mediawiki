@@ -4,7 +4,7 @@
   Author: Justus Ranvier <justus@opentransactions.org>
           Jimmy Song <jimmy@monetas.net>
   Comments-Summary: No comments yet.
-  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0080
+  Comments-URI: https://github.com/bitrub/bips/wiki/Comments:BIP-0080
   Status: Deferred
   Type: Informational
   Created: 2014-08-11
@@ -41,7 +41,7 @@ Hardened derivation is used at this level.
 
 ===Coin type===
 
-One master node (seed) can be used for unlimited number of independent cryptocoins such as Bitcoin, Litecoin or Namecoin. However, sharing the same space for various cryptocoins has some disadvantages.
+One master node (seed) can be used for unlimited number of independent cryptocoins such as BitRub, Litecoin or Namecoin. However, sharing the same space for various cryptocoins has some disadvantages.
 
 This level creates a separate subtree for every cryptocoin, avoiding reusing addresses across cryptocoins and improving privacy issues.
 
@@ -65,7 +65,7 @@ Public derivation is used at this level.
 
 ==Compatible wallets==
 
-* [[https://github.com/btcsuite/btcwallet|btcwallet]] is the reference Bitcoin wallet for voting pools.
+* [[https://github.com/btrsuite/btrwallet|btrwallet]] is the reference BitRub wallet for voting pools.
 
 ==Copyright==
 
